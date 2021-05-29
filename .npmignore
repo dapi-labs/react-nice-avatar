@@ -1,0 +1,20 @@
+// system file
+*.log
+.DS_Store*
+.idea/
+
+// specific files
+node_modules/
+test/
+CHANGELOG.md
+src/
+
+// setting files
+.babelrc
+.travis.yml
+.eslintrc
+.eslintignore
+
+Makefile
+README.md
+rollup.config.js

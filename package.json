@@ -1,0 +1,42 @@
+{
+  "name": "react-nice-avatar",
+  "version": "0.1.0",
+  "description": "Beautiful default avatar for your users",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "scripts": {},
+  "keywords": [
+    "react",
+    "avatar",
+    "react-avatar"
+  ],
+  "author": "Chill Lab",
+  "license": "MIT",
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": ">=16.0.0"
+  },
+  "dependencies": {
+    "chroma-js": "^2.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-react": "^7.13.13",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.3",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "rollup": "^2.50.4",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4"
+  }
+}
