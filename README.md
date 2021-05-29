@@ -9,6 +9,9 @@
 <img width="600" alt="imagewall" src="https://user-images.githubusercontent.com/5305874/120076504-68e15980-c0d8-11eb-896c-3824b5eb05bb.png">
 
 
+## Assets
+* Maker: [Micah](https://www.figma.com/@Micah)
+* Figma files: https://www.figma.com/community/file/829741575478342595
 
 ## Installation
 
@@ -69,7 +72,6 @@ The options can be passed into genConfig or on React props
 |shirtStyle| string | | hoody, short, polo
 |shirtColor| string |
 |bgColor| string |
-
 
 ## License
 
