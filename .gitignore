@@ -20,3 +20,5 @@ coverage
 node_modules/
 
 dist/
+
+# demo/dist

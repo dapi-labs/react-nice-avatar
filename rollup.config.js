@@ -12,14 +12,10 @@ export default {
     {
       file: pkg.main,
       format: "cjs",
-      sourcemap: true
-    },
-    {
-      file: pkg.module,
-      format: "es",
-      sourcemap: true
+      sourcemap: false
     }
   ],
+  external: ["react", "prop-types"],
   plugins: [
     external(),
     eslint({
@@ -31,6 +27,5 @@ export default {
     }),
     resolve(),
     commonjs()
-  ],
-  external: ["react", "prop-types"]
+  ]
 };

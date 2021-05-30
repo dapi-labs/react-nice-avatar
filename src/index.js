@@ -74,6 +74,7 @@ export default class AvartarMock extends Component {
         break;
       }
     }
+
     return (
       <div
         className={className}
@@ -162,10 +163,10 @@ export const genConfig = (userConfig = {}) => {
   response.eyeBrowStyle = myEyeBrowStyle;
 
   // Shirt color
-  response.shirtColor = userConfig.shirtColor || _pickRandomFromList(shirtColor, [hairColor]);
+  response.shirtColor = userConfig.shirtColor || _pickRandomFromList(shirtColor, [response.hairColor]);
 
   // Background color
-  response.bgColor = userConfig.bgColor || _pickRandomFromList(bgColor, [hairColor, shirtColor]);
+  response.bgColor = userConfig.bgColor || _pickRandomFromList(bgColor, [response.hairColor, response.shirtColor]);
 
   return response;
 };

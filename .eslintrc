@@ -65,6 +65,10 @@
     "default-case": "off",
     "jsx-a11y/mouse-events-have-key-events": "off",
     "no-use-before-define": "off",
-    "react/no-unused-prop-types": "off"
+    "react/no-unused-prop-types": "off",
+    "import/no-extraneous-dependencies": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "jsx-a11y/anchor-has-content": "off",
+    "react/no-access-state-in-setstate": "off"
   }
 }

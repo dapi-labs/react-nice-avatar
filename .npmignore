@@ -8,6 +8,7 @@ node_modules/
 test/
 CHANGELOG.md
 src/
+demo/
 
 // setting files
 .babelrc
@@ -18,3 +19,4 @@ src/
 Makefile
 README.md
 rollup.config.js
+rollup.config.dev.js

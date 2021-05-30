@@ -8,7 +8,9 @@ export default function (props) {
   const { style } = props;
   switch (style) {
     case "circle": return <Circle />;
-    case "oval": return <Oval />;
     case "smile": return <Smile />;
+    case "oval":
+    default:
+      return <Oval />;
   }
 }

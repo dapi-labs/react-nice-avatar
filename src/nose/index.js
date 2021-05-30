@@ -7,8 +7,10 @@ import Round from "./round";
 export default function (props) {
   const { style } = props;
   switch (style) {
-    case "short": return <Short />;
     case "long": return <Long />;
     case "round": return <Round />;
+    case "short":
+    default:
+      return <Short />;
   }
 }

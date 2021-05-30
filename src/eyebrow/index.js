@@ -6,7 +6,9 @@ import UpWoman from "./upWoman";
 export default function (props) {
   const { style } = props;
   switch (style) {
-    case "up": return <Up />;
     case "upWoman": return <UpWoman />;
+    case "up":
+    default:
+      return <Up />;
   }
 }

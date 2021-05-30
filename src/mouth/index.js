@@ -9,6 +9,8 @@ export default function (props) {
   switch (style) {
     case "laugh": return <Laugh />;
     case "smile": return <Smile />;
-    case "peace": return <Peace />;
+    case "peace":
+    default:
+      return <Peace />;
   }
 }

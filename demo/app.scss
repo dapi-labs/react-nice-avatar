@@ -1,0 +1,123 @@
+@import "./iconfont";
+
+$blue-purple: #568ef2;
+
+html {
+  font: 14px/1.25 -apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Hiragino Sans GB,Simsun,Arial,sans-self;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.icon-github {
+  position: fixed;
+  padding: 0.85rem 1.65rem;
+  top: 0;
+  right: 0;
+  color: #888;
+  transition: all 0.25s ease-out;
+  font-size: 1.5rem;
+  text-decoration: none;
+  &:hover {
+    color: $blue-purple;
+  }
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  padding-top: 10vh;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5vh;
+  .avatar {
+    $width: 25rem;
+    width: $width;
+    height: $width;
+  }
+  button {
+    text-align: center;
+    transition: opacity 0.35s ease-out;
+    cursor: pointer;
+    line-height: 1;
+    border-radius: 5px;
+    background: $blue-purple;
+    background: linear-gradient(90deg, #8990FF, $blue-purple);
+    color: #fff;
+    box-shadow: 0 2px 6px #8990FF;
+    border: none;
+    width: 13rem;
+    margin: 1.5rem auto 0;
+    padding: 0.65rem 0;
+    &:hover {
+      opacity: 0.85;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.info {
+  margin-left: 6rem;
+  .field {
+    font-weight: bold;
+    line-height: 1;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    .colorPanelWrapper {
+      position: relative;
+      .iconfont {
+        font-weight: normal;
+        margin-left: 0.35rem;
+        transition: all 0.25s ease-out;
+        font-size: 0.95rem;
+        cursor: pointer;
+        &:hover {
+          color: $blue-purple;
+        }
+      }
+      .colorPanel {
+        position: absolute;
+        top: calc(100% + 0.15rem);
+        left: 0.15rem;
+        z-index: 10;
+        &.top {
+          top: auto;
+          bottom: calc(100% + 0.15rem);
+        }
+      }
+    }
+  }
+  .opts {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.45rem;
+    &:not(:last-of-type) {
+      margin-bottom: 1rem;
+    }
+    width: 25rem;
+    .opt {
+      margin: 0 1.25rem 0.45rem 0;
+      cursor: pointer;
+      transition: all 0.25s ease-out;
+      line-height: 1;
+      &.active, &:hover {
+        color: $blue-purple;
+      }
+    }
+  }
+}
