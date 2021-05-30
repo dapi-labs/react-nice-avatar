@@ -60,6 +60,7 @@ The options can be passed into genConfig or on React props
 
 |key|type|default|accept
 |---|---|---|---|
+|id|string|
 |className|string|
 |style|object|
 |shape|string|circle|circle, rounded, square

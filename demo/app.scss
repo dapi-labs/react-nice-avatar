@@ -42,44 +42,54 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30rem;
+  width: 25rem;
+  padding-top: 4vh;
   .avatarWrapper {
     width: 100%;
-    height: 30rem;
+    height: 25rem;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .sizeSlider {
     width: 60%;
-    margin: 0.75rem auto 1.5rem;
+    margin: 1.25rem auto;
     .rc-slider-track {
       background-color: $blue-purple;
     }
     .rc-slider-handle {
       border-color: $blue-purple;
     }
-
   }
-  button {
-    text-align: center;
-    transition: opacity 0.35s ease-out;
-    cursor: pointer;
-    line-height: 1;
-    border-radius: 5px;
-    background: $blue-purple;
-    background: linear-gradient(90deg, #8990FF, $blue-purple);
-    color: #fff;
-    box-shadow: 0 2px 6px #8990FF;
-    border: none;
-    width: 13rem;
-    margin: 0 auto;
-    padding: 0.65rem 0;
-    &:hover {
-      opacity: 0.85;
-    }
-    &:focus {
-      outline: none;
+  .btnGroup {
+    display: flex;
+    justify-content: center;
+    button {
+      text-align: center;
+      transition: opacity 0.35s ease-out;
+      cursor: pointer;
+      line-height: 1;
+      border-radius: 5px;
+      border: none;
+      width: 8rem;
+      padding: 0.65rem 0;
+      margin: 0 0.45rem;
+      &:hover {
+        opacity: 0.85;
+      }
+      &:focus {
+        outline: none;
+      }
+      &.random {
+        background: $blue-purple;
+        background: linear-gradient(90deg, #8990FF, $blue-purple);
+        color: #fff;
+        box-shadow: 0 2px 6px #8990FF;
+      }
+      &.download {
+        color: $blue-purple;
+        background: #F1F1F1;
+      }
     }
   }
 }

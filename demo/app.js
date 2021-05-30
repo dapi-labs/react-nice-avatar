@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import classnames from "classnames";
 import { ChromePicker } from "react-color";
-import Slider from 'rc-slider';
+import Slider from "rc-slider";
+import domtoimage from "dom-to-image";
+import FileSaver from "file-saver";
 
 import Avatar, { genConfig } from "../src";
 
-import 'rc-slider/assets/index.css';
+import "rc-slider/assets/index.css";
 
 export default class App extends Component {
   constructor(props) {
@@ -72,10 +74,17 @@ export default class App extends Component {
     });
   }
 
-  changeSize (number) {
+  changeSize(number) {
     this.setState({
       size: number
-    })
+    });
+  }
+
+  async download() {
+    const node = document.getElementById("avatar");
+    const blob = await domtoimage.toBlob(node);
+
+    FileSaver(blob, "avatar.png");
   }
 
   render() {
@@ -95,9 +104,10 @@ export default class App extends Component {
         <div className="left">
           <div className="avatarWrapper">
             <Avatar
+              id="avatar"
               style={{
                 width: `${size}rem`,
-                height: `${size}rem`,
+                height: `${size}rem`
               }}
               shape={bgShape}
               {...config} />
@@ -105,12 +115,21 @@ export default class App extends Component {
           <Slider
             className="sizeSlider"
             value={size}
-            min={5}
-            max={30}
+            min={1}
+            max={25}
             onChange={this.changeSize.bind(this)} />
-          <button onClick={this.genRandom.bind(this)}>
-            Random
-          </button>
+          <div className="btnGroup">
+            <button
+              className="random"
+              onClick={this.genRandom.bind(this)}>
+              Random
+            </button>
+            <button
+              className="download"
+              onClick={this.download.bind(this)}>
+              Download
+            </button>
+          </div>
         </div>
 
         <div className="info">

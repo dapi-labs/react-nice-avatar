@@ -17,8 +17,8 @@ let plugins = [
   resolve(),
   commonjs(),
   scss()
-]
-if (process.env.NODE_ENV === 'development' && process.env.MODE !== 'build') {
+];
+if (process.env.NODE_ENV === "development" && process.env.MODE !== "build") {
   plugins = plugins.concat([
     serve({
       open: false,
@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'development' && process.env.MODE !== 'build') {
       port: 5555
     }),
     livereload({ watch: "demo" })
-  ])
+  ]);
 }
 
 export default {

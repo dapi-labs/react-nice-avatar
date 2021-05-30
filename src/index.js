@@ -34,6 +34,7 @@ const _pickRandomFromList = (data, avoidList = []) => {
 
 export default class AvartarMock extends Component {
   static propTypes = {
+    id: PropTypes.string,
     className: PropTypes.string,
     style: PropTypes.object,
     shape: PropTypes.oneOf(["circle", "rounded", "square"]),
@@ -55,7 +56,7 @@ export default class AvartarMock extends Component {
   }
 
   render() {
-    const { className, style, shape } = this.props;
+    const { id, className, style, shape } = this.props;
     const config = genConfig(this.props);
 
     // Background shape
@@ -77,6 +78,7 @@ export default class AvartarMock extends Component {
 
     return (
       <div
+        id={id}
         className={className}
         style={{
           background: config.bgColor,
