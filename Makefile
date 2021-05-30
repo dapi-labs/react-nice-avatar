@@ -9,7 +9,7 @@ lint-fix:
 	@$(NODE_BIN)/eslint --fix .
 dev:
 	@echo "Start server..."
-	@$(NODE_BIN)/rollup -c rollup.config.demo.js -w
+	@NODE_ENV=development $(NODE_BIN)/rollup -c rollup.config.demo.js -w
 .PHONY: lint lint-fix dev
 
 # Deployment

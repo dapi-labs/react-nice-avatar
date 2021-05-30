@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import classnames from "classnames";
 import { ChromePicker } from "react-color";
+import Slider from 'rc-slider';
 
 import Avatar, { genConfig } from "../src";
+
+import 'rc-slider/assets/index.css';
 
 export default class App extends Component {
   constructor(props) {
@@ -10,6 +13,7 @@ export default class App extends Component {
     this.state = {
       config: genConfig(),
       bgShape: "circle",
+      size: 25, // rem
       faceColorPanelOpen: false,
       hairColorPanelOpen: false,
       shirtColorPanelOpen: false,
@@ -68,6 +72,12 @@ export default class App extends Component {
     });
   }
 
+  changeSize (number) {
+    this.setState({
+      size: number
+    })
+  }
+
   render() {
     const {
       config,
@@ -75,14 +85,29 @@ export default class App extends Component {
       hairColorPanelOpen,
       shirtColorPanelOpen,
       bgColorPanelOpen,
-      bgShape
+      bgShape,
+      size
     } = this.state;
     return (
       <div className="app">
         <a className="iconfont icon-github" href="https://github.com/chilllab/react-nice-avatar" />
 
         <div className="left">
-          <Avatar className="avatar" shape={bgShape} {...config} />
+          <div className="avatarWrapper">
+            <Avatar
+              style={{
+                width: `${size}rem`,
+                height: `${size}rem`,
+              }}
+              shape={bgShape}
+              {...config} />
+          </div>
+          <Slider
+            className="sizeSlider"
+            value={size}
+            min={5}
+            max={30}
+            onChange={this.changeSize.bind(this)} />
           <button onClick={this.genRandom.bind(this)}>
             Random
           </button>

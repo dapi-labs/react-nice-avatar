@@ -41,11 +41,25 @@ p {
 .left {
   display: flex;
   flex-direction: column;
-  padding-top: 5vh;
-  .avatar {
-    $width: 25rem;
-    width: $width;
-    height: $width;
+  align-items: center;
+  width: 30rem;
+  .avatarWrapper {
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sizeSlider {
+    width: 60%;
+    margin: 0.75rem auto 1.5rem;
+    .rc-slider-track {
+      background-color: $blue-purple;
+    }
+    .rc-slider-handle {
+      border-color: $blue-purple;
+    }
+
   }
   button {
     text-align: center;
@@ -59,7 +73,7 @@ p {
     box-shadow: 0 2px 6px #8990FF;
     border: none;
     width: 13rem;
-    margin: 1.5rem auto 0;
+    margin: 0 auto;
     padding: 0.65rem 0;
     &:hover {
       opacity: 0.85;
