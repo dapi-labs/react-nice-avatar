@@ -1,6 +1,6 @@
 {
   "name": "react-nice-avatar",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Beautiful default avatar for your users",
   "main": "dist/index.js",
   "types": "dist/react-nice-avatar.d.ts",
