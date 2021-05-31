@@ -3,10 +3,7 @@
   "version": "0.1.1",
   "description": "Beautiful default avatar for your users",
   "main": "dist/index.js",
-  "scripts": {
-    "prebuild": "rm -rf demo/dist",
-    "build": "rollup -c rollup.config.demo.js"
-  },
+  "scripts": {},
   "keywords": [
     "react",
     "avatar",

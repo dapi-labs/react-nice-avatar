@@ -12,7 +12,7 @@
 * https://nice-avatar.chilllab.io/
 
 ## Assets
-* Maker: [Micah](https://www.figma.com/@Micah)
+* Designer: [Micah](https://www.figma.com/@Micah)
 * Figma files: https://www.figma.com/community/file/829741575478342595
 
 ## Installation
