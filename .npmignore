@@ -19,4 +19,4 @@ demo/
 Makefile
 README.md
 rollup.config.js
-rollup.config.dev.js
+rollup.config.demo.js
