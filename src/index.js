@@ -32,7 +32,7 @@ const _pickRandomFromList = (data, avoidList = []) => {
   return myData[randomIdx];
 };
 
-export default class AvartarMock extends Component {
+export default class ReactNiceAvatar extends Component {
   static propTypes = {
     id: PropTypes.string,
     className: PropTypes.string,

@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "description": "Beautiful default avatar for your users",
   "main": "dist/index.js",
+  "types": "dist/react-nice-avatar.d.ts",
   "scripts": {},
   "keywords": [
     "react",
@@ -12,11 +13,11 @@
   "author": "Chill Lab",
   "license": "MIT",
   "peerDependencies": {
-    "prop-types": "^15.7.2",
     "react": ">=16.0.0"
   },
   "dependencies": {
-    "chroma-js": "^2.1.2"
+    "chroma-js": "^2.1.2",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
@@ -47,5 +48,9 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-serve": "^1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chilllab/react-nice-avatar"
   }
 }

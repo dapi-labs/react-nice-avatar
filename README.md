@@ -38,7 +38,7 @@ import Avatar, { genConfig } from 'react-nice-avatar'
 
 
 ```js
-const myConfig = genConfig(optObj?)
+const myConfig = genConfig(AvatarConfig?)
 ```
 
 3. Render the component with config and width / height
