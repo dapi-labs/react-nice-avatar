@@ -38,32 +38,30 @@ import Avatar, { genConfig } from 'react-nice-avatar'
 
 
 ```js
-const myConfig = genConfig(AvatarConfig?)
+const config = genConfig(AvatarConfig?)
 ```
 
-3. Render the component with config and width / height
+3. Render the component with specific width / height and configuration
 
 
 ```js
 <Avatar style={{ width: '8rem', height: '8rem' }} {...config} />
-```
 
-or using className to set the width / height
+or
 
-```js
 <Avatar className="w-32 h-32" {...config} />
 ```
 
 ## Options
 
-The options can be passed into genConfig or on React props
+The options can be passed into genConfig or as React props
 
-|key|type|default|accept
-|---|---|---|---|
-|id|string|
-|className|string|
-|style|object|
-|shape|string|circle|circle, rounded, square
+|key|type|default|accept|tips
+|---|---|---|---|---|
+|id|string| | | Only for React Props
+|className|string| | | Only for React Props
+|style|object| | | Only for React Props
+|shape|string|circle|circle, rounded, square| Only for React Props
 |sex| string | | man, woman
 |faceColor| string |
 |earSize| string | | small, big
@@ -76,7 +74,7 @@ The options can be passed into genConfig or on React props
 |shirtColor| string |
 |bgColor| string |
 
-## Develop in the local
+## Development
 
 1. `$ git clone git@github.com:chilllab/react-nice-avatar.git`: Clone the codebase
 2. `$ yarn` or `$ npm install`: Install dependencies
