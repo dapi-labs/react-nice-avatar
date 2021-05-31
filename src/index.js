@@ -88,9 +88,9 @@ export default class ReactNiceAvatar extends Component {
         }}>
         <div
           style={{
-            position: 'relative',
-            width: '100%',
-            height: '100%'
+            position: "relative",
+            width: "100%",
+            height: "100%"
           }}>
           <div
             style={{
