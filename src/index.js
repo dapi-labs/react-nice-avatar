@@ -83,41 +83,47 @@ export default class ReactNiceAvatar extends Component {
         style={{
           background: config.bgColor,
           overflow: "hidden",
-          position: "relative",
           borderRadius,
           ...style
         }}>
         <div
           style={{
-            position: "absolute",
-            bottom: 0,
-            width: "100%",
-            height: "90%"
+            position: 'relative',
+            width: '100%',
+            height: '100%'
           }}>
-          <Face color={config.faceColor} />
-          <Hair color={config.hairColor} style={config.hairStyle} />
-          <Ear color={config.faceColor} size={config.earSize} />
-
-          {/* Face detail */}
           <div
             style={{
               position: "absolute",
-              right: "-3%",
-              top: "30%",
+              bottom: 0,
               width: "100%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center"
+              height: "90%"
             }}>
-            <Eyebrow style={config.eyeBrowStyle} />
-            <Eye style={config.eyeStyle} />
-            <Nose style={config.noseStyle} />
-            <Mouth style={config.mouthStyle} />
-          </div>
+            <Face color={config.faceColor} />
+            <Hair color={config.hairColor} style={config.hairStyle} />
+            <Ear color={config.faceColor} size={config.earSize} />
 
-          <Shirt color={config.shirtColor} style={config.shirtStyle} />
+            {/* Face detail */}
+            <div
+              style={{
+                position: "absolute",
+                right: "-3%",
+                top: "30%",
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center"
+              }}>
+              <Eyebrow style={config.eyeBrowStyle} />
+              <Eye style={config.eyeStyle} />
+              <Nose style={config.noseStyle} />
+              <Mouth style={config.mouthStyle} />
+            </div>
+
+            <Shirt color={config.shirtColor} style={config.shirtStyle} />
+          </div>
         </div>
       </div>
     );

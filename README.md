@@ -76,6 +76,14 @@ The options can be passed into genConfig or on React props
 |shirtColor| string |
 |bgColor| string |
 
+## Develop in the local
+
+1. `$ git clone git@github.com:chilllab/react-nice-avatar.git`: Clone the codebase
+2. `$ yarn` or `$ npm install`: Install dependencies
+3. `$ make dev`: Star the server for the demo
+4. `$ open http://localhost:5555`: Open the browser to reivew the demo
+5. Edit the files inside `/src`
+
 ## License
 
 MIT
