@@ -13,6 +13,7 @@ export interface AvatarConfig {
   hairColor?: string,
   hairStyle?: 'normal' | 'thick' | 'mohawk' | 'womanLong' | 'womanShort',
   eyeStyle?: 'circle' | 'oval' | 'smile',
+  glassesStyle?: 'round' | 'square' | 'none',
   noseStyle?: 'short' | 'long' | 'round',
   mouthStyle?: 'laugh' | 'smile' | 'peace',
   shirtStyle?: 'hoody' | 'short' | 'polo',

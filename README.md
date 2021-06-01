@@ -68,6 +68,7 @@ The options can be passed into genConfig or as React props
 |hairColor| string |
 |hairStyle| string | | normal, thick, mohawk, womanLong, womanShort
 |eyeStyle| string | | circle, oval, smile
+|glassesStyle| string | | none, round, square | Usually is none
 |noseStyle| string | | short, long, round
 |mouthStyle| string | | laugh, smile, peace
 |shirtStyle| string | | hoody, short, polo

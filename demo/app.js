@@ -97,6 +97,7 @@ export default class App extends Component {
       bgShape,
       size
     } = this.state;
+
     return (
       <div className="app">
         <a className="iconfont icon-github" href="https://github.com/chilllab/react-nice-avatar" />
@@ -251,6 +252,26 @@ export default class App extends Component {
               className={classnames("opt", { active: config.eyeStyle === "smile" })}
               onClick={this.updateConfig.bind(this, "eyeStyle", "smile")}>
               Smile
+            </p>
+          </div>
+
+          {/* Glasses */}
+          <p className="field">Glasses</p>
+          <div className="opts">
+            <p
+              className={classnames("opt", { active: config.glassesStyle === "none" })}
+              onClick={this.updateConfig.bind(this, "glassesStyle", "none")}>
+              None
+            </p>
+            <p
+              className={classnames("opt", { active: config.glassesStyle === "round" })}
+              onClick={this.updateConfig.bind(this, "glassesStyle", "round")}>
+              Round
+            </p>
+            <p
+              className={classnames("opt", { active: config.glassesStyle === "square" })}
+              onClick={this.updateConfig.bind(this, "glassesStyle", "square")}>
+              Square
             </p>
           </div>
 

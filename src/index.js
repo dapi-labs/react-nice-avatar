@@ -6,6 +6,7 @@ import Hair from "./hair";
 import Ear from "./ear";
 import Eyebrow from "./eyebrow";
 import Eye from "./eyes";
+import Glasses from "./glasses";
 import Nose from "./nose";
 import Mouth from "./mouth";
 import Shirt from "./shirt";
@@ -23,10 +24,13 @@ const mouthStyle = ["laugh", "smile", "peace"];
 const shirtStyle = ["hoody", "short", "polo"];
 const shirtColor = ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#77311D"];
 const bgColor = ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#E0DDFF", "#D2EFF3", "#FFEDEF", "#FFEBA4"];
+const glassesStyle = ["round", "square", "none"];
 
-const _pickRandomFromList = (data, avoidList = []) => {
+const _pickRandomFromList = (data, { avoidList = [], usually = [] } = {}) => {
   const aviodSet = new Set(avoidList.filter((item) => Boolean(item)));
-  const myData = data.filter((item) => !aviodSet.has(item));
+  let myData = data.filter((item) => !aviodSet.has(item));
+  const usuallyData = usually.reduce((acc, cur) => acc.concat(new Array(15).fill(cur)), []);
+  myData = myData.concat(usuallyData);
   const amount = myData.length;
   const randomIdx = Math.floor(Math.random() * amount);
   return myData[randomIdx];
@@ -44,6 +48,7 @@ export default class ReactNiceAvatar extends Component {
     hairColor: PropTypes.string,
     hairStyle: PropTypes.oneOf(["normal", "thick", "mohawk", "womanLong", "womanShort"]),
     eyeStyle: PropTypes.oneOf(["circle", "oval", "smile"]),
+    glassesStyle: PropTypes.oneOf(["round", "square", "none"]),
     noseStyle: PropTypes.oneOf(["short", "long", "round"]),
     mouthStyle: PropTypes.oneOf(["laugh", "smile", "peace"]),
     shirtStyle: PropTypes.oneOf(["hoody", "short", "polo"]),
@@ -101,7 +106,6 @@ export default class ReactNiceAvatar extends Component {
             }}>
             <Face color={config.faceColor} />
             <Hair color={config.hairColor} style={config.hairStyle} />
-            <Ear color={config.faceColor} size={config.earSize} />
 
             {/* Face detail */}
             <div
@@ -118,6 +122,8 @@ export default class ReactNiceAvatar extends Component {
               }}>
               <Eyebrow style={config.eyeBrowStyle} />
               <Eye style={config.eyeStyle} />
+              <Glasses style={config.glassesStyle} />
+              <Ear color={config.faceColor} size={config.earSize} />
               <Nose style={config.noseStyle} />
               <Mouth style={config.mouthStyle} />
             </div>
@@ -140,13 +146,14 @@ export const genConfig = (userConfig = {}) => {
   response.noseStyle = userConfig.noseStyle || _pickRandomFromList(noseStyle);
   response.mouthStyle = userConfig.mouthStyle || _pickRandomFromList(mouthStyle);
   response.shirtStyle = userConfig.shirtStyle || _pickRandomFromList(shirtStyle);
+  response.glassesStyle = userConfig.glassesStyle || _pickRandomFromList(glassesStyle, { usually: ["none"] });
 
   // Hair
   let hairColorAvoidList = [];
   if (!userConfig.hairColor && response.sex === "woman") {
     hairColorAvoidList = response.faceColor === faceColor[1] && ["#77311D"] || [];
   }
-  response.hairColor = userConfig.hairColor || _pickRandomFromList(hairColor, hairColorAvoidList);
+  response.hairColor = userConfig.hairColor || _pickRandomFromList(hairColor, { avoidList: hairColorAvoidList });
 
   let myHairStyle = userConfig.hairStyle;
   if (!myHairStyle) {
@@ -171,10 +178,10 @@ export const genConfig = (userConfig = {}) => {
   response.eyeBrowStyle = myEyeBrowStyle;
 
   // Shirt color
-  response.shirtColor = userConfig.shirtColor || _pickRandomFromList(shirtColor, [response.hairColor]);
+  response.shirtColor = userConfig.shirtColor || _pickRandomFromList(shirtColor, { avoidList: [response.hairColor] });
 
   // Background color
-  response.bgColor = userConfig.bgColor || _pickRandomFromList(bgColor, [response.hairColor, response.shirtColor]);
+  response.bgColor = userConfig.bgColor || _pickRandomFromList(bgColor, { avoidList: [response.hairColor, response.shirtColor] });
 
   return response;
 };
