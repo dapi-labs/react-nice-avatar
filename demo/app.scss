@@ -19,129 +19,201 @@ p {
 
 .icon-github {
   position: fixed;
-  padding: 0.85rem 1.65rem;
+  padding: 1.5rem 2.5rem;
   top: 0;
   right: 0;
-  color: #888;
+  color: $blue-purple;
   transition: all 0.25s ease-out;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-decoration: none;
   &:hover {
-    color: $blue-purple;
+    text-shadow: 0 0 5px $blue-purple;
+  }
+}
+
+.header {
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  .tabs {
+    $tabItemWidth: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    .tabItem {
+      padding: 0.5rem 0;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.35s ease-out;
+      font-weight: bold;
+      width: $tabItemWidth;
+      text-align: center;
+      &:hover {
+        opacity: 0.75;
+      }
+      &.active {
+        color: #fff;
+      }
+    }
+    .activeBg {
+      position: absolute;
+      z-index: -1;
+      width: $tabItemWidth;
+      border-radius: 20px;
+      top: 0;
+      bottom: 0;
+      transition: all 0.35s ease-out;
+      background: $blue-purple;
+      background: linear-gradient(90deg, #8990FF, $blue-purple);
+      &.single {
+        left: 0
+      }
+      &.cases {
+        left: $tabItemWidth;
+      }
+    }
   }
 }
 
 .app {
-  display: flex;
-  justify-content: center;
   height: 100vh;
+}
+
+.appContent {
   padding-top: 10vh;
 }
 
-.left {
+.singleSection {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 25rem;
-  padding-top: 4vh;
-  .avatarWrapper {
-    width: 100%;
-    height: 25rem;
+  justify-content: center;
+  .left {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-  }
-  .sizeSlider {
-    width: 60%;
-    margin: 1.25rem auto;
-    .rc-slider-track {
-      background-color: $blue-purple;
-    }
-    .rc-slider-handle {
-      border-color: $blue-purple;
-    }
-  }
-  .btnGroup {
-    display: flex;
     justify-content: center;
-    button {
-      text-align: center;
-      transition: opacity 0.35s ease-out;
-      cursor: pointer;
-      line-height: 1;
-      border-radius: 5px;
-      border: none;
-      width: 8rem;
-      padding: 0.65rem 0;
-      margin: 0 0.45rem;
-      &:hover {
-        opacity: 0.85;
+    width: 25rem;
+    .avatarWrapper {
+      width: 100%;
+      height: 25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .sizeSlider {
+      width: 60%;
+      margin: 1.25rem auto;
+      .rc-slider-track {
+        background-color: $blue-purple;
       }
-      &:focus {
-        outline: none;
-      }
-      &.random {
-        background: $blue-purple;
-        background: linear-gradient(90deg, #8990FF, $blue-purple);
-        color: #fff;
-        box-shadow: 0 2px 6px #8990FF;
-      }
-      &.download {
-        color: $blue-purple;
-        background: #F1F1F1;
+      .rc-slider-handle {
+        border-color: $blue-purple;
       }
     }
-  }
-}
-
-.info {
-  margin-left: 6rem;
-  .field {
-    font-weight: bold;
-    line-height: 1;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    .colorPanelWrapper {
-      position: relative;
-      .iconfont {
-        font-weight: normal;
-        margin-left: 0.35rem;
-        transition: all 0.25s ease-out;
-        font-size: 0.95rem;
+    .btnGroup {
+      display: flex;
+      justify-content: center;
+      button {
+        text-align: center;
+        transition: opacity 0.35s ease-out;
         cursor: pointer;
+        line-height: 1;
+        border-radius: 5px;
+        border: none;
+        width: 8rem;
+        padding: 0.65rem 0;
+        margin: 0 0.45rem;
+        &:hover {
+          opacity: 0.85;
+        }
+        &:focus {
+          outline: none;
+        }
+        &.random {
+          background: $blue-purple;
+          background: linear-gradient(90deg, #8990FF, $blue-purple);
+          color: #fff;
+          box-shadow: 0 2px 6px #8990FF;
+        }
+        &.download {
+          color: $blue-purple;
+          background: #F1F1F1;
+        }
+      }
+    }
+  }
+
+  .info {
+    margin-left: 10rem;
+    .field {
+      font-weight: bold;
+      line-height: 1;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      .colorPanelWrapper {
+        position: relative;
+        .iconfont {
+          font-weight: normal;
+          margin-left: 0.35rem;
+          transition: all 0.25s ease-out;
+          font-size: 1.1rem;
+          cursor: pointer;
+          color: $blue-purple;
+          &:hover {
+            text-shadow: 0 0 5px $blue-purple;
+          }
+        }
+        .colorPanel {
+          position: absolute;
+          top: calc(100% + 0.15rem);
+          left: 0.15rem;
+          z-index: 10;
+          &.top {
+            top: auto;
+            bottom: calc(100% + 0.15rem);
+          }
+        }
+      }
+    }
+    .opts {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 0.45rem;
+      &:not(:last-of-type) {
+        margin-bottom: 1rem;
+      }
+      width: 25rem;
+      .opt {
+        margin: 0 0 0.45rem 0;
+        cursor: pointer;
+        transition: all 0.25s ease-out;
+        line-height: 1;
+        border-radius: 5px;
+        padding: 0.3rem 1.5rem;
+        border: 1px solid transparent;
+        color: #888;
+        &.active {
+          color: $blue-purple;
+          border-color: $blue-purple;
+        }
         &:hover {
           color: $blue-purple;
         }
       }
-      .colorPanel {
-        position: absolute;
-        top: calc(100% + 0.15rem);
-        left: 0.15rem;
-        z-index: 10;
-        &.top {
-          top: auto;
-          bottom: calc(100% + 0.15rem);
-        }
-      }
     }
   }
-  .opts {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 0.45rem;
-    &:not(:last-of-type) {
-      margin-bottom: 1rem;
-    }
-    width: 25rem;
-    .opt {
-      margin: 0 1.25rem 0.45rem 0;
-      cursor: pointer;
-      transition: all 0.25s ease-out;
-      line-height: 1;
-      &.active, &:hover {
-        color: $blue-purple;
-      }
-    }
-  }
+}
+
+.casesSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 80vw;
+  margin: auto;
+  max-width: 1280px;
+
 }
