@@ -14,7 +14,7 @@ import Shirt from "./shirt";
 const sex = ["man", "woman"];
 const faceColor = ["#F9C9B6", "#AC6651"];
 const earSize = ["small", "big"];
-const hairColor = ["#000", "#77311D", "#FC909F", "#D2EFF3"];
+const hairColor = ["#000", "#fff", "#77311D", "#FC909F", "#D2EFF3", "#506AF4", "#F48150"];
 const hairStyleMan = ["normal", "thick", "mohawk"];
 const hairStyleWoman = ["normal", "womanLong", "womanShort"];
 const eyeBrowWoman = ["up", "upWoman"];
@@ -23,7 +23,7 @@ const noseStyle = ["short", "long", "round"];
 const mouthStyle = ["laugh", "smile", "peace"];
 const shirtStyle = ["hoody", "short", "polo"];
 const shirtColor = ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#77311D"];
-const bgColor = ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#E0DDFF", "#D2EFF3", "#FFEDEF", "#FFEBA4"];
+const bgColor = ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#E0DDFF", "#D2EFF3", "#FFEDEF", "#FFEBA4", "#506AF4", "#F48150", "#74D153"];
 const glassesStyle = ["round", "square", "none"];
 
 const _pickRandomFromList = (data, { avoidList = [], usually = [] } = {}) => {
@@ -150,16 +150,28 @@ export const genConfig = (userConfig = {}) => {
 
   // Hair
   let hairColorAvoidList = [];
-  if (!userConfig.hairColor && response.sex === "woman") {
-    hairColorAvoidList = response.faceColor === faceColor[1] && ["#77311D"] || [];
+  let hairColorUsually = [];
+  if (!userConfig.hairColor) {
+    switch (response.sex) {
+      case "woman": {
+        hairColorAvoidList = response.faceColor === faceColor[1] && ["#77311D"] || [];
+        break;
+      }
+      case "man": {
+        hairColorUsually = ["#000"];
+      }
+    }
   }
-  response.hairColor = userConfig.hairColor || _pickRandomFromList(hairColor, { avoidList: hairColorAvoidList });
+  response.hairColor = userConfig.hairColor || _pickRandomFromList(hairColor, {
+    avoidList: hairColorAvoidList,
+    usually: hairColorUsually
+  });
 
   let myHairStyle = userConfig.hairStyle;
   if (!myHairStyle) {
     switch (response.sex) {
       case "man": {
-        myHairStyle = _pickRandomFromList(hairStyleMan);
+        myHairStyle = _pickRandomFromList(hairStyleMan, { usually: ["normal", "thick"] });
         break;
       }
       case "woman": {
