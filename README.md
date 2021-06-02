@@ -8,7 +8,7 @@
 
 <img width="600" alt="imagewall" src="https://user-images.githubusercontent.com/5305874/120076504-68e15980-c0d8-11eb-896c-3824b5eb05bb.png">
 
-## Online demo
+## Online editor / preview
 * https://nice-avatar.chilllab.io/
 
 ## Assets
