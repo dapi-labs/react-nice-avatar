@@ -17,6 +17,10 @@ p {
   margin: 0;
 }
 
+.app {
+  height: 100vh;
+}
+
 .icon-github {
   position: fixed;
   padding: 1.5rem 2.5rem;
@@ -26,18 +30,21 @@ p {
   transition: all 0.25s ease-out;
   font-size: 2rem;
   text-decoration: none;
+  z-index: 20;
   &:hover {
     text-shadow: 0 0 5px $blue-purple;
   }
 }
 
+$headerHeight: 6rem;
 .header {
-  padding: 2rem 0;
+  height: $headerHeight;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: sticky;
-  top: 0;
+  background: #fff;
+  position: relative;
+  z-index: 0;
   .tabs {
     $tabItemWidth: 10rem;
     display: flex;
@@ -79,23 +86,24 @@ p {
   }
 }
 
-.app {
-  height: 100vh;
-}
-
 .appContent {
-  padding-top: 10vh;
+  height: calc(100vh - #{$headerHeight});
 }
 
 .singleSection {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;
   .left {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 25rem;
+    height: 100%;
+    position: relative;
+    top: -3rem;
     .avatarWrapper {
       width: 100%;
       height: 25rem;
@@ -148,6 +156,10 @@ p {
 
   .info {
     margin-left: 10rem;
+    padding-bottom: 10vh;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
     .field {
       font-weight: bold;
       line-height: 1;
@@ -188,13 +200,12 @@ p {
       }
       width: 25rem;
       .opt {
-        margin: 0 0 0.45rem 0;
+        margin: 0 0.55rem 0.75rem 0;
         cursor: pointer;
         transition: all 0.25s ease-out;
         line-height: 1;
-        border-radius: 5px;
         padding: 0.3rem 1.5rem;
-        border: 1px solid transparent;
+        border: 1px solid rgba(0,0,0,0.1);
         color: #888;
         &.active {
           color: $blue-purple;
@@ -210,10 +221,36 @@ p {
 
 .casesSection {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 80vw;
-  margin: auto;
-  max-width: 1280px;
-
+  align-items: center;
+  justify-content: center;
+  .application {
+    box-shadow: 0 0 50px rgba(61,159,233,0.3);
+    width: 35rem;
+    border-radius: 10px;
+    .applicationHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 1.5rem;
+      border-radius: 10px 10px 0 0;
+      .icons {
+        $iconWidth: 0.5rem;
+        display: flex;
+        align-items: center;
+        .icon {
+          width: $iconWidth;
+          height: $iconWidth;
+          border-radius: 100%;
+          background: #F2F2F2;
+          margin-right: 0.3rem;
+        }
+      }
+    }
+    .applicationBody {
+      border-radius: 0 0 10px 10px;
+      padding: 0.55rem 1.5rem;
+      height: 20rem;
+      overflow-y: hidden;
+    }
+  }
 }
