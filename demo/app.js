@@ -10,7 +10,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: "cases",
+      currentTab: "single",
       config: genConfig()
     };
   }
