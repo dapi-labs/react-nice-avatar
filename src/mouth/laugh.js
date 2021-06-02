@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function () {
-  const id = 'mouth' + Math.round(Math.random() * 9999999)
+  const id = `mouth${Math.round(Math.random() * 9999999)}`;
   return (
     <svg
       style={{

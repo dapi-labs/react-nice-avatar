@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 export default function Face(props) {
   const { color } = props;
-  const maskId = 'mask' + Math.round(Math.random() * 9999999)
-  const pathId = 'path' + Math.round(Math.random() * 9999999)
+  const maskId = `mask${Math.round(Math.random() * 9999999)}`;
+  const pathId = `path${Math.round(Math.random() * 9999999)}`;
   return (
     <svg
       style={{

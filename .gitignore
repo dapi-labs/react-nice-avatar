@@ -21,4 +21,4 @@ node_modules/
 
 dist/
 
-# demo/dist
+report.*.json

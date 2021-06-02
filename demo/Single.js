@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import { ChromePicker } from "react-color";
 import classnames from "classnames";
 import Slider from "rc-slider";
@@ -10,17 +10,16 @@ import Avatar, { genConfig } from "../src";
 import "rc-slider/assets/index.css";
 
 export default class Single extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      config: genConfig(),
       bgShape: "circle",
       size: 25, // rem
       faceColorPanelOpen: false,
       hairColorPanelOpen: false,
       shirtColorPanelOpen: false,
       bgColorPanelOpen: false
-    }
+    };
 
     this.closeAllColorPanel = this.closeAllColorPanel.bind(this);
   }
@@ -29,21 +28,21 @@ export default class Single extends Component {
     window.addEventListener("click", this.closeAllColorPanel);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("click", this.closeAllColorPanel);
+  }
+
   updateConfig(field, value) {
-    const { config } = this.state;
+    const { config, updateConfig } = this.props;
     if (config[field] === value) return;
     config[field] = value;
-    this.setState({
-      config
-    });
+    updateConfig(config);
   }
 
   onChangeColor(field, value) {
-    const { config } = this.state;
+    const { config, updateConfig } = this.props;
     config[field] = value.hex;
-    this.setState({
-      config
-    });
+    updateConfig(config);
   }
 
   toggleColorPanel(panelName, e) {
@@ -63,9 +62,8 @@ export default class Single extends Component {
   }
 
   genRandom() {
-    this.setState({
-      config: genConfig()
-    });
+    const { updateConfig } = this.props;
+    updateConfig(genConfig());
   }
 
   changeBgShape(shape) {
@@ -87,16 +85,16 @@ export default class Single extends Component {
     FileSaver(blob, "avatar.png");
   }
 
-  render () {
+  render() {
+    const { config } = this.props;
     const {
-      config,
       size,
       bgShape,
       faceColorPanelOpen,
       hairColorPanelOpen,
       shirtColorPanelOpen,
       bgColorPanelOpen
-    } = this.state
+    } = this.state;
     return (
       <div className="singleSection">
         <div className="left">
@@ -379,6 +377,6 @@ export default class Single extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }

@@ -19,7 +19,6 @@ build:
 	@$(NODE_BIN)/rollup -c rollup.config.js
 	@echo "Copy type into dist..."
 	@cp react-nice-avatar.d.ts dist/react-nice-avatar.d.ts
-	@make build-demo
 build-demo:
 	@echo "Building demo..."
 	@rm -rf ./demo/dist
