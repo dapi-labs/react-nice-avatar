@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-type Style {
+type Style = {
   [key: string]: string | number | boolean
 }
 
