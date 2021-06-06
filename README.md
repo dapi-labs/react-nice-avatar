@@ -6,10 +6,12 @@
 [download-image]: https://img.shields.io/npm/dm/react-nice-avatar.svg?style=flat-square
 [download-url]: https://npmjs.org/package/react-nice-avatar
 
-<a href="https://nice-avatar.chilllab.io/">
-    <img src="https://user-images.githubusercontent.com/5305874/120076504-68e15980-c0d8-11eb-896c-3824b5eb05bb.png" 
-         width="600" alt="imagewall" />
-</a>
+<div align="center">
+    <a href="https://nice-avatar.chilllab.io/">
+        <img src="https://user-images.githubusercontent.com/5305874/120076504-68e15980-c0d8-11eb-896c-3824b5eb05bb.png" 
+             width="600" alt="imagewall" />
+    </a>
+</div>
 
 ## Online editor / preview
 
