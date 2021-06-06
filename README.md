@@ -57,24 +57,24 @@ yarn add react-nice-avatar
 
 The options can be passed into genConfig or as React props
 
-|key|type|default|accept|tips
-|---|---|---|---|---|
-|id|string| | | Only for React Props
-|className|string| | | Only for React Props
-|style|object| | | Only for React Props
-|shape|string|circle|circle, rounded, square| Only for React Props
-|sex| string | | man, woman
-|faceColor| string |
-|earSize| string | | small, big
-|hairColor| string |
-|hairStyle| string | | normal, thick, mohawk, womanLong, womanShort
-|eyeStyle| string | | circle, oval, smile
-|glassesStyle| string | | none, round, square | Usually is none
-|noseStyle| string | | short, long, round
-|mouthStyle| string | | laugh, smile, peace
-|shirtStyle| string | | hoody, short, polo
-|shirtColor| string |
-|bgColor| string |
+| key            | type   | default | accept                                       | tips                 |
+| -------------- | ------ | ------- | -------------------------------------------- | -------------------- |
+| `id`           | string |         |                                              | Only for React Props |
+| `className`    | string |         |                                              | Only for React Props |
+| `style`        | object |         |                                              | Only for React Props |
+| `shape`        | string | circle  | circle, rounded, square                      | Only for React Props |
+| `sex`          | string |         | man, woman                                   |                      |
+| `faceColor`    | string |         |                                              |                      |
+| `earSize`      | string |         | small, big                                   |                      |
+| `hairColor`    | string |         |                                              |                      |
+| `hairStyle`    | string |         | normal, thick, mohawk, womanLong, womanShort |                      |
+| `eyeStyle`     | string |         | circle, oval, smile                          |                      |
+| `glassesStyle` | string |         | none, round, square                          | Usually is none      |
+| `noseStyle`    | string |         | short, long, round                           |                      |
+| `mouthStyle`   | string |         | laugh, smile, peace                          |                      |
+| `shirtStyle`   | string |         | hoody, short, polo                           |                      |
+| `shirtColor`   | string |         |                                              |                      |
+| `bgColor`      | string |         |                                              |                      |
 
 ## Development
 
