@@ -6,51 +6,50 @@
 [download-image]: https://img.shields.io/npm/dm/react-nice-avatar.svg?style=flat-square
 [download-url]: https://npmjs.org/package/react-nice-avatar
 
-<img width="600" alt="imagewall" src="https://user-images.githubusercontent.com/5305874/120076504-68e15980-c0d8-11eb-896c-3824b5eb05bb.png">
+<a href="https://nice-avatar.chilllab.io/">
+    <img src="https://user-images.githubusercontent.com/5305874/120076504-68e15980-c0d8-11eb-896c-3824b5eb05bb.png" 
+         width="600" alt="imagewall" />
+</a>
 
 ## Online editor / preview
-* https://nice-avatar.chilllab.io/
+
+- https://nice-avatar.chilllab.io/
 
 ## Assets
-* Designer: [Micah](https://www.figma.com/@Micah)
-* Figma files: https://www.figma.com/community/file/829741575478342595
+
+- Designer: [@Micah](https://www.figma.com/@Micah) on Figma
+- Figma files: [Avatar Illustration System](https://www.figma.com/community/file/829741575478342595)
 
 ## Installation
 
-```
+```sh
 npm install react-nice-avatar
 ```
 
 or
 
-```
+```sh
 yarn add react-nice-avatar
 ```
 
 ## Usage
+
 1. Import the component
-
-```js
-import Avatar, { genConfig } from 'react-nice-avatar'
-```
-
+    ```js
+    import Avatar, { genConfig } from 'react-nice-avatar'
+    ```
 2. Generate random config, the config can be saved into your database to use later
-
-
-```js
-const config = genConfig(AvatarConfig?)
-```
-
+    ```js
+    const config = genConfig(AvatarConfig?)
+    ```
 3. Render the component with specific width / height and configuration
-
-
-```js
-<Avatar style={{ width: '8rem', height: '8rem' }} {...config} />
-
-or
-
-<Avatar className="w-32 h-32" {...config} />
-```
+    ```jsx
+    <Avatar style={{ width: '8rem', height: '8rem' }} {...config} />
+    ```
+    or
+    ```jsx
+    <Avatar className="w-32 h-32" {...config} />
+    ```
 
 ## Options
 
@@ -77,12 +76,29 @@ The options can be passed into genConfig or as React props
 
 ## Development
 
-1. `$ git clone git@github.com:chilllab/react-nice-avatar.git`: Clone the codebase
-2. `$ yarn` or `$ npm install`: Install dependencies
-3. `$ make dev`: Star the server for the demo
-4. `$ open http://localhost:5555`: Open the browser to reivew the demo
-5. Edit the files inside `/src`
+1. Clone the repo:
+    ```sh
+    $ git clone git@github.com:chilllab/react-nice-avatar.git
+    $ cd react-nice-avatar
+    ```
+2. Install dependencies:
+    ```sh
+    $ yarn
+    ```
+    Or
+    ```sh
+    $ npm install
+    ```
+3. Start the server for the demo:
+    ```sh
+    $ make dev
+    ```
+5. Open the browser to reivew the demo:
+    ```sh
+    $ open http://localhost:5555
+    ```
+7. Edit the files inside [src](/src).
 
 ## License
 
-MIT
+Released under [MIT](/LICENSE) by [@chilllab](https://github.com/chilllab).
