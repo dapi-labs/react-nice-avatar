@@ -27,4 +27,6 @@ export interface NiceAvatarProps extends AvatarConfig {
   style?: Style
 }
 
+export const genConfig: GenConfigFunc
+
 export default class ReactNiceAvatar extends React.Component<NiceAvatarProps> {}
