@@ -310,6 +310,21 @@ export default class Single extends Component {
             </p>
           </div>
 
+          {/* Facial hair */}
+          <p className="field">FACIAL HAIR</p>
+          <div className="opts">
+            <p
+              className={classnames("opt", { active: config.facialHairStyle === "none" })}
+              onClick={this.updateConfig.bind(this, "facialHairStyle", "none")}>
+              None
+            </p>
+            <p
+              className={classnames("opt", { active: config.facialHairStyle === "scruff" })}
+              onClick={this.updateConfig.bind(this, "facialHairStyle", "scruff")}>
+              Scruff
+            </p>
+          </div>
+
           {/* Shirt */}
           <div className="field">
             <p>SHIRT</p>

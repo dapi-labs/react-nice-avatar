@@ -10,6 +10,7 @@ import Glasses from "./glasses";
 import Nose from "./nose";
 import Mouth from "./mouth";
 import Shirt from "./shirt";
+import FacialHair from "./facialHair";
 
 const sex = ["man", "woman"];
 const faceColor = ["#F9C9B6", "#AC6651"];
@@ -25,6 +26,7 @@ const shirtStyle = ["hoody", "short", "polo"];
 const shirtColor = ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#77311D"];
 const bgColor = ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#E0DDFF", "#D2EFF3", "#FFEDEF", "#FFEBA4", "#506AF4", "#F48150", "#74D153"];
 const glassesStyle = ["round", "square", "none"];
+const facialHairStyleMan = ["scruff", "none"];
 
 const _pickRandomFromList = (data, { avoidList = [], usually = [] } = {}) => {
   const aviodSet = new Set(avoidList.filter((item) => Boolean(item)));
@@ -47,6 +49,8 @@ export default class ReactNiceAvatar extends Component {
     earSize: PropTypes.oneOf(["small", "big"]),
     hairColor: PropTypes.string,
     hairStyle: PropTypes.oneOf(["normal", "thick", "mohawk", "womanLong", "womanShort"]),
+    facialHairStyle: PropTypes.oneOf(["scruff", "none"]),
+    facialHairColor: PropTypes.string,
     eyeStyle: PropTypes.oneOf(["circle", "oval", "smile"]),
     glassesStyle: PropTypes.oneOf(["round", "square", "none"]),
     noseStyle: PropTypes.oneOf(["short", "long", "round"]),
@@ -125,6 +129,7 @@ export default class ReactNiceAvatar extends Component {
               <Glasses style={config.glassesStyle} />
               <Ear color={config.faceColor} size={config.earSize} />
               <Nose style={config.noseStyle} />
+              <FacialHair color={config.facialHairColor} style={config.facialHairStyle}/>
               <Mouth style={config.mouthStyle} />
             </div>
 
@@ -181,6 +186,22 @@ export const genConfig = (userConfig = {}) => {
     }
   }
   response.hairStyle = myHairStyle;
+
+  // Facial hair
+  let myFacialHairStyle = userConfig.facialHairStyle;
+  if(!myFacialHairStyle) {
+    switch(response.sex) {
+      case "man": {
+        myFacialHairStyle = _pickRandomFromList(facialHairStyleMan, { usually: ["scruff"] });
+        break;
+      }
+      case "woman": {
+        myFacialHairStyle = "none";
+      }
+    }
+  }
+  response.facialHairStyle = myFacialHairStyle;
+  response.facialHairColor = response.hairColor;
 
   // Eyebrown
   let myEyeBrowStyle = userConfig.eyeBrowStyle || "up";
