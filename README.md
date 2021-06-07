@@ -101,6 +101,10 @@ The options can be passed into genConfig or as React props
     ```
 7. Edit the files inside [src](/src).
 
+
 ## License
 
 Released under [MIT](/LICENSE) by [@chilllab](https://github.com/chilllab).
+
+## Support
+<a href="https://www.buymeacoffee.com/wwayne" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
