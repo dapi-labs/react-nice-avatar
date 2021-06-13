@@ -3,7 +3,7 @@ import { ChromePicker } from "react-color";
 import classnames from "classnames";
 import Slider from "rc-slider";
 import domtoimage from "dom-to-image";
-import FileSaver from "file-saver";
+import { saveAs } from 'file-saver';
 
 import Avatar, { genConfig } from "../src";
 
@@ -36,7 +36,11 @@ export default class Single extends Component {
     const { config, updateConfig } = this.props;
     if (config[field] === value) return;
     config[field] = value;
-    updateConfig(config);
+    if (field === 'sex') {
+      updateConfig(genConfig({ sex: value }));
+    } else {
+      updateConfig(config);
+    }
   }
 
   onChangeColor(field, value) {
@@ -79,10 +83,18 @@ export default class Single extends Component {
   }
 
   async download() {
+    const scale = 2
     const node = document.getElementById("avatar");
-    const blob = await domtoimage.toBlob(node);
+    const blob = await domtoimage.toBlob(node, {
+      height: node.offsetHeight * scale,
+      style: {
+        transform: `scale(${scale}) translate(${node.offsetWidth / 2 / scale}px, ${node.offsetHeight / 2 / scale}px)`,
+        'border-radius': 0
+      },
+      width: node.offsetWidth * scale
+    });
 
-    FileSaver(blob, "avatar.png");
+    saveAs(blob, "avatar.png");
   }
 
   render() {

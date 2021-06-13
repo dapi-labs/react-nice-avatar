@@ -9,7 +9,7 @@ export default function (props) {
         bottom: "-2%",
         width: "98%",
         height: "26%",
-        left: "-0.8%"
+        left: "-0.2%"
       }}
       width="281"
       height="93"
