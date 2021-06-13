@@ -8,7 +8,8 @@ export default function (props) {
         position: "absolute",
         bottom: "-2%",
         width: "98%",
-        height: "26%"
+        height: "26%",
+        left: "-0.8%"
       }}
       width="281"
       height="93"

@@ -6,9 +6,10 @@ export default function (props) {
     <svg
       style={{
         position: "absolute",
-        bottom: "19%",
+        bottom: "20%",
         width: "94%",
-        height: "81%"
+        height: "81%",
+        left: "-0.5%"
       }}
       width="240"
       height="270"
