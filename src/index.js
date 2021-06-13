@@ -47,6 +47,7 @@ export default class ReactNiceAvatar extends Component {
     earSize: PropTypes.oneOf(["small", "big"]),
     hairColor: PropTypes.string,
     hairStyle: PropTypes.oneOf(["normal", "thick", "mohawk", "womanLong", "womanShort"]),
+    hairColorRandom: PropTypes.bool,
     eyeStyle: PropTypes.oneOf(["circle", "oval", "smile"]),
     glassesStyle: PropTypes.oneOf(["round", "square", "none"]),
     noseStyle: PropTypes.oneOf(["short", "long", "round"]),
@@ -57,11 +58,12 @@ export default class ReactNiceAvatar extends Component {
   }
 
   static defaultProps = {
-    shape: "circle"
+    shape: "circle",
+    hairColorRandom: false
   }
 
   render() {
-    const { id, className, style, shape } = this.props;
+    const { id, className, style, shape, hairColorRandom } = this.props;
     const config = genConfig(this.props);
 
     // Background shape
@@ -105,7 +107,10 @@ export default class ReactNiceAvatar extends Component {
               height: "90%"
             }}>
             <Face color={config.faceColor} />
-            <Hair color={config.hairColor} style={config.hairStyle} />
+            <Hair
+              color={config.hairColor}
+              style={config.hairStyle}
+              colorRandom={hairColorRandom} />
 
             {/* Face detail */}
             <div

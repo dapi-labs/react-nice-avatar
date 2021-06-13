@@ -68,6 +68,7 @@ The options can be passed into genConfig or as React props
 | `earSize`      | string |         | small, big                                   |                      |
 | `hairColor`    | string |         |                                              |                      |
 | `hairStyle`    | string |         | normal, thick, mohawk, womanLong, womanShort |                      |
+| `hairColorRandom` | boolean |  false   |                           | thick,mohawk default only be black |
 | `eyeStyle`     | string |         | circle, oval, smile                          |                      |
 | `glassesStyle` | string |         | none, round, square                          | Usually is none      |
 | `noseStyle`    | string |         | short, long, round                           |                      |
@@ -106,5 +107,3 @@ The options can be passed into genConfig or as React props
 
 Released under [MIT](/LICENSE) by [@chilllab](https://github.com/chilllab).
 
-## Support
-<a href="https://www.buymeacoffee.com/wwayne" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>

@@ -11,7 +11,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       currentTab: "single",
-      config: genConfig()
+      config: genConfig({ hairColorRandom: true })
     };
   }
 
@@ -23,7 +23,7 @@ export default class App extends Component {
 
   updateConfig(config) {
     this.setState({
-      config
+      config: { ...config, hairColorRandom: true }
     });
   }
 
