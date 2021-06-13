@@ -4,8 +4,6 @@ type Style = {
   [key: string]: string | number | boolean
 }
 
-export type GenConfigFunc = (config?: AvatarConfig) => AvatarConfig
-
 export interface AvatarConfig {
   sex?: 'man' | 'woman',
   faceColor?: string,
@@ -27,6 +25,6 @@ export interface NiceAvatarProps extends AvatarConfig {
   style?: Style
 }
 
-export const genConfig: GenConfigFunc
+export const genConfig = (config?: AvatarConfig) => AvatarConfig
 
 export default class ReactNiceAvatar extends React.Component<NiceAvatarProps> {}
