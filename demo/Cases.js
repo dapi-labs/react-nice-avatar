@@ -62,8 +62,20 @@ export default function (props) {
 
   return (
     <div className="casesSection">
-      {genApplicationMockup()}
-      {genApplicationMockup({ theme: "dark" })}
+      <div className="casesWrapper">
+        {genApplicationMockup()}
+        {genApplicationMockup({ theme: "dark" })}
+      </div>
+
+      <a
+        href="https://www.buymeacoffee.com/wwayne"
+        target="_blank"
+        className="buymeacoffeeBtn"
+        rel="noreferrer">
+        <img
+          alt="buymeacoffee"
+          src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=wwayne&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
+      </a>
     </div>
   );
 }
