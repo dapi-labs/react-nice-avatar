@@ -27,7 +27,7 @@ const bgColor = ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#E0DDFF", "#D2EFF3
 const glassesStyle = ["round", "square", "none"];
 
 const _pickRandomFromList = (data, { avoidList = [], usually = [] } = {}) => {
-  const aviodSet = new Set(avoidList.filter((item) => Boolean(item)));
+  const avoidSet = new Set(avoidList.filter((item) => Boolean(item)));
   let myData = data.filter((item) => !aviodSet.has(item));
   const usuallyData = usually.reduce((acc, cur) => acc.concat(new Array(15).fill(cur)), []);
   myData = myData.concat(usuallyData);
