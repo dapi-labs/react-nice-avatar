@@ -28,7 +28,7 @@ const glassesStyle = ["round", "square", "none"];
 
 const _pickRandomFromList = (data, { avoidList = [], usually = [] } = {}) => {
   const avoidSet = new Set(avoidList.filter((item) => Boolean(item)));
-  let myData = data.filter((item) => !aviodSet.has(item));
+  let myData = data.filter((item) => !avoidSet.has(item));
   const usuallyData = usually.reduce((acc, cur) => acc.concat(new Array(15).fill(cur)), []);
   myData = myData.concat(usuallyData);
   const amount = myData.length;
