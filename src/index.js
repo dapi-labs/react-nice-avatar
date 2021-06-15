@@ -77,7 +77,7 @@ export default class ReactNiceAvatar extends Component {
         borderRadius = "6px";
         break;
       }
-      case "squal": {
+      case "square": {
         borderRadius = 0;
         break;
       }
@@ -187,7 +187,7 @@ export const genConfig = (userConfig = {}) => {
   }
   response.hairStyle = myHairStyle;
 
-  // Eyebrown
+  // Eyebrow
   let myEyeBrowStyle = userConfig.eyeBrowStyle || "up";
   if (!userConfig.eyeBrowStyle && response.sex === "woman") {
     myEyeBrowStyle = _pickRandomFromList(eyeBrowWoman);
