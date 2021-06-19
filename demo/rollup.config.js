@@ -6,6 +6,7 @@ import serve from "rollup-plugin-serve";
 import livereload from "rollup-plugin-livereload";
 import replace from "@rollup/plugin-replace";
 import scss from "rollup-plugin-scss";
+import typescript from "@rollup/plugin-typescript";
 
 let plugins = [
   replace({
@@ -14,6 +15,9 @@ let plugins = [
   }),
   babel({
     exclude: "node_modules/**"
+  }),
+  typescript({
+    tsconfig: path.resolve(__dirname, "./tsconfig.json")
   }),
   resolve(),
   commonjs(),
@@ -28,17 +32,17 @@ if (process.env.NODE_ENV === "development" && process.env.MODE !== "build") {
       host: "localhost",
       port: 5555
     }),
-    livereload({ watch: path.resolve(__dirname, "./") })
+    livereload({ watch: path.resolve(__dirname, "./src") })
   ]);
 }
 
 export default {
-  input: path.resolve(__dirname, "./index.js"),
+  input: path.resolve(__dirname, "./src/index.tsx"),
   output: [
     {
       file: path.resolve(__dirname, "./dist/index.js"),
       format: "iife",
-      sourcemap: true
+      sourcemap: false
     }
   ],
   plugins

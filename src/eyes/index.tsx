@@ -4,7 +4,7 @@ import Circle from "./circle";
 import Oval from "./oval";
 import Smile from "./smile";
 
-export default function (props) {
+export default function (props: { style: string }) {
   const { style } = props;
   switch (style) {
     case "circle": return <Circle />;

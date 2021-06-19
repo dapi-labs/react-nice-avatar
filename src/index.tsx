@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import { genConfig, defaultOptions } from "./utils";
+import { NiceAvatarProps } from "./types"
 
 import Face from "./face";
 import Hair from "./hair";
@@ -14,7 +15,7 @@ import Nose from "./nose";
 import Mouth from "./mouth";
 import Shirt from "./shirt";
 
-export default class ReactNiceAvatar extends Component {
+export default class ReactNiceAvatar extends Component<NiceAvatarProps> {
   static propTypes = {
     id: PropTypes.string,
     className: PropTypes.string,
@@ -24,7 +25,9 @@ export default class ReactNiceAvatar extends Component {
     faceColor: PropTypes.string,
     earSize: PropTypes.oneOf(defaultOptions.earSize),
     hairColor: PropTypes.string,
-    hairStyle: PropTypes.oneOf(defaultOptions.hairStyleMan.concat(defaultOptions.hairStyleWoman)),
+    hairStyle: PropTypes.oneOf(
+      (defaultOptions.hairStyleMan as string[]).concat(defaultOptions.hairStyleWoman as string[])
+    ),
     hatColor: PropTypes.string,
     hatStyle: PropTypes.oneOf(defaultOptions.hatStyle),
     hairColorRandom: PropTypes.bool,
@@ -37,13 +40,8 @@ export default class ReactNiceAvatar extends Component {
     bgColor: PropTypes.string
   }
 
-  static defaultProps = {
-    shape: "circle",
-    hairColorRandom: false
-  }
-
   render() {
-    const { id, className, style, shape, hairColorRandom } = this.props;
+    const { id, className, style, shape = "circle", hairColorRandom = false } = this.props;
     const config = genConfig(this.props);
 
     // Background shape
