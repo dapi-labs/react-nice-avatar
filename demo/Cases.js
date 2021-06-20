@@ -34,7 +34,7 @@ export default function (props) {
   );
 
   const genApplicationMockup = ({ theme } = {}) => (
-    <div className={classnames("application", theme)}>
+    <div className={classnames("application", theme, { applicationDark: config.theme === "dark" })}>
       <div className="applicationHeader">
         <div className="icons">
           <span className="icon" />

@@ -365,3 +365,23 @@ $headerHeight: 6rem;
     margin-top: 1rem;
   }
 }
+
+// Dark Mode
+.headerDark,
+.appContentDark {
+  background: #000;
+  color: #ffffffc2;
+}
+.singleSectionDark {
+  .info {
+    .opts {
+      .opt {
+        border: 1px solid #b9bcc06b;
+        color: #ffffffc2;
+      }
+    }
+  }
+}
+.applicationDark {
+  background-color: #fff;
+}

@@ -34,7 +34,7 @@ export default class App extends Component {
       <div className="app">
         <a className="iconfont icon-github" href="https://github.com/chilllab/react-nice-avatar" />
 
-        <header className="header">
+        <header className={classnames("header", { headerDark: config.theme === "dark" })}>
           <div className="tabs">
             <div className={classnames("activeBg", currentTab)} />
             <div
@@ -50,7 +50,7 @@ export default class App extends Component {
           </div>
         </header>
 
-        <div className="appContent">
+        <div className={classnames("appContent", { appContentDark: config.theme === "dark" })}>
           {currentTab === "single" && <Single config={config} updateConfig={this.updateConfig.bind(this)} />}
           {currentTab === "cases" && <Cases config={config} />}
         </div>

@@ -108,7 +108,7 @@ export default class Single extends Component {
       bgColorPanelOpen
     } = this.state;
     return (
-      <div className="singleSection">
+      <div className={classnames("singleSection", { singleSectionDark: config.theme === "dark" })}>
         <div className="left">
           <div className="avatarWrapper">
             <Avatar
@@ -385,6 +385,26 @@ export default class Single extends Component {
               className={classnames("opt", { active: bgShape === "square" })}
               onClick={this.changeBgShape.bind(this, "square")}>
               Square
+            </p>
+          </div>
+          {/* Theme */}
+          <div className="field">
+            Theme
+          </div>
+          <div className="opts">
+            <p
+              className={
+              classnames("opt", { active: config.theme === "light" })}
+              onClick={this.updateConfig.bind(this, "theme", "light")}
+              >
+              Light
+            </p>
+            <p
+              className={
+              classnames("opt", { active: config.theme === "dark" })}
+              onClick={this.updateConfig.bind(this, "theme", "dark")}
+              >
+              Dark
             </p>
           </div>
         </div>
