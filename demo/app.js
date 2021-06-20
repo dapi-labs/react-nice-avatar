@@ -31,7 +31,7 @@ export default class App extends Component {
     const { currentTab, config } = this.state;
 
     return (
-      <div className="app">
+      <div className={classnames("app", { appDark: config.theme === "dark", appSystemDark: config.theme === "system" })}>
         <a className="iconfont icon-github" href="https://github.com/chilllab/react-nice-avatar" />
 
         <header className="header">
