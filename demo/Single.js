@@ -108,7 +108,7 @@ export default class Single extends Component {
       bgColorPanelOpen
     } = this.state;
     return (
-      <div className={classnames("singleSection", { singleSectionDark: config.theme === "dark" })}>
+      <div className="singleSection">
         <div className="left">
           <div className="avatarWrapper">
             <Avatar

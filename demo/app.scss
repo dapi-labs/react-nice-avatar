@@ -367,21 +367,27 @@ $headerHeight: 6rem;
 }
 
 // Dark Mode
-.headerDark,
-.appContentDark {
-  background: #000;
-  color: #ffffffc2;
-}
-.singleSectionDark {
-  .info {
-    .opts {
-      .opt {
-        border: 1px solid #b9bcc06b;
-        color: #ffffffc2;
+.appDark{
+  .header,
+  .appContent {
+    background: #000;
+    color: #ffffffc2;
+    .active{
+      background: linear-gradient(90deg, #8990FF, $blue-purple);
+    }
+  }
+  .singleSection {
+    .info {
+      .opts {
+        .opt {
+          border: 1px solid #b9bcc06b;
+          color: #ffffffc2;
+        }
       }
     }
   }
+  .application {
+    background-color: #fff;
+  }
 }
-.applicationDark {
-  background-color: #fff;
-}
+
