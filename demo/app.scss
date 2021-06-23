@@ -366,36 +366,41 @@ $headerHeight: 6rem;
   }
 }
 
-// Dark Mode
-.appDark{
-  .header,
-  .appContent {
-    background: #000;
-    color: #ffffffc2;
+// define Dark Mode css
+@mixin dark {
+  .appDark{
+    .header,
+    .appContent {
+      background: #000;
+      color: #ffffffc2;
 
-  }
-  .singleSection {
-    .info {
-      .opts {
-        .opt {
-          border: 1px solid #b9bcc06b;
-          color: #ffffffc2;
-        }
-        .active{
-          color: $blue-purple;
-          border-color: $blue-purple;
+    }
+    .singleSection {
+      .info {
+        .opts {
+          .opt {
+            border: 1px solid #b9bcc06b;
+            color: #ffffffc2;
+          }
+          .active{
+            color: $blue-purple;
+            border-color: $blue-purple;
+          }
         }
       }
     }
-  }
-  .application {
-    background-color: #fff;
+    .application {
+      background-color: #fff;
+    }
   }
 }
+
+// use Dark Mode css
+@include dark;
 
 // follow system
 @media (prefers-color-scheme: dark) {
   .appSystemDark{
-    @extend .appDark;
+      @include dark;
   }
 }
