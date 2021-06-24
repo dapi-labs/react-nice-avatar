@@ -9,7 +9,7 @@ export interface AvatarConfig {
   faceColor?: string,
   earSize?: 'small' | 'big',
   hairColor?: string,
-  hairStyle?: 'normal' | 'thick' | 'mohawk' | 'womanLong' | 'womanShort',
+  hairStyle?: 'normal' | 'thick' | 'mohawk' | 'womanLong' | 'womanShort' | 'beanie',
   eyeStyle?: 'circle' | 'oval' | 'smile',
   glassesStyle?: 'round' | 'square' | 'none',
   noseStyle?: 'short' | 'long' | 'round',
