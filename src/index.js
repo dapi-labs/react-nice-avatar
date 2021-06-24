@@ -15,7 +15,7 @@ const sex = ["man", "woman"];
 const faceColor = ["#F9C9B6", "#AC6651"];
 const earSize = ["small", "big"];
 const hairColor = ["#000", "#fff", "#77311D", "#FC909F", "#D2EFF3", "#506AF4", "#F48150"];
-const hairStyleMan = ["normal", "thick", "mohawk","turban"];
+const hairStyleMan = ["normal", "thick", "mohawk","beanie","turban"];
 const hairStyleWoman = ["normal", "womanLong", "womanShort"];
 const eyeBrowWoman = ["up", "upWoman"];
 const eyeStyle = ["circle", "oval", "smile"];
@@ -46,7 +46,7 @@ export default class ReactNiceAvatar extends Component {
     faceColor: PropTypes.string,
     earSize: PropTypes.oneOf(["small", "big"]),
     hairColor: PropTypes.string,
-    hairStyle: PropTypes.oneOf(["normal", "thick", "mohawk", "womanLong", "womanShort","turban"]),
+    hairStyle: PropTypes.oneOf(["normal", "thick", "mohawk", "womanLong", "womanShort","beanie","turban"]),
     hairColorRandom: PropTypes.bool,
     eyeStyle: PropTypes.oneOf(["circle", "oval", "smile"]),
     glassesStyle: PropTypes.oneOf(["round", "square", "none"]),

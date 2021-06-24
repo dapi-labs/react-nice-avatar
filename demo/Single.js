@@ -230,6 +230,11 @@ export default class Single extends Component {
               onClick={this.updateConfig.bind(this, "hairStyle", "turban")}>
               Turban
             </p>
+            <p
+              className={classnames("opt", { active: config.hairStyle === "beanie" })}
+              onClick={this.updateConfig.bind(this, "hairStyle", "beanie")}>
+              Beanie
+            </p>
           </div>
 
           {/* Eyes */}
