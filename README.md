@@ -99,12 +99,23 @@ The options can be passed into genConfig or as React props
     ```sh
     $ make dev
     ```
-5. Open the browser to reivew the demo:
+4. Open the browser to reivew the demo:
     ```sh
     $ open http://localhost:5555
     ```
-7. Edit the files inside [src](/src).
+5. Edit the files inside [src](/src).
 
+## Test
+
+1. Lint test:
+    ```sh
+    $ make lint-test
+    ```
+
+2. code test:
+    ```sh
+    $ make test
+    ```
 
 ## License
 

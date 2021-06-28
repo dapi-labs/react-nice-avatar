@@ -69,6 +69,7 @@
     "import/no-extraneous-dependencies": "off",
     "jsx-a11y/control-has-associated-label": "off",
     "jsx-a11y/anchor-has-content": "off",
-    "react/no-access-state-in-setstate": "off"
+    "react/no-access-state-in-setstate": "off",
+    "no-plusplus": "off"
   }
 }

@@ -31,6 +31,7 @@
     "babel-eslint": "^10.1.0",
     "classnames": "^2.3.1",
     "dom-to-image": "^2.6.0",
+    "enzyme": "^3.11.0",
     "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.23.3",
@@ -38,6 +39,7 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "file-saver": "^2.0.5",
+    "jest": "^27.0.5",
     "prop-types": "^15.7.2",
     "rc-slider": "^9.7.2",
     "react": "^17.0.2",
@@ -54,5 +56,17 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/chilllab/react-nice-avatar"
-  }
+  },
+  "jest": {
+    "testRegex": ".*\\.(test|spec)\\.js$",
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ]
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }
