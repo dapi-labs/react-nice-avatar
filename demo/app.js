@@ -11,7 +11,8 @@ export default class App extends Component {
     super(props);
     this.state = {
       currentTab: "single",
-      config: genConfig({ hairColorRandom: true })
+      config: genConfig({ hairColorRandom: true }),
+      theme: window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches || "light"
     };
   }
 
@@ -27,13 +28,19 @@ export default class App extends Component {
     });
   }
 
+  toggleTheme() {
+    const { theme } = this.state;
+    const newTheme = theme === "light" && "dark" || "light";
+    this.setState({
+      theme: newTheme
+    });
+  }
+
   render() {
-    const { currentTab, config } = this.state;
+    const { currentTab, config, theme } = this.state;
 
     return (
-      <div className={classnames("app", { appDark: config.theme === "dark", appSystemDark: config.theme === "system" })}>
-        <a className="iconfont icon-github" href="https://github.com/chilllab/react-nice-avatar" />
-
+      <div className={classnames("app", theme)}>
         <header className="header">
           <div className="tabs">
             <div className={classnames("activeBg", currentTab)} />
@@ -47,6 +54,17 @@ export default class App extends Component {
               onClick={this.onChangeTab.bind(this, "cases")}>
               CASES
             </div>
+          </div>
+
+          <div className="menu">
+            <div
+              className={classnames("themeToggle", theme)}
+              onClick={this.toggleTheme.bind(this)}>
+              <i className="iconfont icon-Daytimemode" />
+              <i className="iconfont icon-nightmode" />
+            </div>
+
+            <a className="iconfont icon-github" href="https://github.com/chilllab/react-nice-avatar" />
           </div>
         </header>
 

@@ -224,8 +224,5 @@ export const genConfig = (userConfig = {}) => {
   // Background color
   response.bgColor = userConfig.bgColor || _pickRandomFromList(bgColor, { avoidList: [_hairOrHatColor, response.shirtColor] });
 
-  // Theme
-  response.theme = userConfig.theme || "light";
-
   return response;
 };

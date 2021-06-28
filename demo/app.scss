@@ -17,23 +17,16 @@ p {
   margin: 0;
 }
 
-.app {
-  height: 100vh;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  } to {
+    transform: rotate(360deg);
+  }
 }
 
-.icon-github {
-  position: fixed;
-  padding: 1.5rem 2.5rem;
-  top: 0;
-  right: 0;
-  color: $blue-purple;
-  transition: all 0.25s ease-out;
-  font-size: 2rem;
-  text-decoration: none;
-  z-index: 20;
-  &:hover {
-    text-shadow: 0 0 5px $blue-purple;
-  }
+.app {
+  height: 100vh;
 }
 
 $headerHeight: 6rem;
@@ -81,6 +74,88 @@ $headerHeight: 6rem;
       }
       &.cases {
         left: $tabItemWidth;
+      }
+    }
+  }
+
+  & > .menu {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    .themeToggle {
+      $sunYellow: #ffc83d;
+      height: 2.3rem;
+      width: 3rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        border-radius: 2rem;
+        height: 2px;
+      }
+      &.light {
+        &:after {
+          background: transparentize($sunYellow, 0.8);
+          box-shadow: 0 0 3px transparentize($sunYellow, 0.8);
+        }
+        .icon-Daytimemode {
+          top: 0;
+          transition: top 0.15s linear 0.15s;
+        }
+        .icon-nightmode {
+          top: 3rem;
+          transition: top 0.15s linear 0s;
+        }
+      }
+      &.dark {
+        &:after {
+          background: transparentize($blue-purple, 0.8);
+          box-shadow: 0 0 3px transparentize($blue-purple, 0.8);
+        }
+        .icon-Daytimemode {
+          top: 3rem;
+          transition: top 0.15s linear 0s;
+        }
+        .icon-nightmode {
+          top: 0;
+          transition: top 0.15s linear 0.15s;
+        }
+      }
+      .iconfont {
+        font-size: 1.8rem;
+        display: inline-block;
+        position: absolute;
+        top: 3rem;
+        &.icon-Daytimemode {
+          animation: spin 20s linear infinite;
+          color: $sunYellow;
+          text-shadow: 0 0 5px transparentize($sunYellow, 0.5);
+        }
+        &.icon-nightmode {
+          color: $blue-purple;
+          text-shadow: 0 0 5px transparentize($blue-purple, 0.1);
+        }
+      }
+    }
+
+    .icon-github {
+      margin-left: 0.5rem;
+      padding: 1.5rem 2.5rem 1.5rem 1.5rem;
+      color: $blue-purple;
+      transition: all 0.25s ease-out;
+      font-size: 2rem;
+      text-decoration: none;
+      z-index: 20;
+      &:hover {
+        text-shadow: 0 0 5px $blue-purple;
       }
     }
   }
@@ -156,7 +231,7 @@ $headerHeight: 6rem;
 
   .info {
     margin-left: 10rem;
-    padding-bottom: 10vh;
+    padding: 1rem 0;
     overflow-y: auto;
     box-sizing: border-box;
     max-height: 100%;
@@ -367,40 +442,28 @@ $headerHeight: 6rem;
 }
 
 // define Dark Mode css
-@mixin dark {
-  .appDark{
-    .header,
-    .appContent {
-      background: #000;
-      color: #ffffffc2;
+.app.dark {
+  .header,
+  .appContent {
+    background: #000;
+    color: #ffffffc2;
 
-    }
-    .singleSection {
-      .info {
-        .opts {
-          .opt {
-            border: 1px solid #b9bcc06b;
-            color: #ffffffc2;
-          }
-          .active{
-            color: $blue-purple;
-            border-color: $blue-purple;
-          }
+  }
+  .singleSection {
+    .info {
+      .opts {
+        .opt {
+          border: 1px solid #b9bcc06b;
+          color: #ffffffc2;
+        }
+        .active{
+          color: $blue-purple;
+          border-color: $blue-purple;
         }
       }
     }
-    .application {
-      background-color: #fff;
-    }
   }
-}
-
-// use Dark Mode css
-@include dark;
-
-// follow system
-@media (prefers-color-scheme: dark) {
-  .appSystemDark{
-      @include dark;
+  .application {
+    background-color: #fff;
   }
 }
