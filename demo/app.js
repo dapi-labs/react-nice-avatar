@@ -12,7 +12,7 @@ export default class App extends Component {
     this.state = {
       currentTab: "single",
       config: genConfig({ hairColorRandom: true }),
-      theme: window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches || "light"
+      theme: window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches && 'dark' || "light"
     };
   }
 
