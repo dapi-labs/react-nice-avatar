@@ -17,6 +17,7 @@ test/
 .travis.yml
 .eslintrc
 .eslintignore
+.travis.yml
 
 Makefile
 README.md
