@@ -68,7 +68,7 @@ The options can be passed into genConfig or as React props
 | `faceColor`    | string |         |                                              |                      |
 | `earSize`      | string |         | small, big                                   |                      |
 | `hairColor`    | string |         |                                              |                      |
-| `hairStyle`    | string |         | normal, thick, mohawk, womanLong, womanShort |                      |
+| `hairStyle`    | string |         | normal, thick, mohawk, womanLong, womanShort, beanie |                      |
 | `hairColorRandom` | boolean |  false   |                           | thick,mohawk default only be black |
 | `eyeStyle`     | string |         | circle, oval, smile                          |                      |
 | `glassesStyle` | string |         | none, round, square                          | Usually is none      |
