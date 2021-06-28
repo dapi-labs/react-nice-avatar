@@ -17,6 +17,7 @@ export default class Single extends Component {
       size: 25, // rem
       faceColorPanelOpen: false,
       hairColorPanelOpen: false,
+      hatColorPanelOpen: false,
       shirtColorPanelOpen: false,
       bgColorPanelOpen: false
     };
@@ -59,6 +60,7 @@ export default class Single extends Component {
   closeAllColorPanel() {
     this.setState({
       hairColorPanelOpen: false,
+      hatColorPanelOpen: false,
       faceColorPanelOpen: false,
       shirtColorPanelOpen: false,
       bgColorPanelOpen: false
@@ -104,6 +106,7 @@ export default class Single extends Component {
       bgShape,
       faceColorPanelOpen,
       hairColorPanelOpen,
+      hatColorPanelOpen,
       shirtColorPanelOpen,
       bgColorPanelOpen
     } = this.state;
@@ -225,14 +228,37 @@ export default class Single extends Component {
               onClick={this.updateConfig.bind(this, "hairStyle", "womanShort")}>
               Woman Short
             </p>
+          </div>
+
+          {/* Hat */}
+          <div className="field">
+            <p>Hat</p>
+            <div className="colorPanelWrapper" onClick={(e) => e.nativeEvent.stopImmediatePropagation()}>
+              <i
+                className="iconfont icon-color"
+                onClick={this.toggleColorPanel.bind(this, "hatColorPanelOpen")} />
+              {hatColorPanelOpen &&
+                <ChromePicker
+                  className="colorPanel"
+                  color={config.hatColor}
+                  onChange={this.onChangeColor.bind(this, "hatColor")} />
+              }
+            </div>
+          </div>
+          <div className="opts">
             <p
-              className={classnames("opt", { active: config.hairStyle === "turban" })}
-              onClick={this.updateConfig.bind(this, "hairStyle", "turban")}>
+              className={classnames("opt", { active: config.hatStyle === "none" })}
+              onClick={this.updateConfig.bind(this, "hatStyle", "none")}>
+              None
+            </p>
+            <p
+              className={classnames("opt", { active: config.hatStyle === "turban" })}
+              onClick={this.updateConfig.bind(this, "hatStyle", "turban")}>
               Turban
             </p>
             <p
-              className={classnames("opt", { active: config.hairStyle === "beanie" })}
-              onClick={this.updateConfig.bind(this, "hairStyle", "beanie")}>
+              className={classnames("opt", { active: config.hatStyle === "beanie" })}
+              onClick={this.updateConfig.bind(this, "hatStyle", "beanie")}>
               Beanie
             </p>
           </div>

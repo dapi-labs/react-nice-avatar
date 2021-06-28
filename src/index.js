@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import Face from "./face";
 import Hair from "./hair";
+import Hat from "./hat";
 import Ear from "./ear";
 import Eyebrow from "./eyebrow";
 import Eye from "./eyes";
@@ -15,8 +16,10 @@ const sex = ["man", "woman"];
 const faceColor = ["#F9C9B6", "#AC6651"];
 const earSize = ["small", "big"];
 const hairColor = ["#000", "#fff", "#77311D", "#FC909F", "#D2EFF3", "#506AF4", "#F48150"];
-const hairStyleMan = ["normal", "thick", "mohawk", "beanie"];
+const hairStyleMan = ["normal", "thick", "mohawk"];
 const hairStyleWoman = ["normal", "womanLong", "womanShort"];
+const hatColor = ["#000", "#fff", "#77311D", "#FC909F", "#D2EFF3", "#506AF4", "#F48150"];
+const hatStyle = ["beanie", "turban", "none"];
 const eyeBrowWoman = ["up", "upWoman"];
 const eyeStyle = ["circle", "oval", "smile"];
 const noseStyle = ["short", "long", "round"];
@@ -27,10 +30,19 @@ const bgColor = ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#E0DDFF", "#D2EFF3
 const glassesStyle = ["round", "square", "none"];
 
 const _pickRandomFromList = (data, { avoidList = [], usually = [] } = {}) => {
-  const avoidSet = new Set(avoidList.filter((item) => Boolean(item)));
+  // Filter out avoid options
+  const avoidSet = new Set(
+    avoidList.filter((item) => Boolean(item))
+  );
   let myData = data.filter((item) => !avoidSet.has(item));
-  const usuallyData = usually.reduce((acc, cur) => acc.concat(new Array(15).fill(cur)), []);
+
+  // Increase selecting possibility of usually options
+  const usuallyData = usually
+    .filter((item) => Boolean(item))
+    .reduce((acc, cur) => acc.concat(new Array(15).fill(cur)), []);
   myData = myData.concat(usuallyData);
+
+  // Pick randon one from the list
   const amount = myData.length;
   const randomIdx = Math.floor(Math.random() * amount);
   return myData[randomIdx];
@@ -46,7 +58,9 @@ export default class ReactNiceAvatar extends Component {
     faceColor: PropTypes.string,
     earSize: PropTypes.oneOf(["small", "big"]),
     hairColor: PropTypes.string,
-    hairStyle: PropTypes.oneOf(["normal", "thick", "mohawk", "womanLong", "womanShort","beanie","turban"]),
+    hairStyle: PropTypes.oneOf(["normal", "thick", "mohawk", "womanLong", "womanShort"]),
+    hatColor: PropTypes.string,
+    hatStyle: PropTypes.oneOf(["beanie", "turban", "none"]),
     hairColorRandom: PropTypes.bool,
     eyeStyle: PropTypes.oneOf(["circle", "oval", "smile"]),
     glassesStyle: PropTypes.oneOf(["round", "square", "none"]),
@@ -107,10 +121,15 @@ export default class ReactNiceAvatar extends Component {
               height: "90%"
             }}>
             <Face color={config.faceColor} />
-            <Hair
-              color={config.hairColor}
-              style={config.hairStyle}
-              colorRandom={hairColorRandom} />
+            <Hat
+              color={config.hatColor}
+              style={config.hatStyle} />
+            {config.hatStyle === "none" &&
+              <Hair
+                color={config.hairColor}
+                style={config.hairStyle}
+                colorRandom={hairColorRandom} />
+            }
 
             {/* Face detail */}
             <div
@@ -187,6 +206,11 @@ export const genConfig = (userConfig = {}) => {
   }
   response.hairStyle = myHairStyle;
 
+  // Hat
+  response.hatStyle = userConfig.hatStyle || _pickRandomFromList(hatStyle, { usually: ["none"] });
+  response.hatColor = userConfig.hatColor || _pickRandomFromList(hatColor);
+  const _hairOrHatColor = response.hatStyle === "none" && response.hairColor || response.hatColor;
+
   // Eyebrow
   let myEyeBrowStyle = userConfig.eyeBrowStyle || "up";
   if (!userConfig.eyeBrowStyle && response.sex === "woman") {
@@ -195,10 +219,10 @@ export const genConfig = (userConfig = {}) => {
   response.eyeBrowStyle = myEyeBrowStyle;
 
   // Shirt color
-  response.shirtColor = userConfig.shirtColor || _pickRandomFromList(shirtColor, { avoidList: [response.hairColor] });
+  response.shirtColor = userConfig.shirtColor || _pickRandomFromList(shirtColor, { avoidList: [_hairOrHatColor] });
 
   // Background color
-  response.bgColor = userConfig.bgColor || _pickRandomFromList(bgColor, { avoidList: [response.hairColor, response.shirtColor] });
+  response.bgColor = userConfig.bgColor || _pickRandomFromList(bgColor, { avoidList: [_hairOrHatColor, response.shirtColor] });
 
   // Theme
   response.theme = userConfig.theme || "light";
