@@ -2,6 +2,7 @@
 *.log
 .DS_Store*
 .idea/
+report.*.json
 
 // specific files
 node_modules/
@@ -9,6 +10,7 @@ test/
 CHANGELOG.md
 src/
 demo/
+test/
 
 // setting files
 .babelrc
@@ -19,4 +21,3 @@ demo/
 Makefile
 README.md
 rollup.config.js
-rollup.config.demo.js

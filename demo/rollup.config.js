@@ -1,3 +1,4 @@
+import path from "path";
 import babel from "rollup-plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
@@ -23,19 +24,19 @@ if (process.env.NODE_ENV === "development" && process.env.MODE !== "build") {
     serve({
       open: false,
       verbose: true,
-      contentBase: ["demo"],
+      contentBase: [path.resolve(__dirname, "./")],
       host: "localhost",
       port: 5555
     }),
-    livereload({ watch: "demo" })
+    livereload({ watch: path.resolve(__dirname, "./") })
   ]);
 }
 
 export default {
-  input: "demo/index.js",
+  input: path.resolve(__dirname, "./index.js"),
   output: [
     {
-      file: "demo/dist/index.js",
+      file: path.resolve(__dirname, "./dist/index.js"),
       format: "iife",
       sourcemap: true
     }
