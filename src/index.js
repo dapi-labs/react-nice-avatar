@@ -46,7 +46,7 @@ export default class ReactNiceAvatar extends Component {
     faceColor: PropTypes.string,
     earSize: PropTypes.oneOf(["small", "big"]),
     hairColor: PropTypes.string,
-    hairStyle: PropTypes.oneOf(["normal", "thick", "mohawk", "womanLong", "womanShort", "beanie"]),
+    hairStyle: PropTypes.oneOf(["normal", "thick", "mohawk", "womanLong", "womanShort","beanie","turban"]),
     hairColorRandom: PropTypes.bool,
     eyeStyle: PropTypes.oneOf(["circle", "oval", "smile"]),
     glassesStyle: PropTypes.oneOf(["round", "square", "none"]),
