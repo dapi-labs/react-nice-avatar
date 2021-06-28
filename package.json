@@ -1,6 +1,6 @@
 {
   "name": "react-nice-avatar",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "react library for generating avatar",
   "main": "dist/index.js",
   "types": "dist/react-nice-avatar.d.ts",
