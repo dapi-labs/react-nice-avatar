@@ -397,6 +397,33 @@ export default class Single extends Component {
               Square
             </p>
           </div>
+          {/* Theme */}
+          <div className="field">
+            Theme
+          </div>
+          <div className="opts">
+            <p
+              className={
+              classnames("opt", { active: config.theme === "light" })}
+              onClick={this.updateConfig.bind(this, "theme", "light")}
+              >
+              Light
+            </p>
+            <p
+              className={
+              classnames("opt", { active: config.theme === "dark" })}
+              onClick={this.updateConfig.bind(this, "theme", "dark")}
+              >
+              Dark
+            </p>
+            <p
+              className={
+              classnames("opt", { active: config.theme === "system" })}
+              onClick={this.updateConfig.bind(this, "theme", "system")}
+              >
+              Follow System
+            </p>
+          </div>
         </div>
       </div>
     );
