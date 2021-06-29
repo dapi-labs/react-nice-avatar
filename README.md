@@ -2,7 +2,7 @@
 
 [![Version](http://img.shields.io/npm/v/react-nice-avatar.svg)](https://www.npmjs.org/package/react-nice-avatar)
 [![npm download][download-image]][download-url]
-[![Build Status](https://travis-ci.org/chilllab/react-nice-avatar.svg?branch=main)](https://travis-ci.org/chilllab/react-nice-avatar)
+[![Build Status](https://travis-ci.com/chilllab/react-nice-avatar.svg?branch=main)](https://travis-ci.org/chilllab/react-nice-avatar)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/df23baf6-daac-4ce5-a0b6-5baade2cb822/deploy-status)](https://app.netlify.com/sites/gracious-turing-db4aa3/deploys)
 
 [download-image]: https://img.shields.io/npm/dm/react-nice-avatar.svg?style=flat-square

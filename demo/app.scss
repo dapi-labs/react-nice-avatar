@@ -314,6 +314,7 @@ $headerHeight: 6rem;
     position: relative;
     top: -3rem;
     margin: 3rem 4rem;
+    background: #fff;
     &.dark {
       background: #222;
       .applicationHeader {
@@ -462,8 +463,5 @@ $headerHeight: 6rem;
         }
       }
     }
-  }
-  .application {
-    background-color: #fff;
   }
 }

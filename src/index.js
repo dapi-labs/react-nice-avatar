@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import { genConfig } from "./utils";
+import { genConfig, defaultOptions } from "./utils";
 
 import Face from "./face";
 import Hair from "./hair";
@@ -20,19 +20,19 @@ export default class ReactNiceAvatar extends Component {
     className: PropTypes.string,
     style: PropTypes.object,
     shape: PropTypes.oneOf(["circle", "rounded", "square"]),
-    sex: PropTypes.oneOf(["man", "woman"]),
+    sex: PropTypes.oneOf(defaultOptions.sex),
     faceColor: PropTypes.string,
-    earSize: PropTypes.oneOf(["small", "big"]),
+    earSize: PropTypes.oneOf(defaultOptions.earSize),
     hairColor: PropTypes.string,
-    hairStyle: PropTypes.oneOf(["normal", "thick", "mohawk", "womanLong", "womanShort"]),
+    hairStyle: PropTypes.oneOf(defaultOptions.hairStyleMan.concat(defaultOptions.hairStyleWoman)),
     hatColor: PropTypes.string,
-    hatStyle: PropTypes.oneOf(["beanie", "turban", "none"]),
+    hatStyle: PropTypes.oneOf(defaultOptions.hatStyle),
     hairColorRandom: PropTypes.bool,
-    eyeStyle: PropTypes.oneOf(["circle", "oval", "smile"]),
-    glassesStyle: PropTypes.oneOf(["round", "square", "none"]),
-    noseStyle: PropTypes.oneOf(["short", "long", "round"]),
-    mouthStyle: PropTypes.oneOf(["laugh", "smile", "peace"]),
-    shirtStyle: PropTypes.oneOf(["hoody", "short", "polo"]),
+    eyeStyle: PropTypes.oneOf(defaultOptions.eyeStyle),
+    glassesStyle: PropTypes.oneOf(defaultOptions.glassesStyle),
+    noseStyle: PropTypes.oneOf(defaultOptions.noseStyle),
+    mouthStyle: PropTypes.oneOf(defaultOptions.mouthStyle),
+    shirtStyle: PropTypes.oneOf(defaultOptions.shirtStyle),
     shirtColor: PropTypes.string,
     bgColor: PropTypes.string
   }
