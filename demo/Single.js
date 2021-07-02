@@ -164,7 +164,7 @@ export default class Single extends Component {
             <p>FACE</p>
             <div className="colorPanelWrapper" onClick={(e) => e.nativeEvent.stopImmediatePropagation()}>
               <i
-                className="iconfont icon-color"
+                className="iconfont icon-Color"
                 onClick={this.toggleColorPanel.bind(this, "faceColorPanelOpen")} />
               {faceColorPanelOpen &&
                 <ChromePicker
@@ -192,7 +192,7 @@ export default class Single extends Component {
             <p>HAIR</p>
             <div className="colorPanelWrapper" onClick={(e) => e.nativeEvent.stopImmediatePropagation()}>
               <i
-                className="iconfont icon-color"
+                className="iconfont icon-Color"
                 onClick={this.toggleColorPanel.bind(this, "hairColorPanelOpen")} />
               {hairColorPanelOpen &&
                 <ChromePicker
@@ -235,7 +235,7 @@ export default class Single extends Component {
             <p>Hat</p>
             <div className="colorPanelWrapper" onClick={(e) => e.nativeEvent.stopImmediatePropagation()}>
               <i
-                className="iconfont icon-color"
+                className="iconfont icon-Color"
                 onClick={this.toggleColorPanel.bind(this, "hatColorPanelOpen")} />
               {hatColorPanelOpen &&
                 <ChromePicker
@@ -363,7 +363,7 @@ export default class Single extends Component {
             <p>SHIRT</p>
             <div className="colorPanelWrapper" onClick={(e) => e.nativeEvent.stopImmediatePropagation()}>
               <i
-                className="iconfont icon-color"
+                className="iconfont icon-Color"
                 onClick={this.toggleColorPanel.bind(this, "shirtColorPanelOpen")} />
               {shirtColorPanelOpen &&
                 <ChromePicker
@@ -396,7 +396,7 @@ export default class Single extends Component {
             <p>BACKGROUND</p>
             <div className="colorPanelWrapper" onClick={(e) => e.nativeEvent.stopImmediatePropagation()}>
               <i
-                className="iconfont icon-color"
+                className="iconfont icon-Color"
                 onClick={this.toggleColorPanel.bind(this, "bgColorPanelOpen")} />
               {bgColorPanelOpen &&
                 <ChromePicker
