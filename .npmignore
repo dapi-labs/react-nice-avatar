@@ -18,6 +18,7 @@ test/
 .eslintrc
 .eslintignore
 .travis.yml
+.versionrc.json
 
 Makefile
 README.md
