@@ -34,5 +34,5 @@ release:
 	@echo "Adding tag and modify the CHANGELOG"
 	@npx standard-version --release-as $(level)
 	@echo "Pushing to the github and trigger action for npm:publish"
-	@git push --follow-tags origin master
+	@git push --follow-tags origin main
 .PHONY: build build-demo release
