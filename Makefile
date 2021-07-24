@@ -1,3 +1,5 @@
+level?=patch
+
 # Development
 lint:
 	@echo "Linting..."
@@ -27,4 +29,10 @@ build-demo:
 	@echo "Building demo..."
 	@rm -rf ./demo/dist
 	@NODE_ENV=production npx rollup -c ./demo/rollup.config.js
-.PHONY: build build-demo
+release:
+	@echo "Release $(level)"
+	@echo "Adding tag and modify the CHANGELOG"
+	@npx standard-version --release-as $(level)
+	@echo "Pushing to the github and trigger action for npm:publish"
+	@git push --follow-tags origin master
+.PHONY: build build-demo release
