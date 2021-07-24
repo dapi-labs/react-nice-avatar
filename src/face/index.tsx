@@ -1,7 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-export default function Face(props) {
+export default function Face(props: { color: string }) {
   const { color } = props;
   const maskId = `mask${Math.round(Math.random() * 9999999)}`;
   const pathId = `path${Math.round(Math.random() * 9999999)}`;
@@ -39,7 +38,3 @@ export default function Face(props) {
     </svg>
   );
 }
-
-Face.propTypes = {
-  color: PropTypes.string.isRequired
-};

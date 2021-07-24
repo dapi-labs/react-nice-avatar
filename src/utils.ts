@@ -1,7 +1,28 @@
+import {
+  AvatarFullConfig,
+  GenConfigFunc,
+  Sex,
+  EarSize,
+  HairStyleMan,
+  HairStyleWoman,
+  HatStyle,
+  EyeStyle,
+  GlassesStyle,
+  NoseStyle,
+  MouthStyle,
+  ShirtStyle,
+  EyeBrowStyle,
+} from "./types"
+
 /**
  * Pick random one from the list
  */
-export const pickRandomFromList = (data, { avoidList = [], usually = [] } = {}) => {
+interface PickRandomOpt<T> {
+  avoidList?: T[],
+  usually?: T[]
+}
+type PickRandomFromList = <T>(data: T[], opt?: PickRandomOpt<T | undefined>) => T;
+export const pickRandomFromList: PickRandomFromList = (data, { avoidList = [], usually = [] } = {}) => {
   // Filter out avoid options
   const avoidSet = new Set(
     avoidList.filter((item) => Boolean(item))
@@ -10,8 +31,11 @@ export const pickRandomFromList = (data, { avoidList = [], usually = [] } = {}) 
 
   // Increase selecting possibility of usually options
   const usuallyData = usually
-    .filter((item) => Boolean(item))
-    .reduce((acc, cur) => acc.concat(new Array(15).fill(cur)), []);
+    .filter(Boolean)
+    .reduce<any[]>(
+      (acc, cur) => acc.concat(new Array(15).fill(cur)),
+      []
+    );
   myData = myData.concat(usuallyData);
 
   // Pick randon one from the list
@@ -23,7 +47,25 @@ export const pickRandomFromList = (data, { avoidList = [], usually = [] } = {}) 
 /**
  * Gennerate avatar configurations
  */
-export const defaultOptions = {
+interface DefaultOptions {
+  sex: Sex[],
+  faceColor: string[],
+  earSize: EarSize[],
+  hairColor: string[],
+  hairStyleMan: HairStyleMan[],
+  hairStyleWoman: HairStyleWoman[],
+  hatColor: string[],
+  hatStyle: HatStyle[],
+  eyeBrowWoman: EyeBrowStyle[],
+  eyeStyle: EyeStyle[],
+  glassesStyle: GlassesStyle[],
+  noseStyle: NoseStyle[],
+  mouthStyle: MouthStyle[],
+  shirtStyle: ShirtStyle[],
+  shirtColor: string[],
+  bgColor: string[]
+}
+export const defaultOptions: DefaultOptions = {
   sex: ["man", "woman"],
   faceColor: ["#F9C9B6", "#AC6651"],
   earSize: ["small", "big"],
@@ -41,8 +83,8 @@ export const defaultOptions = {
   shirtColor: ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#77311D"],
   bgColor: ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#E0DDFF", "#D2EFF3", "#FFEDEF", "#FFEBA4", "#506AF4", "#F48150", "#74D153"]
 };
-export const genConfig = (userConfig = {}) => {
-  const response = {};
+export const genConfig: GenConfigFunc = (userConfig = {}) => {
+  const response = {} as Required<AvatarFullConfig>;
   response.sex = userConfig.sex || pickRandomFromList(defaultOptions.sex);
   response.faceColor = userConfig.faceColor || pickRandomFromList(defaultOptions.faceColor);
   response.earSize = userConfig.earSize || pickRandomFromList(defaultOptions.earSize);
@@ -53,8 +95,8 @@ export const genConfig = (userConfig = {}) => {
   response.glassesStyle = userConfig.glassesStyle || pickRandomFromList(defaultOptions.glassesStyle, { usually: ["none"] });
 
   // Hair
-  let hairColorAvoidList = [];
-  let hairColorUsually = [];
+  let hairColorAvoidList: any[] = [];
+  let hairColorUsually: any[] = [];
   if (!userConfig.hairColor) {
     switch (response.sex) {
       case "woman": {
@@ -92,11 +134,9 @@ export const genConfig = (userConfig = {}) => {
   const _hairOrHatColor = response.hatStyle === "none" && response.hairColor || response.hatColor;
 
   // Eyebrow
-  let myEyeBrowStyle = userConfig.eyeBrowStyle || "up";
-  if (!userConfig.eyeBrowStyle && response.sex === "woman") {
-    myEyeBrowStyle = pickRandomFromList(defaultOptions.eyeBrowWoman);
-  }
-  response.eyeBrowStyle = myEyeBrowStyle;
+  response.eyeBrowStyle = response.sex === "woman"
+    ? pickRandomFromList(defaultOptions.eyeBrowWoman)
+    : "up"
 
   // Shirt color
   response.shirtColor = userConfig.shirtColor || pickRandomFromList(defaultOptions.shirtColor, { avoidList: [_hairOrHatColor] });

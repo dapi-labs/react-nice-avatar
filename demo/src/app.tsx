@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import classnames from "classnames";
 
-import { genConfig } from "../src";
-
+import { genConfig } from "../../src";
 import Single from "./Single";
 import Cases from "./Cases";
 
-export default class App extends Component {
+import { AppComponentState } from './types'
+import { AvatarFullConfig } from '../../src/types'
+
+export default class App extends Component<{}, AppComponentState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,13 +18,13 @@ export default class App extends Component {
     };
   }
 
-  onChangeTab(tab) {
+  onChangeTab(tab: string) {
     this.setState({
       currentTab: tab
     });
   }
 
-  updateConfig(config) {
+  updateConfig(config: AvatarFullConfig) {
     this.setState({
       config: { ...config, hairColorRandom: true }
     });

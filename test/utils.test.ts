@@ -1,4 +1,33 @@
 import { pickRandomFromList, genConfig, defaultOptions } from "../src/utils";
+import {
+  Sex,
+  EarSize,
+  HairStyle,
+  HatStyle,
+  EyeStyle,
+  GlassesStyle,
+  NoseStyle,
+  MouthStyle,
+  ShirtStyle,
+  AvatarFullConfig
+} from "../src/types"
+
+interface InputOpt {
+  sex: Sex,
+  faceColor: string,
+  earSize: EarSize,
+  hairColor: string,
+  hairStyle: HairStyle,
+  hatColor: string,
+  hatStyle: HatStyle,
+  eyeStyle: EyeStyle,
+  glassesStyle: GlassesStyle,
+  noseStyle: NoseStyle,
+  mouthStyle: MouthStyle,
+  shirtStyle: ShirtStyle,
+  shirtColor: string,
+  bgColor: string
+}
 
 describe("utils", () => {
   describe("pickRandomFromList", () => {
@@ -17,7 +46,7 @@ describe("utils", () => {
     it("should able to increase the ability of usually", () => {
       const data = [11, 22, 33];
 
-      const outputs = [];
+      const outputs: number[] = [];
       for (let i = 0; i < 3; i++) {
         const output = pickRandomFromList(data, { usually: [33, undefined] });
         outputs.push(output);
@@ -28,7 +57,7 @@ describe("utils", () => {
 
   describe("genConfig", () => {
     it("should return same specified configurations", () => {
-      const myConfig = {
+      const myConfig: InputOpt = {
         sex: "man",
         faceColor: "#AC6651",
         earSize: "big",
@@ -44,7 +73,7 @@ describe("utils", () => {
         shirtColor: "#F4D150",
         bgColor: "#E0DDFF"
       };
-      const output = genConfig(myConfig);
+      const output: AvatarFullConfig = genConfig(myConfig);
       delete output.eyeBrowStyle;
       expect(output).toEqual(myConfig);
     });

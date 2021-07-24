@@ -4,7 +4,7 @@ import Laugh from "./laugh";
 import Smile from "./smile";
 import Peace from "./peace";
 
-export default function (props) {
+export default function (props: { style: string }) {
   const { style } = props;
   switch (style) {
     case "laugh": return <Laugh />;

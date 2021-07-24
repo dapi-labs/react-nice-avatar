@@ -5,11 +5,17 @@ import Slider from "rc-slider";
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
 
-import Avatar, { genConfig } from "../src";
+import Avatar, { genConfig } from "../../src";
+
+import {
+  SingleComponentProps,
+  SingleComponentState,
+  Panel
+} from './types'
 
 import "rc-slider/assets/index.css";
 
-export default class Single extends Component {
+export default class Single extends Component<SingleComponentProps, SingleComponentState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +39,7 @@ export default class Single extends Component {
     window.removeEventListener("click", this.closeAllColorPanel);
   }
 
-  updateConfig(field, value) {
+  updateConfig(field: string, value: any) {
     const { config, updateConfig } = this.props;
     if (config[field] === value) return;
     config[field] = value;
@@ -44,17 +50,17 @@ export default class Single extends Component {
     }
   }
 
-  onChangeColor(field, value) {
+  onChangeColor(field: string, value: { hex: string }) {
     const { config, updateConfig } = this.props;
     config[field] = value.hex;
     updateConfig(config);
   }
 
-  toggleColorPanel(panelName, e) {
+  toggleColorPanel(panelName: Panel, e) {
     e.nativeEvent.stopImmediatePropagation();
     this.setState({
       [panelName]: !this.state[panelName]
-    });
+    } as any);
   }
 
   closeAllColorPanel() {
@@ -87,16 +93,18 @@ export default class Single extends Component {
   async download() {
     const scale = 2;
     const node = document.getElementById("avatar");
-    const blob = await domtoimage.toBlob(node, {
-      height: node.offsetHeight * scale,
-      style: {
-        transform: `scale(${scale}) translate(${node.offsetWidth / 2 / scale}px, ${node.offsetHeight / 2 / scale}px)`,
-        "border-radius": 0
-      },
-      width: node.offsetWidth * scale
-    });
+    if (node) {
+      const blob = await domtoimage.toBlob(node, {
+        height: node.offsetHeight * scale,
+        style: {
+          transform: `scale(${scale}) translate(${node.offsetWidth / 2 / scale}px, ${node.offsetHeight / 2 / scale}px)`,
+          "border-radius": 0
+        },
+        width: node.offsetWidth * scale
+      });
 
-    saveAs(blob, "avatar.png");
+      saveAs(blob, "avatar.png");
+    }
   }
 
   render() {

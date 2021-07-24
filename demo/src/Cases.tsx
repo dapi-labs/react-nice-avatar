@@ -1,7 +1,9 @@
 import React from "react";
 import classnames from "classnames";
 
-import Avatar from "../src";
+import Avatar from "../../src";
+
+type GenApplicationMockup = (opt?: { theme?: string }) => React.ReactElement
 
 export default function (props) {
   const { config } = props;
@@ -33,7 +35,7 @@ export default function (props) {
     </div>
   );
 
-  const genApplicationMockup = ({ theme } = {}) => (
+  const genApplicationMockup:GenApplicationMockup = ({ theme } = {}) => (
     <div className={classnames("application", theme)}>
       <div className="applicationHeader">
         <div className="icons">

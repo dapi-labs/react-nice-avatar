@@ -6,7 +6,7 @@ import Mohawk from "./mohawk";
 import WomanLong from "./womanLong";
 import WomanShort from "./womanShort";
 
-export default function (props) {
+export default function (props: { style: string, color: string, colorRandom: boolean }) {
   const { style, color, colorRandom } = props;
   switch (style) {
     case "thick": return <Thick color={color} colorRandom={colorRandom} />;
