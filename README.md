@@ -17,7 +17,7 @@
 
 ## Online editor / preview
 
-- https://nice-avatar.chilllab.io/
+- https://nice-avatar.dapiok.com/
 
 ## Assets
 
