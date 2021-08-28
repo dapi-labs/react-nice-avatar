@@ -10,7 +10,7 @@
     "avatar",
     "react-avatar"
   ],
-  "author": "Chill Lab",
+  "author": "Dapi",
   "license": "MIT",
   "peerDependencies": {
     "react": ">=16.0.0"

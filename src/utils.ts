@@ -63,7 +63,8 @@ interface DefaultOptions {
   mouthStyle: MouthStyle[],
   shirtStyle: ShirtStyle[],
   shirtColor: string[],
-  bgColor: string[]
+  bgColor: string[],
+  gradientBgColor: string[]
 }
 export const defaultOptions: DefaultOptions = {
   sex: ["man", "woman"],
@@ -81,7 +82,14 @@ export const defaultOptions: DefaultOptions = {
   mouthStyle: ["laugh", "smile", "peace"],
   shirtStyle: ["hoody", "short", "polo"],
   shirtColor: ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#77311D"],
-  bgColor: ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#E0DDFF", "#D2EFF3", "#FFEDEF", "#FFEBA4", "#506AF4", "#F48150", "#74D153"]
+  bgColor: ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#E0DDFF", "#D2EFF3", "#FFEDEF", "#FFEBA4", "#506AF4", "#F48150", "#74D153"],
+  gradientBgColor: [
+    "linear-gradient(45deg, rgba(120,113,245,1) 0%, rgba(52,185,242,1) 100%)",
+    "linear-gradient(45deg, rgba(242,127,52,1) 0%, rgba(242,200,52,1) 100%)",
+    "linear-gradient(45deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%)",
+    "linear-gradient(90deg, rgba(148,187,233,1) 0%, rgba(238,174,202,1) 100%)",
+    "linear-gradient(45deg, rgba(53,173,247,1) 0%, rgba(86,241,204,1) 100%)"
+  ]
 };
 export const genConfig: GenConfigFunc = (userConfig = {}) => {
   const response = {} as Required<AvatarFullConfig>;
@@ -142,7 +150,11 @@ export const genConfig: GenConfigFunc = (userConfig = {}) => {
   response.shirtColor = userConfig.shirtColor || pickRandomFromList(defaultOptions.shirtColor, { avoidList: [_hairOrHatColor] });
 
   // Background color
-  response.bgColor = userConfig.bgColor || pickRandomFromList(defaultOptions.bgColor, { avoidList: [_hairOrHatColor, response.shirtColor] });
+  if (userConfig.isGradient) {
+    response.bgColor = userConfig.bgColor || pickRandomFromList(defaultOptions.gradientBgColor);
+  } else {
+    response.bgColor = userConfig.bgColor || pickRandomFromList(defaultOptions.bgColor, { avoidList: [_hairOrHatColor, response.shirtColor] });
+  }
 
   return response;
 };

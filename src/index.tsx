@@ -37,7 +37,8 @@ export default class ReactNiceAvatar extends Component<NiceAvatarProps> {
     mouthStyle: PropTypes.oneOf(defaultOptions.mouthStyle),
     shirtStyle: PropTypes.oneOf(defaultOptions.shirtStyle),
     shirtColor: PropTypes.string,
-    bgColor: PropTypes.string
+    bgColor: PropTypes.string,
+    isGradient: PropTypes.bool
   }
 
   render() {
