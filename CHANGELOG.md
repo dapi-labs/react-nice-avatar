@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.4](https://github.com/chilllab/react-nice-avatar/compare/v1.2.2...v1.2.4) (2021-08-29)
+
+
+### Features
+
+* gradient background ([4697602](https://github.com/chilllab/react-nice-avatar/commits4697602f098e019e6bbd0800c1780f61a43d367a))
+* new demo ([8ae89f2](https://github.com/chilllab/react-nice-avatar/commits8ae89f23837399cbb218e4a5f4103cf44a78438a))
+* using webpack to replace rollup & update eslint config ([7d9fad5](https://github.com/chilllab/react-nice-avatar/commits7d9fad58ba9d7747eed091178cb427b7417e8844))
+
+
+### Bug Fixes
+
+* github action only triggered for new tags ([8138407](https://github.com/chilllab/react-nice-avatar/commits8138407550057acfcfedbc3518f2f9ffeb52c0d3))
+* update node version for the workflow ([4f6ddbd](https://github.com/chilllab/react-nice-avatar/commits4f6ddbda62a47ff1adf0da5161ddc08d2b0cac55))
+
 ### [1.2.3](https://github.com/chilllab/react-nice-avatar/compare/v1.2.2...v1.2.3) (2021-08-29)
 
 
