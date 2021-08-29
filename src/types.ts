@@ -32,7 +32,8 @@ export interface AvatarConfig {
   mouthStyle?: MouthStyle,
   shirtStyle?: ShirtStyle,
   shirtColor?: string,
-  bgColor?: string
+  bgColor?: string,
+  isGradient?: boolean
 }
 
 export interface AvatarFullConfig extends AvatarConfig {

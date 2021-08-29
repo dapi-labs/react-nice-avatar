@@ -1,2 +1,5 @@
 dist/
 demo/dist
+webpack/
+jest.config.js
+.eslintrc.js

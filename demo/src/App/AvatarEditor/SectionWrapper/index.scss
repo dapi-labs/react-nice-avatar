@@ -1,0 +1,53 @@
+@keyframes jelly {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+
+.SectionWrapper {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  &:hover {
+    animation: jelly 0.5s;
+    &:after {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  &:after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 120%;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.15rem 0.75rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.2s ease-out;
+  }
+
+  .childrenWrapper > svg {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}

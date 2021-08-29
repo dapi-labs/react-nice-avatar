@@ -11,18 +11,19 @@ CHANGELOG.md
 src/
 demo/
 test/
-
-// setting files
-.babelrc
-.travis.yml
-.eslintrc
-.eslintignore
-.travis.yml
-.versionrc.json
-
 Makefile
 README.md
 rollup.config.js
 jest.config.js
 tsconfig.json
 .github/
+webpack/
+tailwind.config.js
+
+// setting files
+.babelrc
+.travis.yml
+.eslintrc.js
+.eslintignore
+.travis.yml
+.versionrc.json

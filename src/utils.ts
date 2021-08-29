@@ -63,7 +63,8 @@ interface DefaultOptions {
   mouthStyle: MouthStyle[],
   shirtStyle: ShirtStyle[],
   shirtColor: string[],
-  bgColor: string[]
+  bgColor: string[],
+  gradientBgColor: string[]
 }
 export const defaultOptions: DefaultOptions = {
   sex: ["man", "woman"],
@@ -81,7 +82,16 @@ export const defaultOptions: DefaultOptions = {
   mouthStyle: ["laugh", "smile", "peace"],
   shirtStyle: ["hoody", "short", "polo"],
   shirtColor: ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#77311D"],
-  bgColor: ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#E0DDFF", "#D2EFF3", "#FFEDEF", "#FFEBA4", "#506AF4", "#F48150", "#74D153"]
+  bgColor: ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#E0DDFF", "#D2EFF3", "#FFEDEF", "#FFEBA4", "#506AF4", "#F48150", "#74D153"],
+  gradientBgColor: [
+    "linear-gradient(45deg, #178bff 0%, #ff6868 100%)",
+    "linear-gradient(45deg, #176fff 0%, #68ffef 100%)",
+    "linear-gradient(45deg, #ff1717 0%, #ffd368 100%)",
+    "linear-gradient(90deg, #36cd1c 0%, #68deff 100%)",
+    "linear-gradient(45deg, #3e1ccd 0%, #ff6871 100%)",
+    "linear-gradient(45deg, #1729ff 0%, #ff56f7 100%)",
+    "linear-gradient(45deg, #56b5f0 0%, #45ccb5 100%)"
+  ]
 };
 export const genConfig: GenConfigFunc = (userConfig = {}) => {
   const response = {} as Required<AvatarFullConfig>;
@@ -134,15 +144,22 @@ export const genConfig: GenConfigFunc = (userConfig = {}) => {
   const _hairOrHatColor = response.hatStyle === "none" && response.hairColor || response.hatColor;
 
   // Eyebrow
-  response.eyeBrowStyle = response.sex === "woman"
-    ? pickRandomFromList(defaultOptions.eyeBrowWoman)
-    : "up"
+  response.eyeBrowStyle = userConfig.eyeBrowStyle
+  if (!response.eyeBrowStyle) {
+    response.eyeBrowStyle = response.sex === "woman"
+      ? pickRandomFromList(defaultOptions.eyeBrowWoman)
+      : "up"
+  }
 
   // Shirt color
   response.shirtColor = userConfig.shirtColor || pickRandomFromList(defaultOptions.shirtColor, { avoidList: [_hairOrHatColor] });
 
   // Background color
-  response.bgColor = userConfig.bgColor || pickRandomFromList(defaultOptions.bgColor, { avoidList: [_hairOrHatColor, response.shirtColor] });
+  if (userConfig.isGradient) {
+    response.bgColor = userConfig.bgColor || pickRandomFromList(defaultOptions.gradientBgColor);
+  } else {
+    response.bgColor = userConfig.bgColor || pickRandomFromList(defaultOptions.bgColor, { avoidList: [_hairOrHatColor, response.shirtColor] });
+  }
 
   return response;
 };
