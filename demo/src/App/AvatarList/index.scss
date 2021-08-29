@@ -1,0 +1,34 @@
+$avatarWidth: 4.5rem;
+$displayCount: 10;
+$sectionWidth: $avatarWidth * $displayCount;
+
+@mixin test($value) {
+  transform: translateX(#{$value}px);
+}
+
+.AvatarList {
+  width: $sectionWidth;
+  .listWrapper {
+    transition: all 0.35s ease-out;
+  }
+
+  .AvatarItemWrapper {
+    flex: 0 0 $avatarWidth;
+    height: $avatarWidth;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      & > .AvatarItem {
+        transform: scale(1.45);
+      }
+    }
+    & > .AvatarItem {
+      $avatarWidth: $avatarWidth - 1.5rem;
+      width: $avatarWidth;
+      height: $avatarWidth;
+      transition: all 0.25s ease-out;
+      cursor: pointer;
+    }
+  }
+}

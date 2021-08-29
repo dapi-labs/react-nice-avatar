@@ -80,6 +80,7 @@ The options can be passed into genConfig or as React props
 | `shirtStyle`   | string |         | hoody, short, polo                           |                      |
 | `shirtColor`   | string |         |                                              |                      |
 | `bgColor`      | string |         |                                              |                      |
+| `isGradient`   | boolean |   false   |                                           |                      |
 
 ## Development
 

@@ -84,11 +84,13 @@ export const defaultOptions: DefaultOptions = {
   shirtColor: ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#77311D"],
   bgColor: ["#9287FF", "#6BD9E9", "#FC909F", "#F4D150", "#E0DDFF", "#D2EFF3", "#FFEDEF", "#FFEBA4", "#506AF4", "#F48150", "#74D153"],
   gradientBgColor: [
-    "linear-gradient(45deg, rgba(120,113,245,1) 0%, rgba(52,185,242,1) 100%)",
-    "linear-gradient(45deg, rgba(242,127,52,1) 0%, rgba(242,200,52,1) 100%)",
-    "linear-gradient(45deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%)",
-    "linear-gradient(90deg, rgba(148,187,233,1) 0%, rgba(238,174,202,1) 100%)",
-    "linear-gradient(45deg, rgba(53,173,247,1) 0%, rgba(86,241,204,1) 100%)"
+    "linear-gradient(45deg, #178bff 0%, #ff6868 100%)",
+    "linear-gradient(45deg, #176fff 0%, #68ffef 100%)",
+    "linear-gradient(45deg, #ff1717 0%, #ffd368 100%)",
+    "linear-gradient(90deg, #36cd1c 0%, #68deff 100%)",
+    "linear-gradient(45deg, #3e1ccd 0%, #ff6871 100%)",
+    "linear-gradient(45deg, #1729ff 0%, #ff56f7 100%)",
+    "linear-gradient(45deg, #56b5f0 0%, #45ccb5 100%)"
   ]
 };
 export const genConfig: GenConfigFunc = (userConfig = {}) => {
@@ -142,9 +144,12 @@ export const genConfig: GenConfigFunc = (userConfig = {}) => {
   const _hairOrHatColor = response.hatStyle === "none" && response.hairColor || response.hatColor;
 
   // Eyebrow
-  response.eyeBrowStyle = response.sex === "woman"
-    ? pickRandomFromList(defaultOptions.eyeBrowWoman)
-    : "up"
+  response.eyeBrowStyle = userConfig.eyeBrowStyle
+  if (!response.eyeBrowStyle) {
+    response.eyeBrowStyle = response.sex === "woman"
+      ? pickRandomFromList(defaultOptions.eyeBrowWoman)
+      : "up"
+  }
 
   // Shirt color
   response.shirtColor = userConfig.shirtColor || pickRandomFromList(defaultOptions.shirtColor, { avoidList: [_hairOrHatColor] });

@@ -1,0 +1,13 @@
+$assets: '../public/fonts';
+
+@font-face {
+  font-family: 'sfrounded';
+  src: url('#{$assets}/SFRounded-bold.woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.font-sf {
+  font-family: 'sfrounded';
+  font-weight: bold;
+}

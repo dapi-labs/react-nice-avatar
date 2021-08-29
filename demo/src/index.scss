@@ -1,6 +1,6 @@
-@import "./iconfont";
+@import "./scss/iconfont";
+@import "./scss/fonts";
 
-// Basic elements
 html {
   font: 16px/1.25 -apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Hiragino Sans GB,Simsun,Arial,sans-self;
   text-rendering: optimizeLegibility;
@@ -14,10 +14,4 @@ body {
 
 p {
   margin: 0;
-}
-
-#app {
-  min-height: 100vh;
-  background: #000;
-  color: #fff;
 }

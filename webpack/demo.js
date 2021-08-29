@@ -14,12 +14,15 @@ module.exports = merge(baseConfig, {
     unsafeCache: true,
     plugins: [
       new TsconfigPathsPlugin({ configFile: path.resolve(__dirname, "../demo/tsconfig.json") })
-    ]
+    ],
+    alias: {
+      "react-nice-avatar": path.resolve(__dirname, "../src")
+    }
   },
   entry: {
     app: process.env.NODE_ENV === "production"
-      ? path.resolve(__dirname, "../demo/src/app.tsx")
-      : ["react-hot-loader/patch", path.resolve(__dirname, "../demo/src/app.tsx")]
+      ? path.resolve(__dirname, "../demo/src/index.tsx")
+      : ["react-hot-loader/patch", path.resolve(__dirname, "../demo/src/index.tsx")]
   },
   output: {
     filename: "[name].js",
