@@ -1,4 +1,7 @@
+@import "~shared-style/mixin";
+
 $avatarWidth: 4.5rem;
+$laptopWidth: $avatarWidth - 0.8rem;
 $displayCount: 10;
 $sectionWidth: $avatarWidth * $displayCount;
 
@@ -7,14 +10,21 @@ $sectionWidth: $avatarWidth * $displayCount;
 }
 
 .AvatarList {
-  width: $sectionWidth;
+  width: $laptopWidth * $displayCount;
+  @include breakpoint(highres) {
+    width: $avatarWidth * $displayCount;
+  }
   .listWrapper {
     transition: all 0.35s ease-out;
   }
 
   .AvatarItemWrapper {
-    flex: 0 0 $avatarWidth;
-    height: $avatarWidth;
+    flex: 0 0 $laptopWidth;
+    height: $laptopWidth;
+    @include breakpoint(highres) {
+      flex: 0 0 $avatarWidth;
+      height: $avatarWidth;
+    }
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,9 +34,14 @@ $sectionWidth: $avatarWidth * $displayCount;
       }
     }
     & > .AvatarItem {
-      $avatarWidth: $avatarWidth - 1.5rem;
-      width: $avatarWidth;
-      height: $avatarWidth;
+      $avatarLaptopInnerWidth: $laptopWidth - 1.2rem;
+      $avatarInnerWidth: $avatarWidth - 1.5rem;
+      width: $avatarLaptopInnerWidth;
+      height: $avatarLaptopInnerWidth;
+      @include breakpoint(highres) {
+        width: $avatarInnerWidth;
+        height: $avatarInnerWidth;
+      }
       transition: all 0.25s ease-out;
       cursor: pointer;
     }

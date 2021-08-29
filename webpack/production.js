@@ -16,12 +16,12 @@ module.exports = merge(baseConfig, {
     ]
   },
   entry: {
-    app: path.resolve(__dirname, "../src/index.tsx")
+    index: path.resolve(__dirname, "../src/index.tsx")
   },
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "../dist"),
-    publicPath: "/dist/"
+    libraryTarget: 'commonjs2'
   },
   plugins: [
     new webpack.DefinePlugin({

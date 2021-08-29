@@ -66,7 +66,7 @@ class App extends Component<{}, {}> {
             id={this.avatarId}
             className="mb-10">
             <ReactNiceAvatar
-              className="w-80 h-80"
+              className="w-64 h-64 highres:w-80 highres:h-80"
               hairColorRandom
               shape={shape}
               {...config} />

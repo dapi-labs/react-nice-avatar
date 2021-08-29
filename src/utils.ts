@@ -144,8 +144,9 @@ export const genConfig: GenConfigFunc = (userConfig = {}) => {
   const _hairOrHatColor = response.hatStyle === "none" && response.hairColor || response.hatColor;
 
   // Eyebrow
-  response.eyeBrowStyle = userConfig.eyeBrowStyle
-  if (!response.eyeBrowStyle) {
+  if (userConfig.eyeBrowStyle) {
+    response.eyeBrowStyle = userConfig.eyeBrowStyle
+  } else {
     response.eyeBrowStyle = response.sex === "woman"
       ? pickRandomFromList(defaultOptions.eyeBrowWoman)
       : "up"
