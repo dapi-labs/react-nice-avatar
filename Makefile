@@ -9,7 +9,7 @@ lint-fix:
 	@npx eslint --fix .
 dev:
 	@echo "Start server..."
-	@NODE_ENV=development npx rollup -c ./demo/rollup.config.js -w
+	@NODE_ENV=development npx webpack-dev-server --config ./webpack/demo.js --progress
 .PHONY: lint lint-fix dev
 
 # Test
@@ -22,13 +22,13 @@ test: lint-fix
 build:
 	@echo "Building lib..."
 	@rm -rf ./dist
-	@npx rollup -c rollup.config.js
+	@npx webpack --config ./webpack/production.js --progress --bail
 	@echo "Copy type into dist..."
 	@cp src/types.ts dist/index.d.ts
 build-demo:
 	@echo "Building demo..."
 	@rm -rf ./demo/dist
-	@NODE_ENV=production npx rollup -c ./demo/rollup.config.js
+	@NODE_ENV=production npx webpack --config ./webpack/demo.js --progress --bail
 release:
 	@echo "Release $(level)"
 	@echo "Adding tag and modify the CHANGELOG"
