@@ -16,7 +16,8 @@ module.exports = merge(baseConfig, {
       new TsconfigPathsPlugin({ configFile: path.resolve(__dirname, "../demo/tsconfig.json") })
     ],
     alias: {
-      "react-nice-avatar": path.resolve(__dirname, "../src")
+      "react-nice-avatar": path.resolve(__dirname, "../src"),
+      "shared-style": path.resolve(__dirname, "../demo/src/scss")
     }
   },
   entry: {
