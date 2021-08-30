@@ -10,7 +10,7 @@
 
 <div align="center">
     <a href="https://nice-avatar.chilllab.io/">
-        <img src="https://user-images.githubusercontent.com/5305874/120076504-68e15980-c0d8-11eb-896c-3824b5eb05bb.png" 
+        <img src="https://user-images.githubusercontent.com/5305874/131275587-a6f44325-cb18-4a1c-8a1c-785942e751e7.png" 
              width="600" alt="imagewall" />
     </a>
 </div>
@@ -38,15 +38,15 @@ yarn add react-nice-avatar
 
 ## Usage
 
-1. Import the component
+1. Import the component.
     ```js
     import Avatar, { genConfig } from 'react-nice-avatar'
     ```
-2. Generate random config, the config can be saved into your database to use later
+2. Generate a random configuration, save it so that you can always rendering a same avatar with the configuration.
     ```js
     const config = genConfig(AvatarConfig?)
     ```
-3. Render the component with specific width / height and configuration
+3. Render the component with specific width / height and configuration.
     ```jsx
     <Avatar style={{ width: '8rem', height: '8rem' }} {...config} />
     ```
@@ -118,11 +118,19 @@ The options can be passed into genConfig or as React props
     ```sh
     $ make test
     ```
-    
-## Support the project
-<a href="https://www.buymeacoffee.com/wwayne" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 ## License
 
-Released under [MIT](/LICENSE) by [@chilllab](https://github.com/chilllab).
+Released under [MIT](/LICENSE) by [@cdapilab](https://github.com/dapilab).
 
+---
+
+<br />
+
+<div align="center">
+   <a href="https://dapiok.com">
+      <img src="https://user-images.githubusercontent.com/5305874/131274720-2f4f32a3-7687-4ad5-8a60-88fce579a38b.png" width="300" alt="dapi">
+   </a>
+</div>
+
+<br />
