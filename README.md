@@ -129,7 +129,7 @@ Released under [MIT](/LICENSE) by [@cdapilab](https://github.com/dapilab).
 
 <div align="center">
    <a href="https://dapiok.com">
-      <img src="https://user-images.githubusercontent.com/5305874/131274720-2f4f32a3-7687-4ad5-8a60-88fce579a38b.png" width="300" alt="dapi">
+      <img src="https://user-images.githubusercontent.com/5305874/131276202-ee5f6941-531c-4c01-bbc4-3ff8aca0e629.png" width="260" alt="dapi">
    </a>
 </div>
 
