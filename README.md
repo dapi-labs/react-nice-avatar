@@ -121,7 +121,7 @@ The options can be passed into genConfig or as React props
 
 ## License
 
-Released under [MIT](/LICENSE) by [@cdapilab](https://github.com/dapilab).
+Released under [MIT](/LICENSE) by [@dapilab](https://github.com/dapilab).
 
 ---
 
