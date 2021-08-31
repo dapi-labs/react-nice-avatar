@@ -107,7 +107,7 @@ The options can be passed into genConfig or as React props
     ```
 4. Open the browser to reivew the demo:
     ```sh
-    $ open http://localhost:5555
+    $ open http://localhost:8080
     ```
 5. Edit the files inside [src](/src).
 

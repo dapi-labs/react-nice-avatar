@@ -67,8 +67,12 @@ export default class AvatarEditor extends Component {
   }
 
   genCodeString (config) {
+    const ignoreAttr = ['id']
+    const myConfig = Object.keys(config)
+      .filter(key => !ignoreAttr.includes(key))
+      .reduce((acc, key) => ({ ...acc, [key]: config[key] }), {})
     return "const config = " +
-    JSON.stringify(config, null, 2) +
+    JSON.stringify(myConfig, null, 2) +
     "\n" +
     "const myConfig = genConfig(config)\n" +
     "<NiceAvatar style={{ width: '5rem', height: '5rem' }} {...myConfig} />"

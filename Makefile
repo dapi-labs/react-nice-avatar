@@ -8,7 +8,7 @@ lint-fix:
 	@echo "Fix linting..."
 	@npx eslint --fix .
 dev:
-	@echo "Start server..."
+	@echo "Starting server..."
 	@NODE_ENV=development npx webpack-dev-server --config ./webpack/demo.js --progress
 .PHONY: lint lint-fix dev
 
