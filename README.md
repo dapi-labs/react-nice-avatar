@@ -44,13 +44,17 @@ yarn add react-nice-avatar
     ```
 2. Generate a random configuration, save it so that you can always rendering a same avatar with the configuration.
     ```js
-    const config = genConfig(AvatarConfig?)
+    const config = genConfig(AvatarConfig?) 
     ```
+    
+    `tip`: AvatarConfig is an Object, plz check the **Options** below for what attributes can be passed in
+    
 3. Render the component with specific width / height and configuration.
     ```jsx
     <Avatar style={{ width: '8rem', height: '8rem' }} {...config} />
     ```
     or
+    
     ```jsx
     <Avatar className="w-32 h-32" {...config} />
     ```
