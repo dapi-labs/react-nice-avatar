@@ -32,9 +32,9 @@ export const pickRandomFromList: PickRandomFromList = (data, { avoidList = [], u
   // Increase selecting possibility of usually options
   const usuallyData = usually
     .filter(Boolean)
-    .reduce<any[]>(
+    .reduce(
       (acc, cur) => acc.concat(new Array(15).fill(cur)),
-      []
+      [] as any[]
     );
   myData = myData.concat(usuallyData);
 
@@ -105,8 +105,8 @@ export const genConfig: GenConfigFunc = (userConfig = {}) => {
   response.glassesStyle = userConfig.glassesStyle || pickRandomFromList(defaultOptions.glassesStyle, { usually: ["none"] });
 
   // Hair
-  let hairColorAvoidList: any[] = [];
-  let hairColorUsually: any[] = [];
+  let hairColorAvoidList: string[] = [];
+  let hairColorUsually: string[] = [];
   if (!userConfig.hairColor) {
     switch (response.sex) {
       case "woman": {

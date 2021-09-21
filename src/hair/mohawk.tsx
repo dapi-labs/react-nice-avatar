@@ -1,7 +1,7 @@
 import React from "react";
 import chroma from "chroma-js";
 
-export default function (props: { color: string, colorRandom: boolean }) {
+export default function hairMohawk(props: { color: string, colorRandom: boolean }): SVGElement {
   const { color, colorRandom } = props;
   const mainColor = colorRandom && color || "#171921";
   const subColor = colorRandom && chroma(color).brighten(2) || "#717376";

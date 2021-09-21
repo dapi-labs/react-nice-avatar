@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function () {
+export default function footer(): HTMLElement {
   return (
     <footer className="flex items-center justify-center text-gray-400 text-sm pb-5">
       <a

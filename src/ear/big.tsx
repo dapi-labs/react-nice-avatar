@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function (props: { color: string }) {
+export default function earBig(props: { color: string }): SVGElement {
   const { color } = props;
   return (
     <svg

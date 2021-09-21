@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function (props: { color: string }) {
+export default function hairWomanShort(props: { color: string }): SVGElement {
   const { color } = props;
   return (
     <svg

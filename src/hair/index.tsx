@@ -6,7 +6,7 @@ import Mohawk from "./mohawk";
 import WomanLong from "./womanLong";
 import WomanShort from "./womanShort";
 
-export default function (props: { style: string, color: string, colorRandom: boolean }) {
+export default function hair(props: { style: string, color: string, colorRandom: boolean }): SVGElement {
   const { style, color, colorRandom } = props;
   switch (style) {
     case "thick": return <Thick color={color} colorRandom={colorRandom} />;

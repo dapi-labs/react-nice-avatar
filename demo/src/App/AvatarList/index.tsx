@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { nanoid } from 'nanoid'
 
+import type { AvatarFullConfig } from 'react-nice-avatar/types'
+import type { AvatarListItem } from './types'
+
 import ReactNiceAvatar, { genConfig } from 'react-nice-avatar/index'
 
 import "./index.scss"
@@ -11,7 +14,7 @@ export default class AvatarList extends Component {
     selectConfig: PropTypes.func.isRequired
   }
 
-  constructor (props) {
+  constructor (props: { selectConfig: (item: AvatarFullConfig) => void }) {
     super(props)
     this.displayCount = 10
     this.state = {
@@ -26,10 +29,10 @@ export default class AvatarList extends Component {
     this.fetchListWidth()
   }
 
-  genConfigList (count: number) {
+  genConfigList (count: number): AvatarListItem {
     return new Array(count)
       .fill(null)
-      .map((_, idx) => ({
+      .map(() => ({
         ...genConfig({ isGradient: Boolean(Math.round(Math.random())) }),
         id: 'n_' + nanoid()
       }))

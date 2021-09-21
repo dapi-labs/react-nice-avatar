@@ -5,7 +5,7 @@ import Hoody from "./hoody";
 import Short from "./short";
 import Polo from "./polo";
 
-export default function (props: { color: string, style: string }) {
+export default function shirt (props: { color: string, style: string }): SVGElement {
   const { style, color } = props;
   const secondColor = chroma(color).brighten(1).hex();
   switch (style) {

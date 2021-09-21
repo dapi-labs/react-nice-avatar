@@ -4,7 +4,7 @@ import Long from "./long";
 import Short from "./short";
 import Round from "./round";
 
-export default function (props: { style: string }) {
+export default function nose (props: { style: string }): SVGElement {
   const { style } = props;
   switch (style) {
     case "long": return <Long />;

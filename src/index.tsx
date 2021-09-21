@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import type { NiceAvatarProps } from "./types"
+
 import { genConfig, defaultOptions } from "./utils";
-import { NiceAvatarProps } from "./types"
 
 import Face from "./face";
 import Hair from "./hair";
