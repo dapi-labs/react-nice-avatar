@@ -1,7 +1,5 @@
 module.exports = {
-  purge: {
-    content: ['./demo/app.template']
-  },
+  purge: [],
   darkMode: false,
   theme: {
     screens: {
