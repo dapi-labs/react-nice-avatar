@@ -13,7 +13,7 @@ dev:
 .PHONY: lint lint-fix dev
 
 # Test
-test:
+test: lint-fix
 	@echo "Running test..."
 	@npx jest
 .PHONY: test

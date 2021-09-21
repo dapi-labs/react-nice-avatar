@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import classnames from "classnames";
 import { hot } from "react-hot-loader";
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
-
-import { AvatarFullConfig } from '../../../src/types'
 
 import ReactNiceAvatar, { genConfig } from "react-nice-avatar/index";
 
@@ -14,7 +11,7 @@ import Footer from './Footer/index'
 
 require('./index.scss')
 
-class App extends Component<{}, {}> {
+class App extends Component {
   constructor(props) {
     super(props)
     this.state = {

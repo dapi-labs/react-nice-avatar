@@ -4,7 +4,7 @@ import Circle from "./circle";
 import Oval from "./oval";
 import Smile from "./smile";
 
-export default function (props: { style: string }) {
+export default function eyes(props: { style: string }): SVGElement {
   const { style } = props;
   switch (style) {
     case "circle": return <Circle />;
