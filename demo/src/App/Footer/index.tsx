@@ -10,7 +10,7 @@ export default function footer(): HTMLElement {
       </a>
       <span className="mx-3 relative -top-1">.</span>
       <a
-        href="https://twitter.com/dapi_ok"
+        href="https://twitter.com/dapi_labs"
         className="transition-opacity duration-300 hover:opacity-75">
         Twitter
       </a>
