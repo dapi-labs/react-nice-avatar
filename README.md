@@ -17,7 +17,7 @@
 
 ## Online editor / preview
 
-- https://nice-avatar.dapiok.com/
+- https://nice-avatar.dapi.to/
 
 ## Assets
 
