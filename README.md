@@ -2,7 +2,7 @@
 
 [![Version](http://img.shields.io/npm/v/react-nice-avatar.svg)](https://www.npmjs.org/package/react-nice-avatar)
 [![npm download][download-image]][download-url]
-[![Build Status](https://app.travis-ci.com/dapilab/react-nice-avatar.svg?branch=main)](https://app.travis-ci.com/github/dapilab/react-nice-avatar)
+[![Build Status](https://app.travis-ci.com/dapi-labs/react-nice-avatar.svg?branch=main)](https://app.travis-ci.com/github/dapi-labs/react-nice-avatar)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/df23baf6-daac-4ce5-a0b6-5baade2cb822/deploy-status)](https://app.netlify.com/sites/gracious-turing-db4aa3/deploys)
 
 [download-image]: https://img.shields.io/npm/dm/react-nice-avatar.svg?style=flat-square
@@ -90,7 +90,7 @@ The options can be passed into genConfig or as React props
 
 1. Clone the repo:
     ```sh
-    $ git clone git@github.com:chilllab/react-nice-avatar.git
+    $ git clone git@github.com:dapi-labs/react-nice-avatar.git
     $ cd react-nice-avatar
     ```
 2. Install dependencies:
@@ -125,7 +125,7 @@ The options can be passed into genConfig or as React props
 
 ## License
 
-Released under [MIT](/LICENSE) by [@dapilab](https://github.com/dapilab).
+Released under [MIT](/LICENSE) by [@dapi-labs](https://github.com/dapi-labs).
 
 ---
 

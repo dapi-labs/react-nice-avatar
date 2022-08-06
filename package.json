@@ -74,7 +74,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dapilab/react-nice-avatar"
+    "url": "https://github.com/dapi-labs/react-nice-avatar"
   },
   "browserslist": [
     "last 2 versions"

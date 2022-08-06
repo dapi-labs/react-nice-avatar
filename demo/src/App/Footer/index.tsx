@@ -4,7 +4,7 @@ export default function footer(): HTMLElement {
   return (
     <footer className="flex items-center justify-center text-gray-400 text-sm pb-5">
       <a
-        href="https://github.com/dapilab/react-nice-avatar"
+        href="https://github.com/dapi-labs/react-nice-avatar"
         className="transition-opacity duration-300 hover:opacity-75">
         Github
       </a>
