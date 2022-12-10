@@ -133,6 +133,12 @@ The options can be passed into genConfig or as React props
     $ make test
     ```
 
+## Release
+
+```sh
+$ make release level=patch | minor | major | 1.3.0
+```
+
 ## License
 
 Released under [MIT](/LICENSE) by [@dapi-labs](https://github.com/dapi-labs).
