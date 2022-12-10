@@ -54,6 +54,12 @@ class App extends Component {
     }
   }
 
+  onInputKeyUp (e) {
+    this.setState({
+      config: genConfig(e.target.value)
+    })
+  }
+
   render() {
     const { config, shape } = this.state
     return (
@@ -74,6 +80,10 @@ class App extends Component {
             updateConfig={this.updateConfig.bind(this)}
             updateShape={this.updateShape.bind(this)}
             download={this.download.bind(this)} />
+          <input
+            className="w-64 h-10 p-2 rounded mt-10 inputField text-center outline-none"
+            placeholder="input name or email ..."
+            onKeyUp={this.onInputKeyUp.bind(this)} />
         </main>
 
         {/* Avatar list */}
