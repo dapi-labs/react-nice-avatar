@@ -47,7 +47,7 @@ export interface NiceAvatarProps extends AvatarConfig {
   shape?: "circle" | "rounded" | "square"
 }
 
-export type GenConfigFunc = (config?: AvatarFullConfig) => Required<AvatarFullConfig>
+export type GenConfigFunc = (config?: AvatarFullConfig | string) => Required<AvatarFullConfig>
 
 export declare const genConfig: GenConfigFunc
 

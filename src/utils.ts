@@ -21,7 +21,9 @@ interface PickRandomOpt<T> {
   avoidList?: T[],
   usually?: T[]
 }
+
 type PickRandomFromList = <T>(data: T[], opt?: PickRandomOpt<T | undefined>) => T;
+
 export const pickRandomFromList: PickRandomFromList = (data, { avoidList = [], usually = [] } = {}) => {
   // Filter out avoid options
   const avoidSet = new Set(
@@ -66,6 +68,7 @@ interface DefaultOptions {
   bgColor: string[],
   gradientBgColor: string[]
 }
+
 export const defaultOptions: DefaultOptions = {
   sex: ["man", "woman"],
   faceColor: ["#F9C9B6", "#AC6651"],
@@ -93,21 +96,61 @@ export const defaultOptions: DefaultOptions = {
     "linear-gradient(45deg, #56b5f0 0%, #45ccb5 100%)"
   ]
 };
+
+const stringToHashCode = (str: string) : number => {
+  if (str.length === 0) return 0
+  let hash = 0
+  let char
+  for (let i = 0; i < str.length; i++) {
+    char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return Math.abs(hash);
+}
+
+type PickByHashCodeOpts = {
+  avoidList?: string[],
+  usually?: string[]
+}
+const pickByHashCode = (code: number, type: keyof DefaultOptions, opts?: PickByHashCodeOpts): string => {
+  const avoidList = opts && opts.avoidList || []
+  const usually = opts && opts.usually || []
+
+  // Filter out avoid options
+  const avoidSet = new Set<string>(avoidList)
+  let myDefaultOptions = defaultOptions[type].filter(item => !avoidSet.has(item))
+
+  // Increase selecting possibility of usually options
+  myDefaultOptions = usually
+    .filter(Boolean)
+    .reduce(
+      (acc, cur) => acc.concat(new Array(15).fill(cur)),
+      [] as string[]
+    )
+    .concat(myDefaultOptions)
+
+  const index = code % myDefaultOptions.length
+  return myDefaultOptions[index]
+}
+
 export const genConfig: GenConfigFunc = (userConfig = {}) => {
+  const isSeedConfig = typeof userConfig === 'string';
+  const hashCode = isSeedConfig && stringToHashCode(userConfig) || 0
   const response = {} as Required<AvatarFullConfig>;
-  response.sex = userConfig.sex || pickRandomFromList(defaultOptions.sex);
-  response.faceColor = userConfig.faceColor || pickRandomFromList(defaultOptions.faceColor);
-  response.earSize = userConfig.earSize || pickRandomFromList(defaultOptions.earSize);
-  response.eyeStyle = userConfig.eyeStyle || pickRandomFromList(defaultOptions.eyeStyle);
-  response.noseStyle = userConfig.noseStyle || pickRandomFromList(defaultOptions.noseStyle);
-  response.mouthStyle = userConfig.mouthStyle || pickRandomFromList(defaultOptions.mouthStyle);
-  response.shirtStyle = userConfig.shirtStyle || pickRandomFromList(defaultOptions.shirtStyle);
-  response.glassesStyle = userConfig.glassesStyle || pickRandomFromList(defaultOptions.glassesStyle, { usually: ["none"] });
+  response.sex = isSeedConfig ? pickByHashCode(hashCode, 'sex') as Sex : (userConfig.sex || pickRandomFromList(defaultOptions.sex));
+  response.faceColor = isSeedConfig ? pickByHashCode(hashCode, 'faceColor') : (userConfig.faceColor || pickRandomFromList(defaultOptions.faceColor));
+  response.earSize = isSeedConfig ? pickByHashCode(hashCode, 'earSize') as EarSize : (userConfig.earSize || pickRandomFromList(defaultOptions.earSize));
+  response.eyeStyle = isSeedConfig ? pickByHashCode(hashCode, 'eyeStyle') as EyeStyle : (userConfig.eyeStyle || pickRandomFromList(defaultOptions.eyeStyle));
+  response.noseStyle = isSeedConfig ? pickByHashCode(hashCode, 'noseStyle') as NoseStyle : (userConfig.noseStyle || pickRandomFromList(defaultOptions.noseStyle));
+  response.mouthStyle = isSeedConfig ? pickByHashCode(hashCode, 'mouthStyle') as MouthStyle : (userConfig.mouthStyle || pickRandomFromList(defaultOptions.mouthStyle));
+  response.shirtStyle = isSeedConfig ? pickByHashCode(hashCode, 'shirtStyle') as ShirtStyle : (userConfig.shirtStyle || pickRandomFromList(defaultOptions.shirtStyle));
+  response.glassesStyle = isSeedConfig ? pickByHashCode(hashCode, 'glassesStyle', { usually: ["none"] }) as GlassesStyle : (userConfig.glassesStyle || pickRandomFromList(defaultOptions.glassesStyle, { usually: ["none"] }));
 
   // Hair
   let hairColorAvoidList: string[] = [];
   let hairColorUsually: string[] = [];
-  if (!userConfig.hairColor) {
+  if (isSeedConfig || !userConfig.hairColor) {
     switch (response.sex) {
       case "woman": {
         hairColorAvoidList = response.faceColor === defaultOptions.faceColor[1] && ["#77311D"] || [];
@@ -118,48 +161,63 @@ export const genConfig: GenConfigFunc = (userConfig = {}) => {
       }
     }
   }
-  response.hairColor = userConfig.hairColor || pickRandomFromList(defaultOptions.hairColor, {
-    avoidList: hairColorAvoidList,
-    usually: hairColorUsually
-  });
+  response.hairColor = isSeedConfig
+    ? pickByHashCode(hashCode, 'hairColor', {
+      avoidList: hairColorAvoidList,
+      usually: hairColorUsually
+    })
+    : (userConfig.hairColor || pickRandomFromList(defaultOptions.hairColor, {
+      avoidList: hairColorAvoidList,
+      usually: hairColorUsually
+    }));
 
-  let myHairStyle = userConfig.hairStyle;
-  if (!myHairStyle) {
+  if (isSeedConfig || !userConfig.hairStyle) {
     switch (response.sex) {
       case "man": {
-        myHairStyle = pickRandomFromList(defaultOptions.hairStyleMan, { usually: ["normal", "thick"] });
+        response.hairStyle = isSeedConfig
+          ? pickByHashCode(hashCode, 'hairStyleMan', { usually: ["normal", "thick"] }) as HairStyleMan
+          : pickRandomFromList(defaultOptions.hairStyleMan, { usually: ["normal", "thick"] });
         break;
       }
       case "woman": {
-        myHairStyle = pickRandomFromList(defaultOptions.hairStyleWoman);
+        response.hairStyle = isSeedConfig
+          ? pickByHashCode(hashCode, 'hairStyleWoman') as HairStyleWoman
+          : pickRandomFromList(defaultOptions.hairStyleWoman);
         break;
       }
     }
   }
-  response.hairStyle = myHairStyle;
 
   // Hat
-  response.hatStyle = userConfig.hatStyle || pickRandomFromList(defaultOptions.hatStyle, { usually: ["none"] });
-  response.hatColor = userConfig.hatColor || pickRandomFromList(defaultOptions.hatColor);
+  response.hatStyle = isSeedConfig
+    ? pickByHashCode(hashCode, 'hatStyle', { usually: ["none"] }) as HatStyle
+    : (userConfig.hatStyle || pickRandomFromList(defaultOptions.hatStyle, { usually: ["none"] }));
+  response.hatColor = isSeedConfig ? pickByHashCode(hashCode, 'hatColor') : (userConfig.hatColor || pickRandomFromList(defaultOptions.hatColor));
   const _hairOrHatColor = response.hatStyle === "none" && response.hairColor || response.hatColor;
 
   // Eyebrow
-  if (userConfig.eyeBrowStyle) {
+  if (!isSeedConfig && userConfig.eyeBrowStyle) {
     response.eyeBrowStyle = userConfig.eyeBrowStyle
   } else {
     response.eyeBrowStyle = response.sex === "woman"
-      ? pickRandomFromList(defaultOptions.eyeBrowWoman)
+      ? isSeedConfig
+        ? pickByHashCode(hashCode, 'eyeBrowWoman') as EyeBrowStyle
+        : pickRandomFromList(defaultOptions.eyeBrowWoman)
       : "up"
   }
 
   // Shirt color
-  response.shirtColor = userConfig.shirtColor || pickRandomFromList(defaultOptions.shirtColor, { avoidList: [_hairOrHatColor] });
+  response.shirtColor = isSeedConfig
+    ? pickByHashCode(hashCode, 'shirtColor', { avoidList: [_hairOrHatColor] })
+    : userConfig.shirtColor || pickRandomFromList(defaultOptions.shirtColor, { avoidList: [_hairOrHatColor] });
 
   // Background color
-  if (userConfig.isGradient) {
+  if (!isSeedConfig && userConfig.isGradient) {
     response.bgColor = userConfig.bgColor || pickRandomFromList(defaultOptions.gradientBgColor);
   } else {
-    response.bgColor = userConfig.bgColor || pickRandomFromList(defaultOptions.bgColor, { avoidList: [_hairOrHatColor, response.shirtColor] });
+    response.bgColor = isSeedConfig
+      ? pickByHashCode(hashCode, 'bgColor', { avoidList: [_hairOrHatColor, response.shirtColor] })
+      : userConfig.bgColor || pickRandomFromList(defaultOptions.bgColor, { avoidList: [_hairOrHatColor, response.shirtColor] });
   }
 
   return response;

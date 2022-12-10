@@ -36,6 +36,12 @@ or
 yarn add react-nice-avatar
 ```
 
+or
+
+```sh
+pnpm i react-nice-avatar
+```
+
 ## Usage
 
 1. Import the component.
@@ -126,15 +132,3 @@ The options can be passed into genConfig or as React props
 ## License
 
 Released under [MIT](/LICENSE) by [@dapi-labs](https://github.com/dapi-labs).
-
----
-
-<br />
-
-<div align="center">
-   <a href="https://dapiok.com">
-      <img src="https://user-images.githubusercontent.com/5305874/131276202-ee5f6941-531c-4c01-bbc4-3ff8aca0e629.png" width="260" alt="dapi">
-   </a>
-</div>
-
-<br />
