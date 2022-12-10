@@ -36,24 +36,28 @@ or
 yarn add react-nice-avatar
 ```
 
-or
-
-```sh
-pnpm i react-nice-avatar
-```
-
 ## Usage
 
 1. Import the component.
     ```js
     import Avatar, { genConfig } from 'react-nice-avatar'
     ```
-2. Generate a random configuration, save it so that you can always rendering a same avatar with the configuration.
+2. Generate a configuration
+   
+    Config can be generated with a seed, seed is a string of name, email or anything you like
     ```js
-    const config = genConfig(AvatarConfig?) 
+    const config = genConfig("hi@dapi.to") 
     ```
     
-    `tip`: AvatarConfig is an Object, plz check the **Options** below for what attributes can be passed in
+    or it can be generate with customized object, plz check the Options below for what attributes can be passed in
+    ```js
+    const config = genConfig({ sex: "man", hairStyle: "mohawk" }) 
+    ```
+    
+    or generate a random config by passing nothing to the function genConfig
+    ```js
+    const config = genConfig() 
+    ```
     
 3. Render the component with specific width / height and configuration.
     ```jsx
