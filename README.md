@@ -44,17 +44,17 @@ yarn add react-nice-avatar
     ```
 2. Generate a configuration
    
-    Config can be generated with a seed, seed is a string of name, email or anything you like
+    Config can be generated with a seed, a seed is a string of name, email or any string you like
     ```js
     const config = genConfig("hi@dapi.to") 
     ```
     
-    or it can be generate with customized object, plz check the Options below for what attributes can be passed in
+    or it can be generate with a customized object, plz check the Options below for what attributes can be passed in
     ```js
     const config = genConfig({ sex: "man", hairStyle: "mohawk" }) 
     ```
     
-    or generate a random config by passing nothing to the function genConfig
+    or generating a random config by passing nothing to the function genConfig
     ```js
     const config = genConfig() 
     ```
