@@ -81,7 +81,7 @@ class App extends Component {
             updateShape={this.updateShape.bind(this)}
             download={this.download.bind(this)} />
           <input
-            className="w-64 h-10 p-2 rounded mt-10 inputField text-center outline-none"
+            className="inputField w-64 h-10 p-2 rounded-full mt-10 text-center outline-none"
             placeholder="input name or email ..."
             onKeyUp={this.onInputKeyUp.bind(this)} />
         </main>
