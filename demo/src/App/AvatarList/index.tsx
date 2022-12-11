@@ -78,7 +78,7 @@ export default class AvatarList extends Component {
         {/* List */}
         <div
           id={this.listId}
-          className="AvatarList overflow-x-auto">
+          className="AvatarList overflow-x-hidden">
           <div
             className="listWrapper flex items-center py-3"
             style={{
