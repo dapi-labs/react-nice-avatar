@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/chilllab/react-nice-avatar/compare/v1.3.0...v1.3.1) (2022-12-17)
+
+
+### Bug Fixes
+
+* demo avatar list scrollbar should be hidden ([94e2900](https://github.com/chilllab/react-nice-avatar/commits94e290073e7c4d77c385479c52093cdf0ee49e70))
+* user specified hiar style ([5fdc6dd](https://github.com/chilllab/react-nice-avatar/commits5fdc6ddad978604c1cfe7226266312d0230b3702))
+
 ## [1.3.0](https://github.com/chilllab/react-nice-avatar/compare/v1.2.4...v1.3.0) (2022-12-10)
 
 
