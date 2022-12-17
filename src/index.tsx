@@ -62,7 +62,7 @@ export default class ReactNiceAvatar extends Component<NiceAvatarProps> {
         break;
       }
     }
-
+    
     return (
       <div
         id={id}

@@ -186,6 +186,8 @@ export const genConfig: GenConfigFunc = (userConfig = {}) => {
         break;
       }
     }
+  } else {
+    response.hairStyle = userConfig.hairStyle
   }
 
   // Hat
