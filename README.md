@@ -107,10 +107,6 @@ The options can be passed into genConfig or as React props
     ```sh
     $ yarn
     ```
-    Or
-    ```sh
-    $ npm install
-    ```
 3. Start the server for the demo:
     ```sh
     $ make dev
