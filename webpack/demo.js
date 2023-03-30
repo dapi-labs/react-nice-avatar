@@ -1,6 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
-const merge = require("webpack-merge");
+const merge = require("webpack-merge").default;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -32,11 +32,7 @@ module.exports = merge(baseConfig, {
   },
   devServer: {
     hot: true,
-    hotOnly: true,
-    contentBase: path.resolve(__dirname, "../demo/dist"),
-    publicPath: "/",
     historyApiFallback: true,
-    stats: "minimal",
     port: 8080
   },
   plugins: [
