@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const baseConfig = require("./base");
 
-module.exports = merge(baseConfig, {
+module.exports = merge(baseConfig({ includeReactHotLoader: true }), {
   mode: "development",
   devtool: "eval-cheap-module-source-map",
   resolve: {

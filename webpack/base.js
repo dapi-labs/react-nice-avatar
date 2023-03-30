@@ -4,7 +4,7 @@ const tailwindcss = require("tailwindcss");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = {
+module.exports = ({ includeReactHotLoader = false } = {}) => ({
   context: path.resolve(__dirname, ".."),
   resolve: {
     modules: [
@@ -47,7 +47,7 @@ module.exports = {
               "@babel/plugin-proposal-private-methods",
               "@babel/plugin-syntax-async-generators",
               "@babel/plugin-transform-regenerator",
-              'react-hot-loader/babel',
+              ...(includeReactHotLoader ? ['react-hot-loader/babel'] : []),
             ],
           },
         },
@@ -80,4 +80,4 @@ module.exports = {
       }
     ]
   }
-};
+});

@@ -12,7 +12,7 @@ const dependencyNameToExternals = (dependencyName) => [
   new RegExp(`^${dependencyName}/.*`),
 ];
 
-const common = merge(baseConfig, {
+const common = merge(baseConfig(), {
   mode: "production",
   devtool: "source-map",
   externals: [
