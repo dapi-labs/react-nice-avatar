@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function hatTurban(props: { color: string }): SVGElement {
+export default function hatTurban(props: { color: string }) {
   const { color } = props;
   return (
     <svg

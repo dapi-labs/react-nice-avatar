@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function mouthSmile(): SVGElement {
+export default function mouthSmile() {
   return (
     <svg
       style={{

@@ -3,7 +3,7 @@ import React, { Fragment } from "react";
 import EarSmall from "./small";
 import EarBig from "./big";
 
-export default function ear(props: { color: string, size: string }): SVGElement {
+export default function ear(props: { color: string, size: string }) {
   const { color, size } = props;
   return (
     <Fragment>

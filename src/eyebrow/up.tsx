@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function eyebrowUp(): SVGElement {
+export default function eyebrowUp() {
   return (
     <svg
       style={{

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function mouthLaugh (): SVGElement {
+export default function mouthLaugh() {
   const id = `mouth${Math.round(Math.random() * 9999999)}`;
   return (
     <svg

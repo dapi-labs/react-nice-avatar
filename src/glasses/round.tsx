@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function glassesRound(): SVGElement {
+export default function glassesRound() {
   return (
     <svg
       style={{

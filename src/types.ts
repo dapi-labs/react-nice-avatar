@@ -9,7 +9,7 @@ export type EarSize = 'small' | 'big'
 export type HairStyle = 'normal' | 'thick' | 'mohawk' | 'womanLong' | 'womanShort'
 export type HairStyleMan = 'normal' | 'thick' | 'mohawk'
 export type HairStyleWoman = 'normal' | 'womanLong' | 'womanShort'
-export type HatStyle = 'beanie' |'turban' | 'none'
+export type HatStyle = 'beanie' | 'turban' | 'none'
 export type EyeStyle = 'circle' | 'oval' | 'smile'
 export type GlassesStyle = 'round' | 'square' | 'none'
 export type NoseStyle = 'short' | 'long' | 'round'
@@ -46,9 +46,11 @@ export interface NiceAvatarProps extends AvatarConfig {
   style?: Style,
   shape?: "circle" | "rounded" | "square"
 }
-
-export type GenConfigFunc = (config?: AvatarFullConfig | string) => Required<AvatarFullConfig>
+export interface GenConfigFunc {
+  (seed?: string, config?: AvatarFullConfig): Required<AvatarFullConfig>
+  (config?: AvatarFullConfig): Required<AvatarFullConfig>
+  (mixed?: AvatarFullConfig | string, config?: AvatarFullConfig): Required<AvatarFullConfig>
+}
 
 export declare const genConfig: GenConfigFunc
-
-export default class ReactNiceAvatar extends React.Component<NiceAvatarProps> {}
+export default class ReactNiceAvatar extends React.Component<NiceAvatarProps> { }
