@@ -3,18 +3,31 @@ import PropTypes from 'prop-types'
 import { nanoid } from 'nanoid'
 
 import type { AvatarFullConfig } from 'react-nice-avatar/types'
-import type { AvatarListItem } from './types'
 
 import ReactNiceAvatar, { genConfig } from 'react-nice-avatar/index'
 
 import "./index.scss"
+import { AvatarListItem } from './interface'
 
-export default class AvatarList extends Component {
+export interface AvatarListProps {
+  selectConfig: (item: AvatarFullConfig) => void
+}
+
+export interface AvatarListState {
+  current: number,
+  avatarConfigList: AvatarListItem[]
+}
+
+export default class AvatarList extends Component<AvatarListProps, AvatarListState> {
   static propTypes = {
     selectConfig: PropTypes.func.isRequired
   }
 
-  constructor (props: { selectConfig: (item: AvatarFullConfig) => void }) {
+  displayCount: number
+  listId: string
+  listWidth: number
+
+  constructor(props: { selectConfig: (item: AvatarFullConfig) => void }) {
     super(props)
     this.displayCount = 10
     this.state = {
@@ -25,11 +38,11 @@ export default class AvatarList extends Component {
     this.listWidth = 0
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.fetchListWidth()
   }
 
-  genConfigList (count: number): AvatarListItem {
+  genConfigList(count: number): AvatarListItem[] {
     return new Array(count)
       .fill(null)
       .map(() => ({
@@ -38,7 +51,7 @@ export default class AvatarList extends Component {
       }))
   }
 
-  fetchListWidth (count = 0) {
+  fetchListWidth(count = 0) {
     if (count > 20) return
     const listElem = document.getElementById(this.listId)
     if (!listElem) {
@@ -50,10 +63,10 @@ export default class AvatarList extends Component {
     this.listWidth = listElem.offsetWidth
   }
 
-  changeCurrent (deg: 1 | -1) {
+  changeCurrent(deg: 1 | -1) {
     const { current, avatarConfigList } = this.state
     const newCurrent = Math.max(current + deg, 0)
-    const newState = { current: newCurrent }
+    const newState = { avatarConfigList, current: newCurrent }
     if (newCurrent * this.displayCount > avatarConfigList.length - 1) {
       const newConfigList = this.genConfigList(this.displayCount)
       newState.avatarConfigList = avatarConfigList.concat(newConfigList)
@@ -61,7 +74,7 @@ export default class AvatarList extends Component {
     this.setState(newState)
   }
 
-  render () {
+  render() {
     const { selectConfig } = this.props
     const { current, avatarConfigList } = this.state
     const displayMax = (current + 2) * this.displayCount
@@ -94,14 +107,14 @@ export default class AvatarList extends Component {
                     <ReactNiceAvatar
                       className="AvatarItem"
                       {...item} />
-                    }
+                  }
                 </div>
               )
             })}
           </div>
         </div>
 
-      {/* Arrow right */}
+        {/* Arrow right */}
         <i
           className="iconfont icon-arrow-right-filling-center ml-1 text-xl text-gray-500 transition hover:text-white cursor-pointer"
           onClick={this.changeCurrent.bind(this, 1)} />

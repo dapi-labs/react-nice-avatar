@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
 import './index.scss'
 
-export default function sectionWrapper(props: {
+export interface SectionWrapperProps {
   className?: string,
-  children: JSX.Element,
   switchConfig: () => void,
   tip: string
-}): HTMLElement {
+}
+
+export default function sectionWrapper(props: PropsWithChildren<SectionWrapperProps>) {
   const { className = "", children, switchConfig, tip } = props
   return (
     <div

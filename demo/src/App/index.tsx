@@ -8,10 +8,19 @@ import ReactNiceAvatar, { genConfig } from "react-nice-avatar/index";
 import AvatarEditor from './AvatarEditor/index'
 import AvatarList from './AvatarList/index'
 import Footer from './Footer/index'
+import { AvatarFullConfig } from "react-nice-avatar/types";
+import { SingleComponentState } from "src/types";
 
 require('./index.scss')
 
-class App extends Component {
+export interface AppState {
+  config: Required<AvatarFullConfig>,
+  shape: SingleComponentState['bgShape']
+}
+class App extends Component<any, AppState> {
+
+  avatarId: string
+
   constructor(props) {
     super(props)
     this.state = {
@@ -27,13 +36,13 @@ class App extends Component {
     this.setState({ config })
   }
 
-  updateConfig (key, value) {
+  updateConfig(key, value) {
     const { config } = this.state
     config[key] = value
     this.setState({ config })
   }
 
-  updateShape (shape) {
+  updateShape(shape) {
     this.setState({ shape })
   }
 
@@ -54,7 +63,7 @@ class App extends Component {
     }
   }
 
-  onInputKeyUp (e) {
+  onInputKeyUp(e) {
     this.setState({
       config: genConfig(e.target.value)
     })
@@ -72,7 +81,7 @@ class App extends Component {
               className="w-64 h-64 highres:w-80 highres:h-80"
               hairColorRandom
               shape={shape}
-              {...config} />
+              {...config as AvatarFullConfig} />
           </div>
           <AvatarEditor
             config={config}

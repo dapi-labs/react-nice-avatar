@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { defaultOptions } from "react-nice-avatar/utils"
+import { defaultOptions, DefaultOptions } from "react-nice-avatar/utils"
 import Face from "react-nice-avatar/face/index"
 import Hair from "react-nice-avatar/hair/index"
 import Hat from "react-nice-avatar/hat/index"
@@ -16,8 +16,18 @@ import Shirt from "react-nice-avatar/shirt/index"
 import SectionWrapper from "./SectionWrapper/index"
 
 import './index.scss'
+import { AvatarFullConfig } from '../../../../src/types'
 
-export default class AvatarEditor extends Component {
+export interface AvatarEditorProps {
+  config: Required<AvatarFullConfig>,
+  shape: string,
+  updateConfig: (type: keyof DefaultOptions, value: string) => void,
+  updateShape: (shape: Shape) => void,
+  download: () => void
+}
+
+type Shape = 'circle' | 'rounded' | 'square'
+export default class AvatarEditor extends Component<AvatarEditorProps, { isCodeShow: boolean }> {
   static propTypes = {
     config: PropTypes.object.isRequired,
     shape: PropTypes.string.isRequired,
@@ -26,7 +36,9 @@ export default class AvatarEditor extends Component {
     download: PropTypes.func.isRequired
   }
 
-  constructor (props) {
+  myDefaultOptions: DefaultOptions
+  shapes: Array<Shape>
+  constructor(props: AvatarEditorProps) {
     super(props)
     this.state = {
       isCodeShow: false
@@ -36,49 +48,49 @@ export default class AvatarEditor extends Component {
   }
 
   // Modification on defaultOptions for convenient
-  genDefaultOptions (opts) {
-    const hairSet = new Set(opts.hairStyleMan.concat(opts.hairStyleWoman))
+  genDefaultOptions(opts: DefaultOptions) {
+    const hairSet = new Set(opts.hairStyleMan.concat(opts.hairStyleWoman as any[]))
     return {
       ...opts,
       hairStyle: Array.from(hairSet)
-    }
+    } as DefaultOptions
   }
 
-  switchConfig (type, currentOpt) {
+  switchConfig<T extends keyof DefaultOptions>(type: T, currentOpt: DefaultOptions[T][number]) {
     const { updateConfig } = this.props
     const opts = this.myDefaultOptions[type]
-    const currentIdx = opts.findIndex(item => item === currentOpt)
+    const currentIdx = opts.findIndex((item) => item === currentOpt)
     const newIdx = (currentIdx + 1) % opts.length
     updateConfig(type, opts[newIdx])
   }
 
-  switchShape (currentShape) {
+  switchShape(currentShape: Shape) {
     const { updateShape } = this.props
     const currentIdx = this.shapes.findIndex(item => item === currentShape)
     const newIdx = (currentIdx + 1) % this.shapes.length
     updateShape(this.shapes[newIdx])
   }
 
-  toggleCodeShow () {
+  toggleCodeShow() {
     const { isCodeShow } = this.state
     this.setState({
       isCodeShow: !isCodeShow
     })
   }
 
-  genCodeString (config) {
+  genCodeString(config) {
     const ignoreAttr = ['id']
     const myConfig = Object.keys(config)
       .filter(key => !ignoreAttr.includes(key))
       .reduce((acc, key) => ({ ...acc, [key]: config[key] }), {})
     return "const config = " +
-    JSON.stringify(myConfig, null, 2) +
-    "\n" +
-    "const myConfig = genConfig(config)\n" +
-    "<NiceAvatar style={{ width: '5rem', height: '5rem' }} {...myConfig} />"
+      JSON.stringify(myConfig, null, 2) +
+      "\n" +
+      "const myConfig = genConfig(config)\n" +
+      "<NiceAvatar style={{ width: '5rem', height: '5rem' }} {...myConfig} />"
   }
 
-  render () {
+  render() {
     const { config, shape, download } = this.props
     const { isCodeShow } = this.state
     return (
@@ -109,14 +121,16 @@ export default class AvatarEditor extends Component {
           className="w-8 h-8 rounded-full p-2 mx-2"
           tip="Eyes"
           switchConfig={this.switchConfig.bind(this, 'eyeStyle', config.eyeStyle)}>
-          <Eyes style={config.eyeStyle} color="#fff" />
+          {/* <Eyes style={config.eyeStyle} color="#fff" /> */}
+          <Eyes style={config.eyeStyle} />
         </SectionWrapper>
         {/* Glasses style */}
         <SectionWrapper
           className="w-8 h-8 rounded-full p-2 mx-2"
           tip="Glasses"
           switchConfig={this.switchConfig.bind(this, 'glassesStyle', config.glassesStyle)}>
-          <Glasses style={config.glassesStyle} color="#fff" />
+          {/* <Glasses style={config.glassesStyle} color="#fff" /> */}
+          <Glasses style={config.glassesStyle} />
         </SectionWrapper>
         {/* Ear style */}
         <SectionWrapper
@@ -130,14 +144,16 @@ export default class AvatarEditor extends Component {
           className="w-8 h-8 rounded-full p-2 mx-2"
           tip="Nose"
           switchConfig={this.switchConfig.bind(this, 'noseStyle', config.noseStyle)}>
-          <Nose style={config.noseStyle} color="#fff" />
+          {/* <Nose style={config.noseStyle} color="#fff" /> */}
+          <Nose style={config.noseStyle} />
         </SectionWrapper>
         {/* Mouth style */}
         <SectionWrapper
           className="w-8 h-8 rounded-full p-2 mx-2"
           tip="Mouth"
           switchConfig={this.switchConfig.bind(this, 'mouthStyle', config.mouthStyle)}>
-          <Mouth style={config.mouthStyle} color="#fff" />
+          {/* <Mouth style={config.mouthStyle} color="#fff" /> */}
+          <Mouth style={config.mouthStyle} />
         </SectionWrapper>
         {/* Shirt style */}
         <SectionWrapper
