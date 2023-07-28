@@ -17,6 +17,8 @@ import SectionWrapper from "./SectionWrapper/index"
 
 import './index.scss'
 import { AvatarFullConfig } from '../../../../src/types'
+import CopyBtn from './CopyBtn'
+import SelectForm from './SelectForm'
 
 export interface AvatarEditorProps {
   config: Required<AvatarFullConfig>,
@@ -27,7 +29,7 @@ export interface AvatarEditorProps {
 }
 
 type Shape = 'circle' | 'rounded' | 'square'
-export default class AvatarEditor extends Component<AvatarEditorProps, { isCodeShow: boolean }> {
+export default class AvatarEditor extends Component<AvatarEditorProps, { showType?: 'code' | 'form' }> {
   static propTypes = {
     config: PropTypes.object.isRequired,
     shape: PropTypes.string.isRequired,
@@ -41,7 +43,7 @@ export default class AvatarEditor extends Component<AvatarEditorProps, { isCodeS
   constructor(props: AvatarEditorProps) {
     super(props)
     this.state = {
-      isCodeShow: false
+      showType: undefined
     }
     this.myDefaultOptions = this.genDefaultOptions(defaultOptions)
     this.shapes = ['circle', 'rounded', 'square']
@@ -71,14 +73,14 @@ export default class AvatarEditor extends Component<AvatarEditorProps, { isCodeS
     updateShape(this.shapes[newIdx])
   }
 
-  toggleCodeShow() {
-    const { isCodeShow } = this.state
+  toggleCodeShow(type?: 'code' | 'form') {
+    const { showType } = this.state
     this.setState({
-      isCodeShow: !isCodeShow
+      showType: type === showType ? undefined : type
     })
   }
 
-  genCodeString(config) {
+  genCodeString(config: AvatarFullConfig) {
     const ignoreAttr = ['id']
     const myConfig = Object.keys(config)
       .filter(key => !ignoreAttr.includes(key))
@@ -92,7 +94,7 @@ export default class AvatarEditor extends Component<AvatarEditorProps, { isCodeS
 
   render() {
     const { config, shape, download } = this.props
-    const { isCodeShow } = this.state
+    const { showType } = this.state
     return (
       <div className="AvatarEditor rounded-full px-3 py-2 flex items-center">
         {/* Face */}
@@ -179,13 +181,14 @@ export default class AvatarEditor extends Component<AvatarEditorProps, { isCodeS
         <div className="mx-2 relative flex justify-center">
           <i
             className={classnames("iconfont icon-code text-xl  cursor-pointer transition duration-300 hover:text-green-100", {
-              banTip: isCodeShow
+              banTip: showType === 'code'
             })}
             data-tip="Config"
-            onClick={this.toggleCodeShow.bind(this)} />
+            onClick={this.toggleCodeShow.bind(this, 'code')} />
           <div className={classnames("rounded-lg bg-white p-5 absolute bottom-full codeBlock mb-4", {
-            active: isCodeShow
+            active: showType === 'code'
           })}>
+            <CopyBtn className="absolute" style={{ right: 20 }} text={this.genCodeString(config)} />
             <pre className="text-xs highres:text-sm">{this.genCodeString(config)}</pre>
           </div>
         </div>
@@ -195,6 +198,26 @@ export default class AvatarEditor extends Component<AvatarEditorProps, { isCodeS
           className="iconfont icon-download text-xl mx-2 cursor-pointer transition duration-300 hover:text-green-100"
           data-tip="Download"
           onClick={download} />
+
+        <div className="divider w-0.5 h-5 rounded mx-2" />
+
+
+
+        <div className="mx-2 relative flex justify-center">
+          <i
+            className={classnames("iconfont icon-code text-xl  cursor-pointer transition duration-300 hover:text-green-100", {
+              banTip: showType === 'form'
+            })}
+            data-tip="Form"
+            onClick={this.toggleCodeShow.bind(this, 'form')} />
+          <div className={classnames("rounded-lg bg-white p-5 absolute bottom-full codeBlock mb-4", {
+            active: showType === 'form'
+          })}>
+
+            <SelectForm />
+          </div>
+        </div>
+
       </div>
     )
   }
