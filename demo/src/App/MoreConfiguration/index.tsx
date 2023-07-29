@@ -14,15 +14,15 @@ export default function MoreConfiguration(props: MoreConfigurationProps) {
       transition: 'transform 0.3s ease-in-out'
     }}>
       <div
-        className="absolute cursor-pointer w-24 h-24 text-sm rounded-full -ml-4 flex px-2 items-center bg-gray-800" style={{
-          transform: 'translateX(-50%)',
+        className="absolute cursor-pointer w-20 h-20 text-md rounded-full -ml-4 flex pb-4 justify-center items-end bg-gray-800" style={{
+          transform: 'translateX(-50%) rotate(90deg)',
         }}
 
         onClick={() => {
           setOpenStatus(!isOpened)
         }}
       >
-        More
+        MORE
       </div>
       <SelectForm className='relative z-1' {...props} />
     </div>
