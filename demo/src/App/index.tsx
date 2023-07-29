@@ -11,10 +11,7 @@ import Footer from './Footer/index'
 import { AvatarFullConfig } from "react-nice-avatar/types";
 import { SingleComponentState } from "src/types";
 import MoreConfiguration from "./MoreConfiguration";
-import { setEnvironmentData } from "worker_threads";
 import { DefaultOptions } from "react-nice-avatar/utils";
-import { get } from "http";
-import { getCompletion } from "yargs";
 
 require('./index.scss')
 

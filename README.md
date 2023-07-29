@@ -10,14 +10,14 @@
 
 <div align="center">
     <a href="https://nice-avatar.chilllab.io/">
-        <img src="https://user-images.githubusercontent.com/5305874/131275587-a6f44325-cb18-4a1c-8a1c-785942e751e7.png" 
+        <img src="https://user-images.githubusercontent.com/5305874/131275587-a6f44325-cb18-4a1c-8a1c-785942e751e7.png"
              width="600" alt="imagewall" />
     </a>
 </div>
 
 ## Online editor / preview
 
-- https://nice-avatar.dapi.to/
+- <https://nice-avatar.dapi.to/>
 
 ## Assets
 
@@ -39,32 +39,39 @@ yarn add react-nice-avatar
 ## Usage
 
 1. Import the component.
+
     ```js
     import Avatar, { genConfig } from 'react-nice-avatar'
     ```
+
 2. Generate a configuration
-   
+
     Config can be generated with a seed, a seed is a string of name, email or any string you like
+
     ```js
     const config = genConfig("hi@dapi.to") 
     ```
-    
+
     or it can be generate with a customized object, plz check the Options below for what attributes can be passed in
+
     ```js
     const config = genConfig({ sex: "man", hairStyle: "mohawk" }) 
     ```
-    
+
     or generating a random config by passing nothing to the function genConfig
+
     ```js
     const config = genConfig() 
     ```
-    
+
 3. Render the component with specific width / height and configuration.
+
     ```jsx
     <Avatar style={{ width: '8rem', height: '8rem' }} {...config} />
     ```
+
     or
-    
+
     ```jsx
     <Avatar className="w-32 h-32" {...config} />
     ```
@@ -99,40 +106,50 @@ The options can be passed into genConfig or as React props
 ## Development
 
 1. Clone the repo:
+
     ```sh
-    $ git clone git@github.com:dapi-labs/react-nice-avatar.git
-    $ cd react-nice-avatar
+    git clone git@github.com:dapi-labs/react-nice-avatar.git
+    cd react-nice-avatar
     ```
+
 2. Install dependencies:
+
     ```sh
-    $ yarn
+    yarn
     ```
+
 3. Start the server for the demo:
+
     ```sh
-    $ make dev
+    make dev // nodejs >= 14 or <= 16, if you use nodejs 18, maybe throw error when you run make dev
     ```
+
 4. Open the browser to reivew the demo:
+
     ```sh
-    $ open http://localhost:8080
+    open http://localhost:8080
     ```
+
 5. Edit the files inside [src](/src).
 
 ## Test
 
 1. Lint test:
+
     ```sh
-    $ make lint-test
+    make lint-test
     ```
 
 2. code test:
+
     ```sh
-    $ make test
+    make test
     ```
 
 ## Release
 
 ```sh
-$ make release level=patch | minor | major | 1.3.0
+make release level=patch | minor | major | 1.3.0
 ```
 
 ## License

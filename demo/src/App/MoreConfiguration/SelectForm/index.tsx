@@ -1,9 +1,8 @@
-import React, { PropsWithChildren, useEffect, useMemo, useState } from 'react';
+import React, { PropsWithChildren, useMemo } from 'react';
 import { defaultOptions } from 'react-nice-avatar/utils';
 import { AvatarFullConfig } from 'react-nice-avatar/types';
 import Select from './Select';
 import Input from './Input';
-import shirt from 'react-nice-avatar/shirt';
 
 export interface SelectFormProps {
     style?: React.CSSProperties,
