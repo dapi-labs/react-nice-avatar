@@ -10,42 +10,60 @@ import AvatarList from './AvatarList/index'
 import Footer from './Footer/index'
 import { AvatarFullConfig } from "react-nice-avatar/types";
 import { SingleComponentState } from "src/types";
+import MoreConfiguration from "./MoreConfiguration";
+import { setEnvironmentData } from "worker_threads";
+import { DefaultOptions } from "react-nice-avatar/utils";
+import { get } from "http";
+import { getCompletion } from "yargs";
 
 require('./index.scss')
 
 export interface AppState {
   config: Required<AvatarFullConfig>,
   shape: SingleComponentState['bgShape']
+  seedValue: string
+  lockedAttr: Array<keyof AvatarFullConfig>
 }
 class App extends Component<any, AppState> {
 
   avatarId: string
 
-  constructor(props) {
+  constructor(props: any) {
     super(props)
     this.state = {
       config: genConfig({
         isGradient: Boolean(Math.round(Math.random()))
       }),
-      shape: 'circle'
+      shape: 'circle',
+      seedValue: '',
+      lockedAttr: []
     }
     this.avatarId = 'myAvatar'
   }
 
-  selectConfig(config) {
-    this.setState({ config })
+  selectConfig(config: Required<AvatarFullConfig>) {
+    this.setState({ config, lockedAttr: [] })
   }
 
-  updateConfig(key, value) {
+  updateConfig(key: keyof DefaultOptions, value: string) {
     const { config } = this.state
     config[key] = value
     this.setState({ config })
   }
 
-  updateShape(shape) {
+  updateShape(shape: SingleComponentState['bgShape']) {
     this.setState({ shape })
   }
 
+  genConfig(mixed: string | AvatarFullConfig, lockedAttr: Array<keyof AvatarFullConfig>) {
+    const { config } = this.state
+    const lockConfig = lockedAttr.reduce((acc, key) => {
+      acc[key] = config[key]
+      return acc
+    }, {})
+
+    return genConfig(mixed, lockConfig)
+  }
   async download() {
     const scale = 2;
     const node = document.getElementById(this.avatarId);
@@ -63,14 +81,17 @@ class App extends Component<any, AppState> {
     }
   }
 
-  onInputKeyUp(e) {
+  onInput(e: React.ChangeEvent<HTMLInputElement>) {
+    const seedValue = e.target.value
     this.setState({
-      config: genConfig(e.target.value)
+      config: this.genConfig(seedValue, this.state.lockedAttr),
+      seedValue
     })
   }
 
   render() {
-    const { config, shape } = this.state
+    const { config, shape, seedValue, lockedAttr } = this.state
+
     return (
       <div className="App flex flex-col min-h-screen">
         <main className="flex-1 flex flex-col items-center justify-center">
@@ -84,6 +105,7 @@ class App extends Component<any, AppState> {
               {...config as AvatarFullConfig} />
           </div>
           <AvatarEditor
+            lockedAttr={lockedAttr}
             config={config}
             shape={shape}
             updateConfig={this.updateConfig.bind(this)}
@@ -92,7 +114,8 @@ class App extends Component<any, AppState> {
           <input
             className="inputField w-64 h-10 p-2 rounded-full mt-10 text-center outline-none"
             placeholder="input name or email ..."
-            onKeyUp={this.onInputKeyUp.bind(this)} />
+            value={seedValue}
+            onChange={this.onInput.bind(this)} />
         </main>
 
         {/* Avatar list */}
@@ -100,6 +123,25 @@ class App extends Component<any, AppState> {
 
         {/* Footer */}
         <Footer />
+
+        <MoreConfiguration
+          lockedAttr={lockedAttr}
+          onChangeLockedAttr={(lockedAttr) => {
+            this.setState({
+              lockedAttr
+            })
+          }}
+          seedValue={seedValue}
+          onChangeSeedValue={(value, lockedAttr) => {
+            this.setState({
+              config: this.genConfig(value, lockedAttr),
+              seedValue: value,
+              lockedAttr,
+            })
+          }}
+          config={config}
+          updateConfig={this.updateConfig.bind(this)}
+        />
       </div>
     );
   }

@@ -73,10 +73,10 @@ export const defaultOptions: DefaultOptions = {
   sex: ["man", "woman"],
   faceColor: ["#F9C9B6", "#AC6651"],
   earSize: ["small", "big"],
-  hairColor: ["#000", "#fff", "#77311D", "#FC909F", "#D2EFF3", "#506AF4", "#F48150"],
+  hairColor: ["#000000", "#FFFFFF", "#77311D", "#FC909F", "#D2EFF3", "#506AF4", "#F48150"],
   hairStyleMan: ["normal", "thick", "mohawk"],
   hairStyleWoman: ["normal", "womanLong", "womanShort"],
-  hatColor: ["#000", "#fff", "#77311D", "#FC909F", "#D2EFF3", "#506AF4", "#F48150"],
+  hatColor: ["#000000", "#FFFFFF", "#77311D", "#FC909F", "#D2EFF3", "#506AF4", "#F48150"],
   hatStyle: ["beanie", "turban", "none"],
   eyeBrowWoman: ["up", "upWoman"],
   eyeStyle: ["circle", "oval", "smile"],
@@ -178,7 +178,7 @@ export const genConfig: GenConfigFunc = (mixed?: AvatarFullConfig | string, seed
         break;
       }
       case "man": {
-        hairColorUsually = ["#000"];
+        hairColorUsually = ["#000000"];
       }
     }
   }

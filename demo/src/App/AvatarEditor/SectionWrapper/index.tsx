@@ -6,12 +6,14 @@ export interface SectionWrapperProps {
   className?: string,
   switchConfig: () => void,
   tip: string
+  disabled?: boolean
 }
 
 export default function sectionWrapper(props: PropsWithChildren<SectionWrapperProps>) {
   const { className = "", children, switchConfig, tip } = props
   return (
-    <div
+    <button
+      disabled={props.disabled}
       className={"SectionWrapper " + className}
       data-tip={tip}
       onClick={switchConfig}>
@@ -20,6 +22,6 @@ export default function sectionWrapper(props: PropsWithChildren<SectionWrapperPr
           {children}
         </div>
       </div>
-    </div>
+    </button>
   )
 }

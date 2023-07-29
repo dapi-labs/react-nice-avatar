@@ -1,34 +1,50 @@
 @keyframes jelly {
+
   0%,
   100% {
     transform: scale(1, 1);
   }
+
   25% {
     transform: scale(0.9, 1.1);
   }
+
   50% {
     transform: scale(1.1, 0.9);
   }
+
   75% {
     transform: scale(0.95, 1.05);
   }
 }
 
 .SectionWrapper {
-  cursor: pointer;
   background: rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  &:hover {
+
+  transition: all 0.2s ease-out;
+
+  &:disabled {
+    cursor: not-allowed;
+    filter: brightness(0.5);
+  }
+
+  &:not([disabled]):hover {
     animation: jelly 0.5s;
+
     &:after {
       opacity: 1;
       transform: translateY(0px);
     }
+
   }
+
+
   &:after {
+
     content: attr(data-tip);
     position: absolute;
     bottom: 120%;
@@ -42,12 +58,13 @@
     transition: all 0.2s ease-out;
   }
 
-  .childrenWrapper > svg {
+  .childrenWrapper>svg {
     top: auto !important;
     right: auto !important;
     bottom: auto !important;
     left: auto !important;
     width: 100% !important;
     height: 100% !important;
+
   }
 }
