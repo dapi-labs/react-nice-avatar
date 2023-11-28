@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/chilllab/react-nice-avatar/compare/v1.4.1...v1.5.0) (2023-11-28)
+
+
+### Bug Fixes
+
+* use fixed id to fix potentially ssr rendering issue ([9e12681](https://github.com/chilllab/react-nice-avatar/commits9e126817d0ba99f2d51bbee24677bc7d3bd21dd5))
+
 ### [1.4.1](https://github.com/chilllab/react-nice-avatar/compare/v1.4.0...v1.4.1) (2023-06-08)
 
 ## [1.4.0](https://github.com/chilllab/react-nice-avatar/compare/v1.3.1...v1.4.0) (2023-03-30)
