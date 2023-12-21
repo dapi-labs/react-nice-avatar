@@ -38,7 +38,7 @@
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
     "autoprefixer": "^10.3.1",
-    "babel-loader": "^8.2.2",
+    "babel-loader": "^8.3.0",
     "classnames": "^2.3.1",
     "css-loader": "^3.2.0",
     "dom-to-image": "^2.6.0",
