@@ -5,24 +5,12 @@
 report.*.json
 
 // specific files
-node_modules/
-test/
-CHANGELOG.md
 src/
-demo/
-test/
-Makefile
-README.md
-jest.config.js
-tsconfig.json
+vite.config.js
+preview.png
+index.html
+jsconfig.json
 .github/
-webpack/
-tailwind.config.js
 
 // setting files
-.babelrc
-.travis.yml
-.eslintrc.js
-.eslintignore
-.travis.yml
-.versionrc.json
+.vscode
