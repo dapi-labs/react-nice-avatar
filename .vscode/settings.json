@@ -1,3 +1,6 @@
 {
-  "js/ts.implicitProjectConfig.checkJs": true
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "cSpell.words": [
+    "strateforward"
+  ]
 }
