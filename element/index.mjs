@@ -1,5 +1,5 @@
 import register from "preact-custom-element";
-import NiceAvatar from "./components/NiceAvatar";
+import NiceAvatar from "../preact/NiceAvatar";
 
 register(
   NiceAvatar,

@@ -1,0 +1,19 @@
+{
+  "name": "@nice-avatar-svg/render",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@nice-avatar-svg/preact": "*",
+    "preact-render-to-string": "^6.4.2"
+  },
+  "devDependencies": {
+    "@nice-avatar-svg/shared": "*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,36 +1,12 @@
 {
-  "name": "nice-avatar-svg",
-  "version": "0.1.0",
-  "description": "Library to generate SVG avatar",
-  "type": "module",
-  "keywords": [
-    "avatar",
-    "svg-avatar",
+  "name": "@nice-avatar-svg/monorepo",
+  "private": true,
+  "workspaces": [
+    "element",
     "preact",
-    "web-components"
-  ],
-  "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "vite build",
-    "prepublishOnly": "vite build",
-    "serve": "vite preview"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "@preact/preset-vite": "^2.8.2",
-    "vite": "^5.0.11",
-    "vite-plugin-preact": "^0.2.1"
-  },
-  "exports": {
-    "./constants": "./dist/constants.js",
-    "./element": "./dist/element.js",
-    "./render": "./dist/render.js",
-    "./preact": "./dist/preact.js"
-  },
-  "dependencies": {
-    "preact": "^10.21.0",
-    "preact-custom-element": "^4.3.0",
-    "preact-render-to-string": "^6.4.2"
-  }
+    "react",
+    "solid",
+    "render",
+    "shared"
+  ]
 }

@@ -1,63 +1,47 @@
-import { Suspense, lazy } from "preact/compat";
-import { COLORS } from "../constants.mjs";
-import Body from "./parts/Body";
-import Layout from "./parts/Layout";
+import Body from "@nice-avatar-svg/shared/components/Body";
+import Layout from "@nice-avatar-svg/shared/components/Layout";
+import { COLORS } from "@nice-avatar-svg/shared/constants.mjs";
+import { Suspense, lazy } from "react";
 
-const EarAttached = lazy(() => import("./parts/EarAttached"));
-const EarDetached = lazy(() => import("./parts/EarDetached"));
-const EarRingHoop = lazy(() => import("./parts/EarRingHoop"));
-const EyebrowsDown = lazy(() => import("./parts/EyebrowsDown"));
-const EyebrowsEyelashesDown = lazy(() => import("./parts/EyebrowsEyelashesDown"));
-const EyebrowsEyelashesUp = lazy(() => import("./parts/EyebrowsEyelashesUp"));
-const EyebrowsUp = lazy(() => import("./parts/EyebrowsUp"));
-const EyesBase = lazy(() => import("./parts/EyesBase"));
-const EyesRound = lazy(() => import("./parts/EyesRound"));
-const EyesShadow = lazy(() => import("./parts/EyesShadow"));
-const EyesSmiling = lazy(() => import("./parts/EyesSmiling"));
-const FacialHairBeard = lazy(() => import("./parts/FacialHairBeard"));
-const FacialHairScruff = lazy(() => import("./parts/FacialHairScruff"));
-const GlassesRound = lazy(() => import("./parts/GlassesRound"));
-const GlassesSquare = lazy(() => import("./parts/GlassesSquare"));
-const HairDannyPhantom = lazy(() => import("./parts/HairDannyPhantom"));
-const HairDougFunny = lazy(() => import("./parts/HairDougFunny"));
-const HairFonze = lazy(() => import("./parts/HairFonze"));
-const HairFull = lazy(() => import("./parts/HairFull"));
-const HairMrT = lazy(() => import("./parts/HairMrT"));
-const HairPixie = lazy(() => import("./parts/HairPixie"));
-const HairTurban = lazy(() => import("./parts/HairTurban"));
-const MouthFrown = lazy(() => import("./parts/MouthFrown"));
-const MouthLaughing = lazy(() => import("./parts/MouthLaughing"));
-const MouthNervous = lazy(() => import("./parts/MouthNervous"));
-const MouthPucker = lazy(() => import("./parts/MouthPucker"));
-const MouthSad = lazy(() => import("./parts/MouthSad"));
-const MouthSmile = lazy(() => import("./parts/MouthSmile"));
-const MouthSmirk = lazy(() => import("./parts/MouthSmirk"));
-const MouthSurprised = lazy(() => import("./parts/MouthSurprised"));
-const NoseCurve = lazy(() => import("./parts/NoseCurve"));
-const NosePointed = lazy(() => import("./parts/NosePointed"));
-const NoseRound = lazy(() => import("./parts/NoseRound"));
-const ShirtCollared = lazy(() => import("./parts/ShirtCollared"));
-const ShirtCrew = lazy(() => import("./parts/ShirtCrew"));
-const ShirtOpen = lazy(() => import("./parts/ShirtOpen"));
+const EarAttached = lazy(() => import("@nice-avatar-svg/shared/components/EarAttached"));
+const EarDetached = lazy(() => import("@nice-avatar-svg/shared/components/EarDetached"));
+const EarRingHoop = lazy(() => import("@nice-avatar-svg/shared/components/EarRingHoop"));
+const EyebrowsDown = lazy(() => import("@nice-avatar-svg/shared/components/EyebrowsDown"));
+const EyebrowsEyelashesDown = lazy(() => import("@nice-avatar-svg/shared/components/EyebrowsEyelashesDown"));
+const EyebrowsEyelashesUp = lazy(() => import("@nice-avatar-svg/shared/components/EyebrowsEyelashesUp"));
+const EyebrowsUp = lazy(() => import("@nice-avatar-svg/shared/components/EyebrowsUp"));
+const EyesBase = lazy(() => import("@nice-avatar-svg/shared/components/EyesBase"));
+const EyesRound = lazy(() => import("@nice-avatar-svg/shared/components/EyesRound"));
+const EyesShadow = lazy(() => import("@nice-avatar-svg/shared/components/EyesShadow"));
+const EyesSmiling = lazy(() => import("@nice-avatar-svg/shared/components/EyesSmiling"));
+const FacialHairBeard = lazy(() => import("@nice-avatar-svg/shared/components/FacialHairBeard"));
+const FacialHairScruff = lazy(() => import("@nice-avatar-svg/shared/components/FacialHairScruff"));
+const GlassesRound = lazy(() => import("@nice-avatar-svg/shared/components/GlassesRound"));
+const GlassesSquare = lazy(() => import("@nice-avatar-svg/shared/components/GlassesSquare"));
+const HairDannyPhantom = lazy(() => import("@nice-avatar-svg/shared/components/HairDannyPhantom"));
+const HairDougFunny = lazy(() => import("@nice-avatar-svg/shared/components/HairDougFunny"));
+const HairFonze = lazy(() => import("@nice-avatar-svg/shared/components/HairFonze"));
+const HairFull = lazy(() => import("@nice-avatar-svg/shared/components/HairFull"));
+const HairMrT = lazy(() => import("@nice-avatar-svg/shared/components/HairMrT"));
+const HairPixie = lazy(() => import("@nice-avatar-svg/shared/components/HairPixie"));
+const HairTurban = lazy(() => import("@nice-avatar-svg/shared/components/HairTurban"));
+const MouthFrown = lazy(() => import("@nice-avatar-svg/shared/components/MouthFrown"));
+const MouthLaughing = lazy(() => import("@nice-avatar-svg/shared/components/MouthLaughing"));
+const MouthNervous = lazy(() => import("@nice-avatar-svg/shared/components/MouthNervous"));
+const MouthPucker = lazy(() => import("@nice-avatar-svg/shared/components/MouthPucker"));
+const MouthSad = lazy(() => import("@nice-avatar-svg/shared/components/MouthSad"));
+const MouthSmile = lazy(() => import("@nice-avatar-svg/shared/components/MouthSmile"));
+const MouthSmirk = lazy(() => import("@nice-avatar-svg/shared/components/MouthSmirk"));
+const MouthSurprised = lazy(() => import("@nice-avatar-svg/shared/components/MouthSurprised"));
+const NoseCurve = lazy(() => import("@nice-avatar-svg/shared/components/NoseCurve"));
+const NosePointed = lazy(() => import("@nice-avatar-svg/shared/components/NosePointed"));
+const NoseRound = lazy(() => import("@nice-avatar-svg/shared/components/NoseRound"));
+const ShirtCollared = lazy(() => import("@nice-avatar-svg/shared/components/ShirtCollared"));
+const ShirtCrew = lazy(() => import("@nice-avatar-svg/shared/components/ShirtCrew"));
+const ShirtOpen = lazy(() => import("@nice-avatar-svg/shared/components/ShirtOpen"));
 
 /**
- * @typedef Props
- * @property {string} bgColor
- * @property {'dannyPhantom' | 'dougFunny' | 'fonze' | 'mrT' | 'pixie' | 'turban'} hairStyle
- * @property {'loop'} [earRing]
- * @property {'small' | 'big'} earSize
- * @property {'up' | 'down' | 'eyelashesUp' | 'eyelashesDown'} [eyebrowsStyle]
- * @property {'round' | 'base' | 'shadow' | 'smiling'} eyesStyle
- * @property {'scruff' | 'beard'} facialHairStyle
- * @property {'round' | 'square'} [glassesStyle]
- * @property {string} hairColor
- * @property {'frown' | 'laughing' | 'nervous' | 'pucker' | 'sad' | 'smirk' | 'surprised' | 'smile'} mouthStyle
- * @property {'curve' | 'pointed' | 'round'} noseStyle
- * @property {'circle' | 'rounded' | 'square'} shape
- * @property {string} shirtColor
- * @property {'collared' | 'crew' | 'open'} shirtStyle
- * @property {string} skinColor
- *
+ * @typedef {import('@nice-avatar-svg/shared/model.mjs').AvatarConfiguration} Props
  * @param {Props} props
  */
 export default function NiceAvatar({
@@ -72,7 +56,7 @@ export default function NiceAvatar({
   shirtColor = COLORS.Canary,
   shirtStyle = "open",
   skinColor = COLORS.Apricot,
-  earRing = false,
+  earRing = undefined,
   eyebrowsStyle = "up",
   glassesStyle,
   shape = "circle",

@@ -1,0 +1,33 @@
+{
+  "name": "@nice-avatar-svg/preact",
+  "version": "0.1.0",
+  "description": "Library to generate SVG avatar",
+  "type": "module",
+  "keywords": [
+    "avatar",
+    "svg-avatar",
+    "preact",
+    "web-components"
+  ],
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "prepublishOnly": "vite build",
+    "serve": "vite preview"
+  },
+  "license": "MIT",
+  "exports": {
+    ".": "./dist/preact.js"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.8.2",
+    "vite": "^5.0.11"
+  },
+  "peerDependencies": {
+    "preact": ">=10.0.0"
+  },
+  "dependencies": {
+    "@nice-avatar-svg/shared": "*"
+  }
+}

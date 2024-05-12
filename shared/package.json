@@ -1,0 +1,8 @@
+{
+  "name": "@nice-avatar-svg/shared",
+  "type": "module",
+  "types": "model.mjs",
+  "version": "1.0.0",
+  "private": true,
+  "license": "ISC"
+}

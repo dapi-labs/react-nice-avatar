@@ -1,5 +1,5 @@
-import NiceAvatar from "./components/NiceAvatar";
-import { COLORS } from "./constants.mjs";
+import { COLORS } from "@nice-avatar-svg/shared/constants.mjs";
+import NiceAvatar from "./NiceAvatar";
 
 export default function App() {
   return (
