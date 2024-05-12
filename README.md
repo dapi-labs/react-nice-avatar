@@ -9,7 +9,7 @@ This is a fork of [react-nice-avatar][react-nice-avatar] which provide and handy
 1. Produce a 100% standard SVG icon, and don't mix HTML/CSS
 2. export [Web Component][web-components] which make it compatible with any/no frontend frameworks
 3. expose a `render` method to generate the SVG on server side easily
-4. Use Solid.js with [lazy loading](https://docs.solidjs.com/reference/component-apis/lazy): it's much smaller
+4. Use [Preact](https://preactjs.com/) with [lazy loading](https://react.dev/reference/react/lazy): the image will load only needed SVG parts
 
 ## Usage
 
@@ -19,14 +19,16 @@ Install the lib
 npm install react-nice-avatar
 ```
 
-### With [Solid.js](https://www.solidjs.com/)
+### With [Preact](https://preactjs.com/)
 
 ```jsx
-import NiceAvatar, { COLOR } from "nice-avatar-svg/solid";
+import NiceAvatar, { COLOR } from "nice-avatar-svg/preact";
+import { COLORS } from "nice-avatar-svg/constants";
+import { Suspense } from "react";
 
 export default function App() {
   return (
-    <div>
+    <Suspens fallback={"Loading..."}>
       <NiceAvatar
         bgColor={COLORS.Salmon}
         hairColor={COLORS.Lavender}
@@ -43,7 +45,7 @@ export default function App() {
         earRing="loop"
         eyebrowsStyle="up"
       />
-    </div>
+    </Suspens>
   );
 }
 ```
@@ -54,28 +56,27 @@ export default function App() {
 <script type="module" src=".../nice-avatar-svg/element"></script>
 
 <nice-avatar
-  bg-color="azure"
-  ear-size="small"
-  eyes-style="base"
-  facial-hair-style=""
-  hair-color="red"
-  hair-style="pixie"
-  mouth-style="smile"
-  nose-style="round"
-  shirt-color="#ffff"
-  shirt-style="open"
-  skin-color="coral"
-  glasses-style="round"
+  bgColor="azure"
+  earSize="small"
+  eyesStyle="base"
+  facialHairStyle=""
+  hairColor="red"
+  hairStyle="pixie"
+  mouthStyle="smile"
+  noseStyle="round"
+  shirtColor="#ffff"
+  shirtStyle="open"
+  skinColor="coral"
+  glassesStyle="round"
   shape="circle"
 ></nice-avatar>
 ```
 
 ### With renderer
 
-⚠️ Still WIP, doesn't work when `document` is not defined
-
 ```js
-import render, { COLOR } from "nice-avatar-svg/render";
+import render from "nice-avatar-svg/render";
+import { COLORS } from "nice-avatar-svg/constants";
 
 const svg = await render({
   bgColor: COLORS.Azure,

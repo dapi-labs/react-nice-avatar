@@ -1,5 +1,4 @@
-export { COLORS } from "./constants.mjs";
-import { renderToStringAsync } from "solid-js/web";
+import { renderToStringAsync } from "preact-render-to-string";
 import NiceAvatar from "./components/NiceAvatar";
 
 /**
@@ -8,3 +7,5 @@ import NiceAvatar from "./components/NiceAvatar";
 export default function render(props) {
   return renderToStringAsync(<NiceAvatar {...props} />);
 }
+
+render().then(console.log).catch(console.error);

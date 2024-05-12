@@ -1,11 +1,12 @@
 {
   "name": "nice-avatar-svg",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Library to generate SVG avatar",
+  "type": "module",
   "keywords": [
     "avatar",
     "svg-avatar",
-    "solid-js",
+    "preact",
     "web-components"
   ],
   "scripts": {
@@ -17,18 +18,19 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-preset-solid": "^1.8.17",
-    "solid-devtools": "^0.29.2",
-    "solid-element": "^1.8.0",
+    "@preact/preset-vite": "^2.8.2",
     "vite": "^5.0.11",
-    "vite-plugin-solid": "^2.8.2"
+    "vite-plugin-preact": "^0.2.1"
   },
   "exports": {
-    "./element": "./dist/element.mjs",
-    "./render": "./dist/render.mjs",
-    "./solid": "./dist/solid.mjs"
+    "./constants": "./dist/constants.js",
+    "./element": "./dist/element.js",
+    "./render": "./dist/render.js",
+    "./preact": "./dist/preact.js"
   },
   "dependencies": {
-    "solid-js": "^1.8.17"
+    "preact": "^10.21.0",
+    "preact-custom-element": "^4.3.0",
+    "preact-render-to-string": "^6.4.2"
   }
 }

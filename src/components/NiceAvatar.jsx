@@ -1,5 +1,4 @@
-export { COLORS } from "../constants.mjs";
-
+import { Suspense, lazy } from "preact/compat";
 import { COLORS } from "../constants.mjs";
 import Body from "./parts/Body";
 import Layout from "./parts/Layout";
@@ -41,8 +40,6 @@ const ShirtCollared = lazy(() => import("./parts/ShirtCollared"));
 const ShirtCrew = lazy(() => import("./parts/ShirtCrew"));
 const ShirtOpen = lazy(() => import("./parts/ShirtOpen"));
 
-import { lazy } from "solid-js";
-
 /**
  * @typedef Props
  * @property {string} bgColor
@@ -83,19 +80,39 @@ export default function NiceAvatar({
   return (
     <Layout shape={shape} bgColor={bgColor}>
       <Body skinColor={skinColor} />
-      <Eyebrows eyebrowsStyle={eyebrowsStyle} />
-      <Hair hairColor={hairColor} hairStyle={hairStyle} />
-      <Ear earSize={earSize} skinColor={skinColor} />
-      <Nose noseStyle={noseStyle} />
-      <Shirt shirtColor={shirtColor} shirtStyle={shirtStyle} />
-      <Mouth mouthStyle={mouthStyle} />
-      <Eyes eyesStyle={eyesStyle} />
-      <Glasses glassesStyle={glassesStyle} />
-      <FacialHair facialHairStyle={facialHairStyle} />
-      {earRing === "loop" && <EarRingHoop />}
+      <Suspense fallback={<LoadingNode />}>
+        <Eyebrows eyebrowsStyle={eyebrowsStyle} />
+      </Suspense>
+      <Suspense fallback={<LoadingNode />}>
+        <Hair hairColor={hairColor} hairStyle={hairStyle} />
+      </Suspense>
+      <Suspense fallback={<LoadingNode />}>
+        <Ear earSize={earSize} skinColor={skinColor} />
+      </Suspense>
+      <Suspense fallback={<LoadingNode />}>
+        <Nose noseStyle={noseStyle} />
+      </Suspense>
+      <Suspense fallback={<LoadingNode />}>
+        <Shirt shirtColor={shirtColor} shirtStyle={shirtStyle} />
+      </Suspense>
+      <Suspense fallback={<LoadingNode />}>
+        <Mouth mouthStyle={mouthStyle} />
+      </Suspense>
+      <Suspense fallback={<LoadingNode />}>
+        <Eyes eyesStyle={eyesStyle} />
+      </Suspense>
+      <Suspense fallback={<LoadingNode />}>
+        <Glasses glassesStyle={glassesStyle} />
+      </Suspense>
+      <Suspense fallback={<LoadingNode />}>
+        <FacialHair facialHairStyle={facialHairStyle} />
+      </Suspense>
+      <Suspense fallback={<LoadingNode />}>{earRing === "loop" && <EarRingHoop />}</Suspense>
     </Layout>
   );
 }
+
+const LoadingNode = () => <></>;
 
 /** @param {Pick<Props, 'hairColor' | 'hairStyle>} param0 */
 function Hair({ hairStyle, hairColor }) {
