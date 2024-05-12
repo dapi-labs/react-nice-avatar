@@ -1,6 +1,6 @@
 {
   "name": "@nice-avatar-svg/preact",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Library to generate SVG avatar",
   "type": "module",
   "keywords": [

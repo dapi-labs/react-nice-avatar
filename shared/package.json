@@ -2,7 +2,7 @@
   "name": "@nice-avatar-svg/shared",
   "type": "module",
   "types": "model.mjs",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "private": true,
   "license": "ISC"
 }
