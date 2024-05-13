@@ -2,7 +2,7 @@
 
 This is a fork of [react-nice-avatar][react-nice-avatar] which provide and handy way to generate beautiful SVG avatar.
 
-![preview](./preview.png)
+![preview](../preview.png)
 
 ## Usage
 

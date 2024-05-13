@@ -1,7 +1,7 @@
 {
   "name": "@nice-avatar-svg/element",
   "version": "0.0.1",
-  "description": "",
+  "description": "Library to generate SVG avatar as Web Component",
   "repository": {
     "type": "git",
     "directory": "element",

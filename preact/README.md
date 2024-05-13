@@ -2,7 +2,7 @@
 
 This is a fork of [react-nice-avatar][react-nice-avatar] which provide and handy way to generate beautiful SVG avatar.
 
-![preview](./preview.png)
+![preview](../preview.png)
 
 This package is about using it with [Preact](https://preactjs.com/).
 
@@ -16,17 +16,17 @@ npm install @nice-avatar-svg/preact
 
 ```jsx
 import NiceAvatar from "@nice-avatar-svg/preact";
-import { COLORS } from "nice-avatar-svg/constants";
+
 import { Suspense } from "preact";
 
 export default function App() {
   return (
     <Suspens fallback={"Loading..."}>
       <NiceAvatar
-        bgColor={COLORS.Salmon}
-        hairColor={COLORS.Lavender}
-        shirtColor={COLORS.Canary}
-        skinColor={COLORS.Apricot}
+        bgColor="#6BD9E9"
+        hairColor="#9287FF"
+        shirtColor="#F4D150"
+        skinColor="#F9C9B6"
         earSize="big"
         hairStyle="dannyPhantom"
         noseStyle="curve"

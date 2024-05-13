@@ -2,7 +2,7 @@
 
 This is a fork of [react-nice-avatar][react-nice-avatar] which provide and handy way to generate beautiful SVG avatar.
 
-![preview](./preview.png)
+![preview](../preview.png)
 
 ## Usage
 
@@ -16,20 +16,19 @@ And then call the function to get the SVG image.
 
 ```js
 import render from "nice-avatar-svg/render";
-import { COLORS } from "nice-avatar-svg/constants";
 
 const svg = await render({
-  bgColor: COLORS.Azure,
+  bgColor: "#D2EFF3",
   earSize: "small",
   eyesStyle: "base",
   facialHairStyle: undefined,
-  hairColor: COLORS.Coast,
+  hairColor: "#AC6651",
   hairStyle: "pixie",
   mouthStyle: "smile",
   noseStyle: "round",
-  shirtColor: COLORS.Canary,
+  shirtColor: "#F4D150",
   shirtStyle: "open",
-  skinColor: COLORS.Apricot,
+  skinColor: "#F9C9B6",
   earRing: false,
   eyebrowsStyle: "up",
   glassesStyle: "round",

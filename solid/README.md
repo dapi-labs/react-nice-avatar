@@ -2,7 +2,7 @@
 
 This is a fork of [react-nice-avatar][react-nice-avatar] which provide and handy way to generate beautiful SVG avatar.
 
-![preview](./preview.png)
+![preview](../preview.png)
 
 This package is about using it with [Solid.js](https://github.com/solidjs/solid)
 
@@ -16,15 +16,14 @@ npm install @nice-avatar-svg/solid
 
 ```jsx
 import NiceAvatar, { COLOR } from "@nice-avatar-svg/solid";
-import { COLORS } from "nice-avatar-svg/constants";
 
 export default function App() {
   return (
     <NiceAvatar
-      bgColor={COLORS.Salmon}
-      hairColor={COLORS.Lavender}
-      shirtColor={COLORS.Canary}
-      skinColor={COLORS.Apricot}
+      bgColor="#6BD9E9"
+      hairColor="#9287FF"
+      shirtColor="#F4D150"
+      skinColor="#F9C9B6"
       earSize="big"
       hairStyle="dannyPhantom"
       noseStyle="curve"
