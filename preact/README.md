@@ -15,9 +15,9 @@ npm install @nice-avatar-svg/preact
 ```
 
 ```jsx
-import NiceAvatar, { COLOR } from "@nice-avatar-svg/preact";
+import NiceAvatar from "@nice-avatar-svg/preact";
 import { COLORS } from "nice-avatar-svg/constants";
-import { Suspense } from "react";
+import { Suspense } from "preact";
 
 export default function App() {
   return (

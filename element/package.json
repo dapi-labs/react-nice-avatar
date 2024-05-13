@@ -11,6 +11,9 @@
     "@nice-avatar-svg/preact": "*",
     "preact-custom-element": "^4.3.0"
   },
+  "exports": {
+    ".": "./index.mjs"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"
