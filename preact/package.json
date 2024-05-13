@@ -13,7 +13,7 @@
   "repository": {
     "type": "git",
     "directory": "preact",
-    "url": "https://github.com/madeindjs/nice-avatar-svg"
+    "url": "git+https://github.com/madeindjs/nice-avatar-svg.git"
   },
   "author": {
     "email": "alexandre@rsseau.fr",
