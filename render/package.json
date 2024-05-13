@@ -2,6 +2,23 @@
   "name": "@nice-avatar-svg/render",
   "version": "0.0.1",
   "description": "",
+  "repository": {
+    "type": "git",
+    "directory": "render",
+    "url": "https://github.com/madeindjs/nice-avatar-svg"
+  },
+  "keywords": [
+    "avatar",
+    "svg",
+    "preact"
+  ],
+  "author": {
+    "email": "alexandre@rsseau.fr",
+    "name": "Alexandre Rousseau",
+    "url": "https://rsseau.fr"
+  },
+  "homepage": "https://github.com/madeindjs/nice-avatar-svg",
+  "license": "ISC",
   "main": "index.js",
   "scripts": {
     "test": "node --test index.spec.mjs"
@@ -12,8 +29,5 @@
   },
   "devDependencies": {
     "@nice-avatar-svg/shared": "*"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }

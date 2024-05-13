@@ -2,6 +2,23 @@
   "name": "@nice-avatar-svg/element",
   "version": "0.0.1",
   "description": "",
+  "repository": {
+    "type": "git",
+    "directory": "element",
+    "url": "https://github.com/madeindjs/nice-avatar-svg"
+  },
+  "keywords": [
+    "avatar",
+    "svg",
+    "solid-js"
+  ],
+  "author": {
+    "email": "alexandre@rsseau.fr",
+    "name": "Alexandre Rousseau",
+    "url": "https://rsseau.fr"
+  },
+  "homepage": "https://github.com/madeindjs/nice-avatar-svg",
+  "license": "ISC",
   "main": "index.mjs",
   "type": "module",
   "scripts": {
@@ -13,8 +30,5 @@
   },
   "exports": {
     ".": "./index.mjs"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }

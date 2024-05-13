@@ -1,5 +1,6 @@
 {
   "name": "@nice-avatar-svg/monorepo",
+  "version": "1.0.0",
   "private": true,
   "workspaces": [
     "element",
@@ -8,6 +9,5 @@
     "solid",
     "render",
     "shared"
-  ],
-  "version": "2.0.0"
+  ]
 }

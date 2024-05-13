@@ -187,9 +187,9 @@ And we specify in `package.json` to export this component and import it `@nice-a
 {
   "name": "@nice-avatar-svg/preact",
   // ..
-  "exports": {
-    ".": "./dist/preact.js"
-  },
+  "module": "./dist/preact.js",
+  "main": "dist/preact.umd.cjs",
+  "exports": ["./NiceAvatar.jsx"],
   "devDependencies": {
     "@preact/preset-vite": "^2.8.2",
     "vite": "^5.0.11"
@@ -375,6 +375,28 @@ it("should render the avatar", async () => {
 ```
 
 ## Pushing the monorepo further
+
+Now everything is tested, we're ready to publish our libraries to NPM!
+
+Let's bump every packages to `1.0.0` first using `npm version`:
+
+```sh
+npm version major --workspaces --include-workspace-root
+@nice-avatar-svg/monorepo
+v1.0.0
+@nice-avatar-svg/element
+v1.0.0
+@nice-avatar-svg/preact
+v1.0.0
+@nice-avatar-svg/react
+v1.0.0
+@nice-avatar-svg/solid
+v1.0.0
+@nice-avatar-svg/render
+v1.0.0
+@nice-avatar-svg/shared
+v1.0.0
+```
 
 ## Conclusion
 

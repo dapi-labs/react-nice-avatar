@@ -3,21 +3,31 @@
   "version": "0.0.1",
   "description": "Library to generate SVG avatar for Preact",
   "type": "module",
+  "module": "./dist/preact.js",
+  "main": "dist/preact.umd.cjs",
   "keywords": [
     "avatar",
-    "svg-avatar",
+    "svg",
     "preact"
   ],
+  "repository": {
+    "type": "git",
+    "directory": "preact",
+    "url": "https://github.com/madeindjs/nice-avatar-svg"
+  },
+  "author": {
+    "email": "alexandre@rsseau.fr",
+    "name": "Alexandre Rousseau",
+    "url": "https://rsseau.fr"
+  },
+  "homepage": "https://github.com/madeindjs/nice-avatar-svg",
+  "license": "MIT",
   "scripts": {
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "prepublishOnly": "vite build",
     "serve": "vite preview"
-  },
-  "license": "MIT",
-  "exports": {
-    ".": "./dist/preact.js"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.8.2",
