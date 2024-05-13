@@ -1,6 +1,6 @@
 {
   "name": "@nice-avatar-svg/react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Library to generate SVG avatar for React",
   "type": "module",
   "keywords": [
