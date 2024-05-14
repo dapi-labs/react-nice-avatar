@@ -8,7 +8,8 @@ export default function hairThick(props: { color: string, colorRandom: boolean }
         position: "absolute",
         bottom: "40.2%",
         width: "93.5%",
-        height: "64%"
+        height: "64%",
+        left: "0%"
       }}
       width="240"
       height="200"
