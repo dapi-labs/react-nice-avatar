@@ -17,7 +17,7 @@
 
 ## Online editor / preview
 
-- https://nice-avatar.dapi.to/
+- https://nice-avatar.wwayne.com
 
 ## Assets
 
