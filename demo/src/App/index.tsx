@@ -1,40 +1,39 @@
 import React, { Component } from "react";
-import { hot } from "react-hot-loader";
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
 
-import ReactNiceAvatar, { genConfig } from "react-nice-avatar/index";
+import ReactNiceAvatar, { genConfig } from "../../../src";
 
-import AvatarEditor from './AvatarEditor/index'
-import AvatarList from './AvatarList/index'
-import Footer from './Footer/index'
+import AvatarEditor from "./AvatarEditor/index";
+import AvatarList from "./AvatarList/index";
+import Footer from "./Footer/index";
 
-require('./index.scss')
+import "./index.scss";
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       config: genConfig({
-        isGradient: Boolean(Math.round(Math.random()))
+        isGradient: Boolean(Math.round(Math.random())),
       }),
-      shape: 'circle'
-    }
-    this.avatarId = 'myAvatar'
+      shape: "circle",
+    };
+    this.avatarId = "myAvatar";
   }
 
   selectConfig(config) {
-    this.setState({ config })
+    this.setState({ config });
   }
 
-  updateConfig (key, value) {
-    const { config } = this.state
-    config[key] = value
-    this.setState({ config })
+  updateConfig(key, value) {
+    const { config } = this.state;
+    config[key] = value;
+    this.setState({ config });
   }
 
-  updateShape (shape) {
-    this.setState({ shape })
+  updateShape(shape) {
+    this.setState({ shape });
   }
 
   async download() {
@@ -45,45 +44,46 @@ class App extends Component {
         height: node.offsetHeight * scale,
         style: {
           transform: `scale(${scale}) translate(${node.offsetWidth / 2 / scale}px, ${node.offsetHeight / 2 / scale}px)`,
-          "border-radius": 0
+          "border-radius": 0,
         },
-        width: node.offsetWidth * scale
+        width: node.offsetWidth * scale,
       });
 
       saveAs(blob, "avatar.png");
     }
   }
 
-  onInputKeyUp (e) {
+  onInputKeyUp(e) {
     this.setState({
-      config: genConfig(e.target.value)
-    })
+      config: genConfig(e.target.value),
+    });
   }
 
   render() {
-    const { config, shape } = this.state
+    const { config, shape } = this.state;
     return (
       <div className="App flex flex-col min-h-screen">
         <main className="flex-1 flex flex-col items-center justify-center">
-          <div
-            id={this.avatarId}
-            className="mb-10">
+          <div id={this.avatarId} className="mb-10">
             <ReactNiceAvatar
               className="w-64 h-64 highres:w-80 highres:h-80"
               hairColorRandom
               shape={shape}
-              {...config} />
+              {...config}
+            />
           </div>
           <AvatarEditor
             config={config}
             shape={shape}
             updateConfig={this.updateConfig.bind(this)}
             updateShape={this.updateShape.bind(this)}
-            download={this.download.bind(this)} />
+            download={this.download.bind(this)}
+          />
           <input
             className="inputField w-64 h-10 p-2 rounded-full mt-10 text-center outline-none"
             placeholder="input name or email ..."
-            onKeyUp={this.onInputKeyUp.bind(this)} />
+            onKeyUp={this.onInputKeyUp.bind(this)}
+          />
         </main>
 
         {/* Avatar list */}
@@ -96,4 +96,4 @@ class App extends Component {
   }
 }
 
-export default hot(module)(App);
+export default App;

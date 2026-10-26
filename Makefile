@@ -1,38 +1,38 @@
-level?=patch
+.PHONY: dev build build-demo test test-watch coverage check check-fix lint lint-fix typecheck
 
 # Development
-lint:
-	@echo "Linting..."
-	@npx eslint .
-lint-fix:
-	@echo "Fix linting..."
-	@npx eslint --fix .
 dev:
-	@echo "Starting server..."
-	@NODE_ENV=development npx webpack-dev-server --config ./webpack/demo.js --progress
-.PHONY: lint lint-fix dev
+	npm run dev
 
-# Test
-test: lint-fix
-	@echo "Running test..."
-	@npx jest
-.PHONY: test
+# Testing
+test:
+	npm test
 
-# Deployment
+test-watch:
+	npm run test:watch
+
+coverage:
+	npm run test:coverage
+
+# Linting, Formatting & Types (Vite+ / Oxlint / Oxfmt)
+check:
+	npm run check
+
+check-fix:
+	npm run check:fix
+
+lint:
+	npm run lint
+
+lint-fix:
+	npm run lint:fix
+
+typecheck:
+	npm run typecheck
+
+# Build
 build:
-	@echo "Building lib..."
-	@rm -rf ./dist
-	@npx webpack --config ./webpack/production.js --progress --bail
-	@echo "Copy type into dist..."
-	@cp src/types.ts dist/index.d.ts
+	npm run build
+
 build-demo:
-	@echo "Building demo..."
-	@rm -rf ./demo/dist
-	@NODE_ENV=production npx webpack --config ./webpack/demo.js --progress --bail
-release:
-	@echo "Release $(level)"
-	@echo "Adding tag and modify the CHANGELOG"
-	@npx standard-version --release-as $(level)
-	@echo "Pushing to the github and trigger action for npm:publish"
-	@git push --follow-tags origin main
-.PHONY: build build-demo release
+	npm run build:demo

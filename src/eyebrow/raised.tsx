@@ -1,0 +1,37 @@
+import React from "react";
+
+export default function eyebrowRaised({
+  style: styleOverride,
+}: {
+  style?: React.CSSProperties;
+}): React.ReactElement {
+  return (
+    <svg
+      style={{
+        position: "absolute",
+        width: "80%",
+        height: "13%",
+        top: "calc(0% + var(--rna-top-shift, 0%))",
+        ...styleOverride,
+      }}
+      width="149"
+      height="48"
+      viewBox="0 0 149 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M99 10.2143C104.667 7.5476 118 5.11427 126 16.7143"
+        stroke="black"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <path
+        d="M23.5791 8.521C25.6497 14.6104 33.2612 25.3959 47.1418 22.8224"
+        stroke="black"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}

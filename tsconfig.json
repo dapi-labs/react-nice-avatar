@@ -1,16 +1,21 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",        // path to output directory
-    "sourceMap": false,         // allow sourcemap support
-    "strictNullChecks": true,   // enable strict null checks as a best practice
-    "module": "es6",            // specify module code generation
-    "jsx": "react",             // use typescript to transpile jsx to js
-    "target": "es5",            // specify ECMAScript target version
-    "allowJs": true,            // allow a partial TypeScript and JavaScript codebase
-    "allowSyntheticDefaultImports": true, // import default
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "baseUrl": "."
   },
-  "include": [
-    "./src/"
-  ]
+  "include": ["src", "test"]
 }

@@ -1,6 +1,6 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: [],
-  darkMode: false,
+  content: ["./demo/**/*.{html,js,ts,jsx,tsx}", "./src/**/*.{html,js,ts,jsx,tsx}"],
   theme: {
     screens: {
       tablet: "640px",
@@ -8,9 +8,8 @@ module.exports = {
       desktop: "1280px",
       highres: "1680px",
       superres: "1900px",
-      "5k": "2200px"
-    }
+      "5k": "2200px",
+    },
   },
-  variants: {},
-  plugins: []
+  plugins: [],
 };

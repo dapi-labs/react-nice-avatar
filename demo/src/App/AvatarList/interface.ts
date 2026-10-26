@@ -1,5 +1,5 @@
-import type { AvatarFullConfig } from 'react-nice-avatar/types'
+import type { AvatarFullConfig } from "../../../../src/types";
 
 export interface AvatarListItem extends AvatarFullConfig {
-  id: string
+  id: string;
 }

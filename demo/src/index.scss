@@ -1,8 +1,16 @@
-@import "./scss/iconfont";
-@import "./scss/fonts";
+@use "./scss/iconfont";
+@use "./scss/fonts";
 
 html {
-  font: 16px/1.25 -apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Hiragino Sans GB,Simsun,Arial,sans-self;
+  font:
+    16px/1.25 -apple-system,
+    BlinkMacSystemFont,
+    Helvetica Neue,
+    Helvetica,
+    Hiragino Sans GB,
+    Simsun,
+    Arial,
+    sans-self;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }

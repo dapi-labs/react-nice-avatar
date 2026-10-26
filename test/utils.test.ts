@@ -1,3 +1,4 @@
+import { describe, it, expect } from "vite-plus/test";
 import { pickRandomFromList, genConfig, defaultOptions } from "../src/utils";
 import {
   Sex,
@@ -9,24 +10,24 @@ import {
   NoseStyle,
   MouthStyle,
   ShirtStyle,
-  AvatarFullConfig
-} from "../src/types"
+  AvatarFullConfig,
+} from "../src/types";
 
 interface InputOpt {
-  sex: Sex,
-  faceColor: string,
-  earSize: EarSize,
-  hairColor: string,
-  hairStyle: HairStyle,
-  hatColor: string,
-  hatStyle: HatStyle,
-  eyeStyle: EyeStyle,
-  glassesStyle: GlassesStyle,
-  noseStyle: NoseStyle,
-  mouthStyle: MouthStyle,
-  shirtStyle: ShirtStyle,
-  shirtColor: string,
-  bgColor: string
+  sex: Sex;
+  faceColor: string;
+  earSize: EarSize;
+  hairColor: string;
+  hairStyle: HairStyle;
+  hatColor: string;
+  hatStyle: HatStyle;
+  eyeStyle: EyeStyle;
+  glassesStyle: GlassesStyle;
+  noseStyle: NoseStyle;
+  mouthStyle: MouthStyle;
+  shirtStyle: ShirtStyle;
+  shirtColor: string;
+  bgColor: string;
 }
 
 describe("utils", () => {
@@ -71,7 +72,7 @@ describe("utils", () => {
         mouthStyle: "smile",
         shirtStyle: "polo",
         shirtColor: "#F4D150",
-        bgColor: "#E0DDFF"
+        bgColor: "#E0DDFF",
       };
       const output: AvatarFullConfig = genConfig(myConfig);
       delete output.eyeBrowStyle;
@@ -93,28 +94,28 @@ describe("utils", () => {
     it("should not have hairColor #77311D for woman with faceColor[1]", () => {
       const output = genConfig({
         sex: "woman",
-        faceColor: defaultOptions.faceColor[1]
+        faceColor: defaultOptions.faceColor[1],
       });
       expect(output.hairColor).not.toBe("#77311D");
     });
 
     it("should only return man hairStyle for men", () => {
       const output = genConfig({
-        sex: "man"
+        sex: "man",
       });
       expect(defaultOptions.hairStyleMan).toContain(output.hairStyle);
     });
 
     it("should only return woman hairStyle for women", () => {
       const output = genConfig({
-        sex: "woman"
+        sex: "woman",
       });
       expect(defaultOptions.hairStyleWoman).toContain(output.hairStyle);
     });
 
     it("should only return up eyeBrowStyle for man", () => {
       const output = genConfig({
-        sex: "man"
+        sex: "man",
       });
       expect(output.eyeBrowStyle).toBe("up");
     });
@@ -122,7 +123,7 @@ describe("utils", () => {
     it("should have different color between shirt and hair/hat", () => {
       const output = genConfig({
         hairColor: defaultOptions.shirtColor[0],
-        hatColor: defaultOptions.shirtColor[0]
+        hatColor: defaultOptions.shirtColor[0],
       });
       expect(output.shirtColor).not.toBe(defaultOptions.shirtColor[0]);
     });
@@ -131,7 +132,7 @@ describe("utils", () => {
       const output = genConfig({
         hairColor: defaultOptions.bgColor[0],
         hatColor: defaultOptions.bgColor[0],
-        shirtColor: defaultOptions.bgColor[1]
+        shirtColor: defaultOptions.bgColor[1],
       });
       expect(output.bgColor).not.toBe(defaultOptions.bgColor[0]);
       expect(output.bgColor).not.toBe(defaultOptions.bgColor[1]);

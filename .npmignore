@@ -10,19 +10,17 @@ test/
 CHANGELOG.md
 src/
 demo/
-test/
+examples/
 Makefile
 README.md
-jest.config.js
 tsconfig.json
 .github/
-webpack/
+.opencode/
 tailwind.config.js
+postcss.config.js
+vite.config.ts
+vite.config.demo.ts
+vitest.config.ts
 
 // setting files
-.babelrc
-.travis.yml
-.eslintrc.js
-.eslintignore
-.travis.yml
 .versionrc.json

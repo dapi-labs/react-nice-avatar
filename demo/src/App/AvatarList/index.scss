@@ -1,4 +1,4 @@
-@import "~shared-style/mixin";
+@use "../../scss/mixin" as *;
 
 $avatarWidth: 4.5rem;
 $laptopWidth: $avatarWidth - 0.8rem;

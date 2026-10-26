@@ -1,18 +1,29 @@
-*.orig
-*.DS_Store*
-
-# Logs
-logs
-*.log
-npm-debug.log*
-
-# Coverage directory used by tools like istanbul
-coverage
-
-# Dependency directories
+# Dependencies
 node_modules/
+examples/**/node_modules/
 
+# Production build output
 dist/
 demo/dist/
+examples/**/dist/
 
+# Tests & coverage
+coverage/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS & IDE
+.DS_Store
+*.orig
+.idea/
+.vscode/
+
+# Internal / Hallmark
+.hallmark/
 report.*.json
+.vitest/
