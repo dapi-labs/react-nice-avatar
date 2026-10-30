@@ -7,10 +7,13 @@ export default function sectionWrapper(props: {
   children: JSX.Element,
   switchConfig: () => void,
   tip: string
-}): HTMLElement {
+}) {
   const { className = "", children, switchConfig, tip } = props
   return (
-    <div
+    <button
+      type="button"
+      aria-label={tip}
+      title={tip}
       className={"SectionWrapper " + className}
       data-tip={tip}
       onClick={switchConfig}>
@@ -19,6 +22,6 @@ export default function sectionWrapper(props: {
           {children}
         </div>
       </div>
-    </div>
+    </button>
   )
 }

@@ -16,6 +16,11 @@
 
 .SectionWrapper {
   cursor: pointer;
+  flex-shrink: 0;
+  border: 0;
+  color: inherit;
+  &:focus-visible { outline: 2px solid #6BD9E9; outline-offset: 3px; }
+  .childrenWrapper { pointer-events: none; overflow: hidden; }
   background: rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
@@ -24,11 +29,13 @@
   &:hover {
     animation: jelly 0.5s;
     &:after {
+    pointer-events: none;
       opacity: 1;
       transform: translateY(0px);
     }
   }
   &:after {
+    pointer-events: none;
     content: attr(data-tip);
     position: absolute;
     bottom: 120%;

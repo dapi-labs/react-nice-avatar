@@ -1,0 +1,254 @@
+[
+  {
+    "id": "58:931",
+    "name": "Ear Ring/Hoop",
+    "width": 48,
+    "height": 48,
+    "bounds": {
+      "x": -21567,
+      "y": 21301,
+      "width": 48,
+      "height": 48
+    },
+    "renderBounds": {
+      "x": -21569,
+      "y": 21299,
+      "width": 52,
+      "height": 52
+    }
+  },
+  {
+    "id": "58:1044",
+    "name": "Ear Ring/Stud",
+    "width": 48,
+    "height": 48,
+    "bounds": {
+      "x": -21474,
+      "y": 21301,
+      "width": 48,
+      "height": 48
+    },
+    "renderBounds": {
+      "x": -21474,
+      "y": 21299,
+      "width": 48,
+      "height": 50
+    }
+  },
+  {
+    "id": "48:80",
+    "name": "Mouth/Surprised",
+    "width": 64,
+    "height": 64,
+    "bounds": {
+      "x": -21567,
+      "y": 21588,
+      "width": 64,
+      "height": 64
+    },
+    "renderBounds": {
+      "x": -21567,
+      "y": 21588,
+      "width": 64,
+      "height": 64
+    }
+  },
+  {
+    "id": "58:235",
+    "name": "Mouth/Sad",
+    "width": 64,
+    "height": 64,
+    "bounds": {
+      "x": -21098,
+      "y": 21588,
+      "width": 64,
+      "height": 64
+    },
+    "renderBounds": {
+      "x": -21098,
+      "y": 21588,
+      "width": 64,
+      "height": 64
+    }
+  },
+  {
+    "id": "58:240",
+    "name": "Mouth/Frown",
+    "width": 64,
+    "height": 64,
+    "bounds": {
+      "x": -20999,
+      "y": 21588,
+      "width": 64,
+      "height": 64
+    },
+    "renderBounds": {
+      "x": -21005.85546875,
+      "y": 21588,
+      "width": 76.68359375,
+      "height": 64
+    }
+  },
+  {
+    "id": "58:245",
+    "name": "Mouth/Pucker",
+    "width": 64,
+    "height": 64,
+    "bounds": {
+      "x": -20877,
+      "y": 21588,
+      "width": 64,
+      "height": 64
+    },
+    "renderBounds": {
+      "x": -20877,
+      "y": 21588,
+      "width": 64,
+      "height": 64
+    }
+  },
+  {
+    "id": "58:656",
+    "name": "Mouth/Nervous",
+    "width": 64,
+    "height": 64,
+    "bounds": {
+      "x": -20760,
+      "y": 21588,
+      "width": 64,
+      "height": 64
+    },
+    "renderBounds": {
+      "x": -20770.435546875,
+      "y": 21588,
+      "width": 78.869140625,
+      "height": 64
+    }
+  },
+  {
+    "id": "58:776",
+    "name": "Eyebrows/Down",
+    "width": 149,
+    "height": 48,
+    "bounds": {
+      "x": -21318,
+      "y": 22889,
+      "width": 149,
+      "height": 48
+    },
+    "renderBounds": {
+      "x": -21318,
+      "y": 22889,
+      "width": 149,
+      "height": 48
+    }
+  },
+  {
+    "id": "66:271",
+    "name": "Eyebrows/Eyelashes Down",
+    "width": 149,
+    "height": 48,
+    "bounds": {
+      "x": -20885,
+      "y": 22889,
+      "width": 149,
+      "height": 48
+    },
+    "renderBounds": {
+      "x": -20885,
+      "y": 22886.8671875,
+      "width": 149,
+      "height": 50.1328125
+    }
+  },
+  {
+    "id": "58:2137",
+    "name": "Eyes/Eyeshadow",
+    "width": 96,
+    "height": 48,
+    "bounds": {
+      "x": -21171,
+      "y": 22501,
+      "width": 96,
+      "height": 48
+    },
+    "renderBounds": {
+      "x": -21171,
+      "y": 22500.609375,
+      "width": 96,
+      "height": 48.390625
+    }
+  },
+  {
+    "id": "48:105",
+    "name": "Hair/Doug Funny",
+    "width": 240,
+    "height": 200,
+    "bounds": {
+      "x": -21238,
+      "y": 21965,
+      "width": 240,
+      "height": 200
+    },
+    "renderBounds": {
+      "x": -21238,
+      "y": 21965,
+      "width": 240,
+      "height": 200
+    }
+  },
+  {
+    "id": "48:112",
+    "name": "Hair/Mr Clean",
+    "width": 240,
+    "height": 200,
+    "bounds": {
+      "x": -20980,
+      "y": 21965,
+      "width": 240,
+      "height": 200
+    },
+    "renderBounds": {
+      "x": -20980,
+      "y": 21965,
+      "width": 240,
+      "height": 200
+    }
+  },
+  {
+    "id": "65:231",
+    "name": "Facial Hair/Beard",
+    "width": 163.72164916992188,
+    "height": 153.0578155517578,
+    "bounds": {
+      "x": -21520,
+      "y": 23997,
+      "width": 163.72164916992188,
+      "height": 153.0578155517578
+    },
+    "renderBounds": {
+      "x": -21520,
+      "y": 23997,
+      "width": 163.72164916992188,
+      "height": 153.05859375
+    }
+  },
+  {
+    "id": "65:381",
+    "name": "Facial Hair/Scruff",
+    "width": 163.72164916992188,
+    "height": 153.0578155517578,
+    "bounds": {
+      "x": -21300,
+      "y": 23997,
+      "width": 163.72164916992188,
+      "height": 153.0578155517578
+    },
+    "renderBounds": {
+      "x": -21300,
+      "y": 23997,
+      "width": 163.72164916992188,
+      "height": 153.05859375
+    }
+  }
+]

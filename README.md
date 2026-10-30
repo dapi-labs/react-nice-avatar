@@ -88,7 +88,10 @@ The options can be passed into genConfig or as React props
 | `hatColor`     | string |         |                                              |                      |
 | `hatStyle`     | string |         | none, beanie, turban                         | Usually is none      |
 | `eyeStyle`     | string |         | circle, oval, smile                          |                      |
-| `glassesStyle` | string |         | none, round, square                          | Usually is none      |
+| `glassesStyle` | string | | none, round, square, aviator | Existing aliases remain supported |
+| `glassesMode` | string | transparent | transparent, tinted, dark | Applies to all three shapes |
+| `glassesColor` | string | #ADBFFF | CSS color | Tinted lenses use 32% opacity |
+| `eyeBrowStyle` | string | | up, upWoman, unibrow | Original automatic selection when omitted |
 | `noseStyle`    | string |         | short, long, round                           |                      |
 | `mouthStyle`   | string |         | laugh, smile, peace                          |                      |
 | `shirtStyle`   | string |         | hoody, short, polo                           |                      |
@@ -138,3 +141,66 @@ $ make release level=patch | minor | major | 1.3.0
 ## License
 
 Released under [MIT](/LICENSE) by [@dapi-labs](https://github.com/dapi-labs).
+
+## Extended avatar styles
+
+16 curated presets, 10 new interchangeable hair/hat/eye options, facial hair
+and a robot are available in this extension. See [the recipe](./RECETA.md)
+for usage, the complete inventory and visual design rules.
+
+### Glasses shape and finish
+
+```tsx
+<Avatar
+  glassesStyle="aviator"
+  glassesMode="tinted"
+  glassesColor="#ADBFFF"
+  eyeBrowStyle="unibrow"
+/>
+```
+
+`round`, `square` and `aviator` each support `transparent`, `tinted` and `dark`. Omitting `glassesMode` keeps the original transparent appearance. `none` always hides glasses. Tint applies 32% opacity only to the lenses; the black frame stays opaque. Dark lenses retain the selected gray reflection and ignore the tint color.
+
+Existing aliases remain valid: `roundDark`, `squareDark`, `aviatorDark` and `aviatorTinted`. An explicit `glassesMode` overrides an alias's implied finish. Existing explicit style values remain supported. The expanded random option pools can produce different avatars for seeds used with earlier releases. The editor offers separate shape, finish and tint controls, plus a brow selector.
+
+### Original Figma library additions
+
+Imported directly from the [Avatar Illustration System](https://www.figma.com/design/HjwULEwq8hpWuMEAe6kLcV/Avatar-Illustration-System--Community-?node-id=0-1). These additional variants preserve existing explicit values. The imported Figma variants are opt-in; other additions expand the random option pools.
+
+| Prop | New values |
+| --- | --- |
+| `earringStyle` | `none` (default), `hoop`, `stud` |
+| `mouthStyle` | `surprised`, `sad`, `frown`, `pucker`, `nervous` |
+| `eyeBrowStyle` | `down`, `eyelashesDown` |
+| `eyeStyle` | `eyeshadow` |
+| `hairStyle` | `dougFunny`, `bald` (Mr Clean highlight) |
+| `facialHairStyle` | `originalBeard`, `scruff` |
+
+`earringColor` defaults to `#F4D150`; `eyeshadowColor` defaults to `#D2EFF3`. Hair and both imported beards use `hairColor`. `fullBeard`, `chinBeard` and `goatee` are available; `goateeV2` is a compatibility alias. Accessories are rendered only for human avatars.
+
+```tsx
+<NiceAvatar
+  {...genConfig('my-avatar')}
+  hairStyle="dougFunny"
+  hatStyle="none"
+  facialHairStyle="scruff"
+  mouthStyle="nervous"
+  eyeBrowStyle="down"
+  eyeStyle="eyeshadow"
+  eyeshadowColor="#D2EFF3"
+  earringStyle="hoop"
+  earringColor="#F4D150"
+/>
+```
+
+The committed SVG sources and node provenance are in `assets/figma-originals/`. Regenerate the JSX with `python3 scripts/import-figma-originals.py`; no Figma access or temporary asset URLs are needed at runtime. See `RECETA.md` for alignment and layering.
+
+### Additional configuration
+
+- `avatarStyle`: `human` (default) or `robot`. Robot shell uses `faceColor`; eyes and accents use `shirtColor`.
+- `facialHairStyle`: `none`, `mustache`, `handlebar`, `goatee`, `fullBeard`, `chinBeard`, `originalBeard`, `scruff`.
+- Additional hair: `curly`, `bob`, `pixie`, `bun`, `buzz`; additional hat: `bucket`.
+- Additional eyes: `wink`, `sleepy`, `sparkle`, `focused`, `eyeshadow`, `smileShadow`. Both shadow variants accept `eyeshadowColor`.
+- Saved `curlyV2`, `bobV2`, `pixieV2`, `bunV2`, `buzzV2`, `goateeV2` and `beard` values normalize to their unversioned counterparts (`beard` becomes `fullBeard`).
+
+The demo retains the original cycling controls and adds separate accessory and color rows. `preview/` contains the visual development archive, including superseded candidates; runtime artwork lives in `src/`.

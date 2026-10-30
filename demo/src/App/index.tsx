@@ -3,7 +3,7 @@ import { hot } from "react-hot-loader";
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
 
-import ReactNiceAvatar, { genConfig } from "react-nice-avatar/index";
+import ReactNiceAvatar, { genConfig, avatarPresets } from "react-nice-avatar/index";
 
 import AvatarEditor from './AvatarEditor/index'
 import AvatarList from './AvatarList/index'
@@ -86,6 +86,15 @@ class App extends Component {
             onKeyUp={this.onInputKeyUp.bind(this)} />
         </main>
 
+        <section aria-label="Nuevos estilos" className="px-6 py-10 mx-auto" style={{maxWidth: 960}}>
+          <h2 className="text-center text-xl mb-6">Nuevas recetas · el mismo espíritu</h2>
+          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(110px, 1fr))", gap: 24}}>
+            {avatarPresets.map(preset => <button key={preset.id} type="button" aria-label={`Usar ${preset.name}`} onClick={() => this.selectConfig(genConfig(preset.config))} style={{background: "transparent", border: 0, cursor: "pointer", color: "inherit"}}>
+              <ReactNiceAvatar style={{width: 96, height: 96, margin: "0 auto 8px"}} {...preset.config} />
+              <span>{preset.name}</span>
+            </button>)}
+          </div>
+        </section>
         {/* Avatar list */}
         <AvatarList selectConfig={this.selectConfig.bind(this)} />
 

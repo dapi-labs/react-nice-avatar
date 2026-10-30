@@ -74,13 +74,13 @@ export const defaultOptions: DefaultOptions = {
   faceColor: ["#F9C9B6", "#AC6651"],
   earSize: ["small", "big"],
   hairColor: ["#000", "#fff", "#77311D", "#FC909F", "#D2EFF3", "#506AF4", "#F48150"],
-  hairStyleMan: ["normal", "thick", "mohawk"],
-  hairStyleWoman: ["normal", "womanLong", "womanShort"],
+  hairStyleMan: ["normal", "thick", "mohawk", "curly", "bob", "pixie", "bun", "buzz"],
+  hairStyleWoman: ["normal", "womanLong", "womanShort", "curly", "bob", "pixie", "bun", "buzz"],
   hatColor: ["#000", "#fff", "#77311D", "#FC909F", "#D2EFF3", "#506AF4", "#F48150"],
-  hatStyle: ["beanie", "turban", "none"],
+  hatStyle: ["beanie", "turban", "none", "bucket"],
   eyeBrowWoman: ["up", "upWoman"],
-  eyeStyle: ["circle", "oval", "smile"],
-  glassesStyle: ["round", "square", "none"],
+  eyeStyle: ["circle", "oval", "smile", "wink", "sleepy", "sparkle", "focused"],
+  glassesStyle: ["round", "square", "none", "aviator", "aviatorTinted", "roundDark", "squareDark", "aviatorDark"],
   noseStyle: ["short", "long", "round"],
   mouthStyle: ["laugh", "smile", "peace"],
   shirtStyle: ["hoody", "short", "polo"],
@@ -222,5 +222,19 @@ export const genConfig: GenConfigFunc = (userConfig = {}) => {
       : userConfig.bgColor || pickRandomFromList(defaultOptions.bgColor, { avoidList: [_hairOrHatColor, response.shirtColor] });
   }
 
+  if (!isSeedConfig && userConfig.avatarStyle) response.avatarStyle = userConfig.avatarStyle;
+  if (!isSeedConfig && userConfig.facialHairStyle) response.facialHairStyle = userConfig.facialHairStyle;
+  if (!isSeedConfig && userConfig.glassesColor) response.glassesColor = userConfig.glassesColor;
+  if (!isSeedConfig && userConfig.glassesMode) response.glassesMode = userConfig.glassesMode;
+  if (!isSeedConfig && userConfig.earringStyle) response.earringStyle = userConfig.earringStyle;
+  if (!isSeedConfig && userConfig.earringColor) response.earringColor = userConfig.earringColor;
+  if (!isSeedConfig && userConfig.eyeshadowColor) response.eyeshadowColor = userConfig.eyeshadowColor;
+  // Saved versioned configs now resolve to the approved, unversioned catalog.
+  const hairAliases = {curlyV2: 'curly', bobV2: 'bob', pixieV2: 'pixie', bunV2: 'bun', buzzV2: 'buzz'} as const;
+  if (Object.prototype.hasOwnProperty.call(hairAliases, response.hairStyle)) {
+    response.hairStyle = hairAliases[response.hairStyle as keyof typeof hairAliases];
+  }
+  if (response.facialHairStyle === 'goateeV2') response.facialHairStyle = 'goatee';
+  if (response.facialHairStyle === 'beard') response.facialHairStyle = 'fullBeard';
   return response;
 };

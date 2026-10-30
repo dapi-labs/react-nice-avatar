@@ -3,10 +3,15 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { defaultOptions } from "react-nice-avatar/utils"
+import FacialHair from "react-nice-avatar/facialHair"
+import Artwork from "react-nice-avatar/originals/artwork"
+import Robot from "react-nice-avatar/robot"
 import Face from "react-nice-avatar/face/index"
 import Hair from "react-nice-avatar/hair/index"
 import Hat from "react-nice-avatar/hat/index"
 import Eyes from "react-nice-avatar/eyes/index"
+import { resolveGlasses } from "react-nice-avatar/glasses/config"
+import Eyebrow from "react-nice-avatar/eyebrow/index"
 import Glasses from "react-nice-avatar/glasses/index"
 import Ear from "react-nice-avatar/ear/index"
 import Nose from "react-nice-avatar/nose/index"
@@ -40,7 +45,19 @@ export default class AvatarEditor extends Component {
     const hairSet = new Set(opts.hairStyleMan.concat(opts.hairStyleWoman))
     return {
       ...opts,
-      hairStyle: Array.from(hairSet)
+      earringStyle: ['none', 'hoop', 'stud'],
+      glassesMode: ['transparent', 'tinted', 'dark'],
+      earringColor: ['#F4D150', '#D2EFF3', '#FC909F', '#506AF4', '#FFFFFF'],
+      eyeshadowColor: ['#D2EFF3', '#FC909F', '#9287FF', '#6BD9E9', '#FFEBA4'],
+      glassesColor: ['#ADBFFF', '#6BD9E9', '#FC909F', '#F4D150', '#D2EFF3'],
+      bgColor: [...opts.bgColor, ...opts.gradientBgColor],
+      avatarStyle: ["human", "robot"],
+      facialHairStyle: ["none", "mustache", "handlebar", "goatee", "fullBeard", "chinBeard", "originalBeard", "scruff"],
+      glassesStyle: ["round", "square", "aviator", "none"],
+      eyeBrowStyle: ["up", "upWoman", "unibrow", "down", "eyelashesDown"],
+      hairStyle: [...Array.from(hairSet), "dougFunny", "bald"],
+      eyeStyle: [...opts.eyeStyle, "eyeshadow", "smileShadow"],
+      mouthStyle: [...opts.mouthStyle, "surprised", "sad", "frown", "pucker", "nervous"]
     }
   }
 
@@ -81,105 +98,53 @@ export default class AvatarEditor extends Component {
   render () {
     const { config, shape, download } = this.props
     const { isCodeShow } = this.state
-    return (
-      <div className="AvatarEditor rounded-full px-3 py-2 flex items-center">
-        {/* Face */}
-        <SectionWrapper
-          className="w-8 h-8 rounded-full p-2 mx-2"
-          tip="Face"
-          switchConfig={this.switchConfig.bind(this, 'faceColor', config.faceColor)}>
-          <Face color={config.faceColor} />
-        </SectionWrapper>
-        {/* Hair style */}
-        <SectionWrapper
-          className="w-8 h-8 rounded-full p-2 mx-2"
-          tip="Hair"
-          switchConfig={this.switchConfig.bind(this, 'hairStyle', config.hairStyle)}>
-          <Hair style={config.hairStyle} color="#fff" colorRandom />
-        </SectionWrapper>
-        {/* Hat style */}
-        <SectionWrapper
-          className="w-8 h-8 rounded-full p-2 mx-2"
-          tip="Hat"
-          switchConfig={this.switchConfig.bind(this, 'hatStyle', config.hatStyle)}>
-          <Hat style={config.hatStyle} color="#fff" />
-        </SectionWrapper>
-        {/* Eyes style */}
-        <SectionWrapper
-          className="w-8 h-8 rounded-full p-2 mx-2"
-          tip="Eyes"
-          switchConfig={this.switchConfig.bind(this, 'eyeStyle', config.eyeStyle)}>
-          <Eyes style={config.eyeStyle} color="#fff" />
-        </SectionWrapper>
-        {/* Glasses style */}
-        <SectionWrapper
-          className="w-8 h-8 rounded-full p-2 mx-2"
-          tip="Glasses"
-          switchConfig={this.switchConfig.bind(this, 'glassesStyle', config.glassesStyle)}>
-          <Glasses style={config.glassesStyle} color="#fff" />
-        </SectionWrapper>
-        {/* Ear style */}
-        <SectionWrapper
-          className="w-8 h-8 rounded-full p-2 mx-2"
-          tip="Ear"
-          switchConfig={this.switchConfig.bind(this, 'earSize', config.earSize)}>
-          <Ear size={config.earSize} color="#fff" />
-        </SectionWrapper>
-        {/* Nose style */}
-        <SectionWrapper
-          className="w-8 h-8 rounded-full p-2 mx-2"
-          tip="Nose"
-          switchConfig={this.switchConfig.bind(this, 'noseStyle', config.noseStyle)}>
-          <Nose style={config.noseStyle} color="#fff" />
-        </SectionWrapper>
-        {/* Mouth style */}
-        <SectionWrapper
-          className="w-8 h-8 rounded-full p-2 mx-2"
-          tip="Mouth"
-          switchConfig={this.switchConfig.bind(this, 'mouthStyle', config.mouthStyle)}>
-          <Mouth style={config.mouthStyle} color="#fff" />
-        </SectionWrapper>
-        {/* Shirt style */}
-        <SectionWrapper
-          className="w-8 h-8 rounded-full p-2 mx-2"
-          tip="Shirt"
-          switchConfig={this.switchConfig.bind(this, 'shirtStyle', config.shirtStyle)}>
-          <Shirt style={config.shirtStyle} color="#fff" />
-        </SectionWrapper>
-
-        {/* Shape style */}
-        <SectionWrapper
-          className="w-8 h-8 rounded-full p-2 mx-2"
-          tip="Shape"
-          switchConfig={this.switchShape.bind(this, shape)}>
-          <div
-            className={classnames("w-3 h-3 bg-white", {
-              "rounded-full": shape === 'circle',
-              "rounded": shape === 'rounded'
-            })} />
-        </SectionWrapper>
-
-        <div className="divider w-0.5 h-5 rounded mx-2" />
-        <div className="mx-2 relative flex justify-center">
-          <i
-            className={classnames("iconfont icon-code text-xl  cursor-pointer transition duration-300 hover:text-green-100", {
-              banTip: isCodeShow
-            })}
-            data-tip="Config"
-            onClick={this.toggleCodeShow.bind(this)} />
-          <div className={classnames("rounded-lg bg-white p-5 absolute bottom-full codeBlock mb-4", {
-            active: isCodeShow
-          })}>
-            <pre className="text-xs highres:text-sm">{this.genCodeString(config)}</pre>
-          </div>
-        </div>
-
-        <div className="divider w-0.5 h-5 rounded mx-2" />
-        <i
-          className="iconfont icon-download text-xl mx-2 cursor-pointer transition duration-300 hover:text-green-100"
-          data-tip="Download"
-          onClick={download} />
+    const human = config.avatarStyle !== 'robot'
+    const glasses = resolveGlasses(config.glassesStyle, config.glassesMode)
+    const control = (key, label, current, icon) => <SectionWrapper key={key}
+      className="w-8 h-8 rounded-full p-2 mx-2"
+      tip={`${label}: ${current}`} switchConfig={() => this.switchConfig(key, current)}>{icon}</SectionWrapper>
+    const colorControl = (key, label, fallback) => control(key, label, config[key] || fallback,
+      <span className="colorSwatch" style={{background: config[key] || fallback}} />)
+    return <div className="AvatarEditor" role="group" aria-label="Editor de avatar">
+      <div className="editorRow editorPrimary rounded-full px-3 py-2 flex items-center" aria-label="Controles originales">
+        {control('faceColor', human ? 'Piel' : 'Carcasa', config.faceColor, <Face color={config.faceColor} />)}
+        {human && control('hairStyle', 'Peinado', config.hairStyle, <Hair style={config.hairStyle} color="#fff" colorRandom />)}
+        {control('hatStyle', 'Sombrero', config.hatStyle, <Hat style={config.hatStyle === 'none' ? 'beanie' : config.hatStyle} color="#fff" />)}
+        {human && control('eyeStyle', 'Ojos', config.eyeStyle, <Eyes style={config.eyeStyle} color="#fff" />)}
+        {human && control('glassesStyle', 'Lentes', glasses.style, <Glasses style={glasses.style === 'none' ? 'round' : glasses.style} mode={glasses.mode} color={config.glassesColor} />)}
+        {human && control('earSize', 'Orejas', config.earSize, <Ear size={config.earSize} color="#fff" />)}
+        {human && control('noseStyle', 'Nariz', config.noseStyle, <Nose style={config.noseStyle} />)}
+        {human && control('mouthStyle', 'Boca', config.mouthStyle, <Mouth style={config.mouthStyle} />)}
+        {human && control('shirtStyle', 'Ropa', config.shirtStyle, <Shirt style={config.shirtStyle} color="#fff" />)}
+      <SectionWrapper className="w-8 h-8 rounded-full p-2 mx-2" tip={`Forma: ${shape}`} switchConfig={() => this.switchShape(shape)}>
+        <div className={classnames("w-3 h-3 bg-white", {"rounded-full": shape === 'circle', "rounded": shape === 'rounded'})} />
+      </SectionWrapper>
+      <div className="divider w-0.5 h-5 rounded mx-2" />
+      <div className="mx-2 relative flex justify-center">
+        <button type="button" className="iconfont icon-code text-xl cursor-pointer" aria-label="Mostrar configuración" aria-expanded={isCodeShow} onClick={this.toggleCodeShow.bind(this)} />
+        {isCodeShow && <div className="rounded-lg p-5 absolute bottom-full codeBlock mb-4 active">
+          <pre className="text-xs highres:text-sm">{this.genCodeString(config)}</pre>
+        </div>}
       </div>
-    )
+      <div className="divider w-0.5 h-5 rounded mx-2" />
+      <button type="button" className="iconfont icon-download text-xl mx-2 cursor-pointer" aria-label="Descargar avatar" onClick={download} />
+      </div>
+      <div className="editorRow rounded-full px-3 py-2 flex items-center" aria-label="Nuevos accesorios">
+        {control('avatarStyle', 'Humano / Robot', config.avatarStyle || 'human', <Robot color="#D2EFF3" accent="#6BD9E9" />)}
+        {human && (control('eyeBrowStyle', 'Cejas', config.eyeBrowStyle, <Eyebrow style={config.eyeBrowStyle} />))}
+        {human && (control('facialHairStyle', 'Barba y bigote', config.facialHairStyle || 'none', <FacialHair style={config.facialHairStyle && config.facialHairStyle !== 'none' ? config.facialHairStyle : 'goatee'} color="#fff" />))}
+        {human && (control('earringStyle', 'Arete', config.earringStyle || 'none', <svg viewBox="-3 -3 54 54" fill="none"><Artwork name={config.earringStyle === 'stud' ? 'stud' : 'hoop'} color="#F4D150" /></svg>))}
+        {human && (glasses.style !== 'none' && control('glassesMode', 'Acabado de lentes', glasses.mode, <Glasses style={glasses.style} mode={glasses.mode} color={config.glassesColor} />))}
+      </div>
+      <div className="editorRow rounded-full px-3 py-2 flex items-center" aria-label="Colores">
+        {human && (colorControl('hairColor', 'Color de cabello y barba', '#171921'))}
+        {config.hatStyle !== 'none' && colorControl('hatColor', 'Color del sombrero', '#171921')}
+        {human && (config.earringStyle && config.earringStyle !== 'none' && colorControl('earringColor', 'Color del arete', '#F4D150'))}
+        {human && (['eyeshadow', 'smileShadow'].includes(config.eyeStyle) && colorControl('eyeshadowColor', 'Color de sombra de ojos', '#D2EFF3'))}
+        {human && (glasses.style !== 'none' && glasses.mode === 'tinted' && colorControl('glassesColor', 'Color de cristales', '#ADBFFF'))}
+        {colorControl('shirtColor', human ? 'Color de ropa' : 'Color de ojos y detalles del robot', '#9287FF')}
+        {colorControl('bgColor', 'Fondo', '#F4D150')}
+      </div>
+    </div>
   }
 }

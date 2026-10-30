@@ -6,6 +6,7 @@ export default function shirtHoody(props: { color: string, lightColor: string })
     <svg
       style={{
         position: "absolute",
+        left: 0,
         bottom: "-2%",
         width: "98%",
         height: "26%"

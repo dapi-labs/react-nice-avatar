@@ -6,6 +6,7 @@ export default function hairWomanLong(props: { color: string }): SVGElement {
     <svg
       style={{
         position: "absolute",
+        left: 0,
         bottom: "-2.2%",
         width: "97%",
         height: "100%"
